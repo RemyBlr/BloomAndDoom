@@ -1,39 +1,52 @@
-name: Build project
+name: Unity Multi-Build
 
-on: [push, pull_request] # When the build happens
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  buildForAllSupportedPlatforms:
-    name: Build for ${{ matrix.targetPlatform }}
+  build:
+    name: Build Unity (${{ matrix.targetPlatform }})
     runs-on: ubuntu-latest
     strategy:
-      fail-fast: false # Complete all jobs even if one fails
       matrix:
-        targetPlatform:
-          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
-          - StandaloneWindows # Build a Windows standalone.
-          - StandaloneWindows64 # Build a Windows 64-bit standalone.
-          - WebGL # WebGL.
+        targetPlatform: [WebGL, StandaloneWindows64, StandaloneOSX]
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Active la licence étudiant Unity
+      - name: Activate Unity
+        uses: game-ci/unity-activate@v2
         with:
-          fetch-depth: 0
-          lfs: true
-      - uses: actions/cache@v3
-        with:
-          path: Library
-          key: Library-${{ matrix.targetPlatform }}
-          restore-keys: Library-
-      - if: matrix.targetPlatform == 'Android'
-        uses: jlumbroso/free-disk-space@v1.3.1
-      - uses: game-ci/unity-builder@v4
+          unityVersion: 6000.2.0f1
         env:
-          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+
+      # Build
+      - name: Build for ${{ matrix.targetPlatform }}
+        uses: game-ci/unity-builder@v2
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
-      - uses: actions/upload-artifact@v4
+          unityVersion: 6000.2.0f1
+
+      # Sauvegarde du build en artifact téléchargeable
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
         with:
           name: Build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
+
+      # Libère la licence Unity 
+      - name: Return License
+        if: always()
+        uses: game-ci/unity-return-license@v2
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
