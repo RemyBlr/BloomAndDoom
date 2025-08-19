@@ -32,8 +32,10 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
+          projectPath: BloomAndDoomGame
           targetPlatform: ${{ matrix.targetPlatform }}
       - uses: actions/upload-artifact@v4
         with:
+          projectPath: BloomAndDoomGame
           name: Build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
