@@ -16,10 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
           lfs: true
       - uses: actions/cache@v3
         with:
+          projectPath: BloomAndDoomGame
           path: Library
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
