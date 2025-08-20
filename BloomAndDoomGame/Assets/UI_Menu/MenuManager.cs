@@ -13,7 +13,7 @@ public class MenuManager : MonoBehaviour
 
     public void openSettings() {
         Debug.Log("Open settings");
-        //SceneManager.LoadScene("SettingsScene");
+        SceneManager.LoadScene("SettingsMenuScene");
     }
 
     public void quitGame() {
