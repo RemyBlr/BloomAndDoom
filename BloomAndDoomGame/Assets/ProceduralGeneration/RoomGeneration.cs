@@ -1,20 +1,51 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.ProBuilder;
 public class RoomGeneration : MonoBehaviour
 {
-    [SerializeField] private GameObject Room;
-    [SerializeField] private Vector2Int Size;
+    [Min(1)] public int Level = 1;
+    
+    public RoomCollection RoomCollection;
 
-    private void Awake()
+    public List<RoomSpawner> Rooms = new List<RoomSpawner>(5);
+    public List<RoomSpawner> BossRooms = new List<RoomSpawner>();
+
+    private void Start()
     {
-        if (Room == null) return;
-        for (int i = 0; i < 4; i++)
+        StartCoroutine(GenererDonjon());
+    }
+    
+    private IEnumerator GenererDonjon()
+    {
+        for (int i = 1; i <= Level; i++)
         {
-            int y = i / 2;
-            int x = i - y * 2;
-            Vector3 position = new Vector3(x * Size.x, 0, y * Size.y);
-            Instantiate(Room, position, Quaternion.identity);
+            if (i == 1)
+            {
+                Instantiate(RoomCollection.EntryRoom, Vector3.zero, Quaternion.identity);
+            }
+            else
+            {
+                GenerateBossRoom();
+            }
+            yield return new WaitForSeconds(2f);
         }
+        BossRooms.Add(Rooms[^1]);
+    }
+
+    private void GenerateBossRoom()
+    {
+        GameObject lastRoom = Rooms[^1].gameObject;
+        Vector3 position = lastRoom.transform.position;
+        Destroy(lastRoom);
+        lastRoom = Instantiate(RoomCollection.EntryRoom, position, Quaternion.identity);
+        Rooms[^1] = lastRoom.GetComponent<RoomSpawner>();
+        BossRooms.Add(Rooms[^1]);
+    }
+
+    public void AddRoom(RoomSpawner room)
+    {
+        Rooms.Add(room);
     }
 }
