@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class CharacterSelectionManager : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class CharacterSelectionManager : MonoBehaviour
     private GameObject currentPreview;
 
     private CharacterClass[] classes;
+    private string mainMenuSceneName = "MainMenu";
+    private string mapSceneName = "ProceduralGeneration";
 
     // claled when script is laoded
     void Awake() {
@@ -70,6 +73,9 @@ public class CharacterSelectionManager : MonoBehaviour
         // Preview
         if(currentPreview != null) Destroy(currentPreview);
         currentPreview = Instantiate(picked.prefab, previewStartPoint.position, Quaternion.identity);
+
+        // set picked class
+        SelectedCharacter.pickedClass = picked;
     }
 
     // Update is called once per frame
@@ -82,5 +88,20 @@ public class CharacterSelectionManager : MonoBehaviour
             if (mouseX != 0)
                 currentPreview.transform.Rotate(Vector3.up, mouseX * 0.1f);
         }
+    }
+
+    public void BackToMenu() {
+        Debug.Log("Back to menu from class selection");
+        SceneManager.LoadScene(mainMenuSceneName);
+    }
+
+    public void PlayGame() {
+        Debug.Log("Start game");
+        if(SelectedCharacter.pickedClass == null) {
+            Debug.LogWarning("Aucune classe sélectionée");
+            return;
+        }
+        SceneManager.LoadScene(mapSceneName);
+
     }
 }
