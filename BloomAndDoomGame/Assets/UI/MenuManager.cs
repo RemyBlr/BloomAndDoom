@@ -13,18 +13,7 @@ public class MenuManager : MonoBehaviour
 
     public void openSettings() {
         Debug.Log("Open settings");
-        // hide main menu
-        mainMenuPanel.SetActive(false);
-        // show settings
-        settingsPanel.SetActive(true);
-    }
-
-    public void closeSettings() {
-        Debug.Log("Close settings");
-        // hide settings
-        settingsPanel.SetActive(false);
-        // show main menu
-        mainMenuPanel.SetActive(true);
+        //SceneManager.LoadScene("SettingsScene");
     }
 
     public void quitGame() {
