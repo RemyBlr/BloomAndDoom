@@ -1,21 +1,19 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TPSCameraController : MonoBehaviour
+public class Player_camera : MonoBehaviour
 {
     [Header("Références")]
-    public Transform target; // Votre personnage
-    public Transform pivotPoint; // Point de pivot (optionnel)
+    public Transform target;
+    public Transform pivotPoint;
     
-    [Header("Paramètres de distance")]
-    public float distance = 5f;
-    public float minDistance = 2f;
-    public float maxDistance = 10f;
+    [Header("Distance")]
+    public float distance = 10f;
     
-    [Header("Paramètres de rotation")]
-    public float mouseSensitivity = 2f;
-    public float minVerticalAngle = -30f;
-    public float maxVerticalAngle = 60f;
+    [Header("Rotation")]
+    public float mouseSensitivity = 0.6f;
+    public float minVerticalAngle = -120f;
+    public float maxVerticalAngle = 120f;
     
     [Header("Paramètres de lissage")]
     public float rotationSmoothTime = 0.1f;
@@ -31,7 +29,6 @@ public class TPSCameraController : MonoBehaviour
     private Vector3 currentVelocity;
     private Vector2 rotationVelocity;
     private Vector2 lookInput;
-    private float scrollInput;
 
     void Start()
     {
@@ -52,11 +49,6 @@ public class TPSCameraController : MonoBehaviour
     {
         lookInput = value.Get<Vector2>();
     }
-    
-    void OnScroll(InputValue value)
-    {
-        scrollInput = value.Get<Vector2>().y;
-    }
 
     void LateUpdate()
     {
@@ -64,7 +56,6 @@ public class TPSCameraController : MonoBehaviour
         
         HandleMouseInput();
         UpdateCameraPosition();
-        HandleScrollWheel();
     }
     
     void HandleMouseInput()
@@ -99,15 +90,6 @@ public class TPSCameraController : MonoBehaviour
         transform.LookAt(pivotPosition);
     }
     
-    void HandleScrollWheel()
-    {
-        if (Mathf.Abs(scrollInput) > 0.1f)
-        {
-            distance -= scrollInput * 2f;
-            distance = Mathf.Clamp(distance, minDistance, maxDistance);
-        }
-    }
-    
     Vector3 CheckForCollisions(Vector3 pivotPosition, Vector3 desiredPosition)
     {
         Vector3 direction = desiredPosition - pivotPosition;
@@ -120,22 +102,5 @@ public class TPSCameraController : MonoBehaviour
         }
         
         return desiredPosition;
-    }
-    
-    void OnEscape(InputValue value)
-    {
-        if (value.isPressed)
-        {
-            if (Cursor.lockState == CursorLockMode.Locked)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-        }
     }
 }

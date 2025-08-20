@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class UnifiedTPSController : MonoBehaviour
+public class Player_movement : MonoBehaviour
 {
     [Header("Mouvement")]
     [SerializeField] private float speed = 5f;
