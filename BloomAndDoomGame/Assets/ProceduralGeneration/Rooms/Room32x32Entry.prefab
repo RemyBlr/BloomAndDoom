@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8579295169379960692}
   - component: {fileID: 3618026722081525291}
   - component: {fileID: 8948851322720299400}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 4913229475047994794}
   - component: {fileID: 3692196373052714324}
   - component: {fileID: 3943612052908457628}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 1387041130243005217}
   - component: {fileID: 2767398281878095225}
   - component: {fileID: 6528058537463053894}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1079,7 +1079,7 @@ GameObject:
   - component: {fileID: 5509096702730854927}
   - component: {fileID: 3363684448567847054}
   - component: {fileID: 6381546001417585475}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1434,7 +1434,7 @@ GameObject:
   - component: {fileID: 6547409921814424898}
   - component: {fileID: 5801872849928681067}
   - component: {fileID: 4107632178614313003}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1789,7 +1789,7 @@ GameObject:
   - component: {fileID: 8658759757198997706}
   - component: {fileID: 7911566192123086770}
   - component: {fileID: 8808643958720265703}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2144,7 +2144,7 @@ GameObject:
   - component: {fileID: 2541624878599599591}
   - component: {fileID: 836715426649005295}
   - component: {fileID: 6456344415805725584}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2499,7 +2499,8 @@ GameObject:
   - component: {fileID: 1646912571764040609}
   - component: {fileID: 2500311528968021827}
   - component: {fileID: 5905397708593614233}
-  m_Layer: 0
+  - component: {fileID: 1197868453199097258}
+  m_Layer: 8
   m_Name: Room32x32Entry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2848,6 +2849,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &1197868453199097258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358075729735897279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87a4e1dd1ad322f4698e2dbecdcd0ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomSpawner
+  Size: 32
+  OpeningDirections: 01000000020000000300000004000000
 --- !u!1 &8227883805465359298
 GameObject:
   m_ObjectHideFlags: 0
@@ -2862,7 +2877,7 @@ GameObject:
   - component: {fileID: 7879835154620971416}
   - component: {fileID: 4810222266175210054}
   - component: {fileID: 7029887062274118937}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

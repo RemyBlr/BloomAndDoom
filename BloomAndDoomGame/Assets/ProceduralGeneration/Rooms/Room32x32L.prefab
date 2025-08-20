@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6498130911579550666}
   - component: {fileID: 2651425925216977490}
   - component: {fileID: 8193425984579221786}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 1233576637003338501}
   - component: {fileID: 6327463124576154893}
   - component: {fileID: 1773912527426243110}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 4862819847258900478}
   - component: {fileID: 3660690260474846142}
   - component: {fileID: 3651362095904552487}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1079,7 +1079,7 @@ GameObject:
   - component: {fileID: 8436823794787194475}
   - component: {fileID: 6832300170535358126}
   - component: {fileID: 1018353484746214776}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1434,7 +1434,7 @@ GameObject:
   - component: {fileID: 5517743019302659637}
   - component: {fileID: 1371074407969648857}
   - component: {fileID: 4382398813090327969}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1789,7 +1789,8 @@ GameObject:
   - component: {fileID: 5115230519219828255}
   - component: {fileID: 4573387501755104732}
   - component: {fileID: 1699841246377649464}
-  m_Layer: 0
+  - component: {fileID: 2470244483403466597}
+  m_Layer: 8
   m_Name: Room32x32L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2135,3 +2136,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &2470244483403466597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816873908828494059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87a4e1dd1ad322f4698e2dbecdcd0ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomSpawner
+  Size: 32
+  OpeningDirections: 03000000

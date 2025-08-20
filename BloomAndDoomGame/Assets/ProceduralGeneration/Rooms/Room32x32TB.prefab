@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9039421963288373688}
   - component: {fileID: 2952774346177631840}
   - component: {fileID: 8863673174383576635}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 5735227107081072953}
   - component: {fileID: 6182417770245981699}
   - component: {fileID: 4252158317537724117}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 6194369300754308047}
   - component: {fileID: 2493076142018889062}
   - component: {fileID: 3498262966872466335}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1079,7 +1079,7 @@ GameObject:
   - component: {fileID: 7744798730868304208}
   - component: {fileID: 8787165927713552292}
   - component: {fileID: 7272038454207171093}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1434,7 +1434,7 @@ GameObject:
   - component: {fileID: 33725090161761588}
   - component: {fileID: 2144824516621564725}
   - component: {fileID: 326965241339434303}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1789,7 +1789,7 @@ GameObject:
   - component: {fileID: 2835264235515800554}
   - component: {fileID: 7502963871430399118}
   - component: {fileID: 2270953465997931140}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2144,7 +2144,8 @@ GameObject:
   - component: {fileID: 1049633234233935591}
   - component: {fileID: 17362793931199946}
   - component: {fileID: 8816630139932919220}
-  m_Layer: 0
+  - component: {fileID: 3964060739860267799}
+  m_Layer: 8
   m_Name: Room32x32TB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2491,3 +2492,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &3964060739860267799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234585106634396578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87a4e1dd1ad322f4698e2dbecdcd0ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomSpawner
+  Size: 32
+  OpeningDirections: 0200000001000000

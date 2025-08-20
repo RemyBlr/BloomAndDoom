@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6633887095984108350}
   - component: {fileID: 3365547540125276475}
   - component: {fileID: 6772355522315567669}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 3671805966380562067}
   - component: {fileID: 7739646198060053231}
   - component: {fileID: 7490586653189962716}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +724,8 @@ GameObject:
   - component: {fileID: 2321296352051161281}
   - component: {fileID: 2054840757818267039}
   - component: {fileID: 2942169844753164121}
-  m_Layer: 0
+  - component: {fileID: 1767725675242921551}
+  m_Layer: 8
   m_Name: Room32x32TR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1071,6 +1072,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &1767725675242921551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725051002967217164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87a4e1dd1ad322f4698e2dbecdcd0ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomSpawner
+  Size: 32
+  OpeningDirections: 0200000004000000
 --- !u!1 &3359579517992116947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,7 +1100,7 @@ GameObject:
   - component: {fileID: 5358224645834034947}
   - component: {fileID: 8143879548079169014}
   - component: {fileID: 3405621635725047401}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1440,7 +1455,7 @@ GameObject:
   - component: {fileID: 1009036108653767600}
   - component: {fileID: 7958490095873455759}
   - component: {fileID: 76491312028938187}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1795,7 +1810,7 @@ GameObject:
   - component: {fileID: 4214279863551590470}
   - component: {fileID: 898346591492252732}
   - component: {fileID: 4916483161335591571}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2150,7 +2165,7 @@ GameObject:
   - component: {fileID: 7628339674824829139}
   - component: {fileID: 472936448847125585}
   - component: {fileID: 5329098529260506749}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
