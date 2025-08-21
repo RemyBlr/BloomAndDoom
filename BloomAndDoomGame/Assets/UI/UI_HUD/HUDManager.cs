@@ -18,8 +18,9 @@ public class HUDManager : MonoBehaviour
     public TextMeshProUGUI[] cds;
 
     [Header("Bottom Left")]
-    public Slider hp;
-    public Slider mana;
+    public Image hp;
+    public Image mana;
+    public Image xp;
 
     private float elapsedTime;
 
@@ -36,12 +37,17 @@ public class HUDManager : MonoBehaviour
         money.text = $"Argent: {amount}";
     }
 
-    public void SetHealth(float value) {
-        hp.value = value;
+    // Par la suite : hudManager.SetHealth(75, 100);
+    public void SetHealth(float current, float max) {
+        hp.fillAmount = Mathf.Clamp01(current / max);
     }
 
-    public void SetMana(float value) {
-        mana.value = value;
+    public void SetMana(float current, float max) {
+        mana.fillAmount = Mathf.Clamp01(current / max);
+    }
+
+    public void SetXp(float current, float max) {
+        xp.fillAmount = Mathf.Clamp01(current / max);
     }
 
     public void SetSpell(int index, Sprite icon, float cooldown) {
@@ -51,6 +57,7 @@ public class HUDManager : MonoBehaviour
         }
     }
 
+    // Par la suite : hudManager.AddObjective("Tuer le boss");
     public void AddObjective(string text) {
         var obj = Instantiate(objectivePrefab, objectivesParent);
         obj.GetComponent<TextMeshProUGUI>().text = text;
