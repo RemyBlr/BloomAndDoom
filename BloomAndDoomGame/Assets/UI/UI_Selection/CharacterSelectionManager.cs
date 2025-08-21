@@ -70,30 +70,33 @@ public class CharacterSelectionManager : MonoBehaviour
         // Preview
         if(currentPreview != null) Destroy(currentPreview);
 
-        GameObject container = new GameObject("PreviewContainer");
-        container.transform.position = previewStartPoint.position;
-        container.transform.rotation = Quaternion.identity;
+        currentPreview = Instantiate(picked.prefab, previewStartPoint);
 
-        GameObject previewInstance = Instantiate(picked.prefab, container.transform);
+        // offset at start
+        currentPreview.transform.localPosition = new Vector3(0f, -50f, -50f);
+
+        // prefab faces us at start
+        currentPreview.transform.localRotation = Quaternion.Euler(0, 180f, 0);
+
+        //currentPreview.transform.localPosition = Vector3.zero;
+        //currentPreview.transform.localRotation = Quaternion.identity;
 
         float scaleFactor = 100f;
-        previewInstance.transform.SetParent(previewStartPoint, false);
-        previewInstance.transform.localScale *= scaleFactor;
+        currentPreview.transform.localScale = Vector3.one * scaleFactor;
 
         // set picked class
         SelectedCharacter.pickedClass = picked;
-        currentPreview = container;
     }
 
     // Update is called once per frame
     // In this case, turns the prefab
     void Update() {
         // mouse 0 is left click
-        if(currentPreview != null) {
+        if(currentPreview != null && Mouse.current.leftButton.isPressed) {
             // mouse x is horizontal mouvement
             float mouseX = Mouse.current.delta.ReadValue().x;
             if (mouseX != 0)
-                currentPreview.transform.Rotate(Vector3.up, mouseX * 0.1f);
+                currentPreview.transform.Rotate(Vector3.up, mouseX * -5f, Space.World);
         }
     }
 
