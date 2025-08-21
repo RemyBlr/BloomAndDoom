@@ -23,6 +23,7 @@ public class CharacterSelectionManager : MonoBehaviour
     private GameObject currentPreview;
 
     private CharacterClass[] classes;
+    private ClassButtonUI[] classButtons;
     private string mainMenuSceneName = "MainMenu";
     private string mapSceneName = "ProceduralGeneration";
 
@@ -32,6 +33,8 @@ public class CharacterSelectionManager : MonoBehaviour
         classes = Resources.LoadAll<CharacterClass>("Classes");
 
         // create button for each class
+        classButtons = new ClassButtonUI[classes.Length];
+
         for(int i = 0; i < classes.Length; ++i) {
             int index = i;
             GameObject newButton = Instantiate(buttonPrefab, buttonParent);
@@ -42,6 +45,10 @@ public class CharacterSelectionManager : MonoBehaviour
                 btnUI.portrait.sprite = classes[i].portrait;
 
             newButton.GetComponent<Button>().onClick.AddListener(() => SelectClass(index));
+
+            classButtons[i] = btnUI;
+
+            newButton.GetComponent<Button>().onClick.AddListener(() => SelectClass(index));
         }
 
         // First class selected by default
@@ -49,6 +56,15 @@ public class CharacterSelectionManager : MonoBehaviour
     }
 
     public void SelectClass(int index) {
+
+        // Add border to selected class
+        for (int i = 0; i < classButtons.Length; i++) {
+            if (classButtons[i] != null) {
+                bool selected = (i == index);
+                classButtons[i].SetSelected(selected);
+                Debug.Log($"Button {i} selected = {selected}");
+            }
+        }
 
         // Update UI
         CharacterClass picked = classes[index];
@@ -70,29 +86,33 @@ public class CharacterSelectionManager : MonoBehaviour
         // Preview
         if(currentPreview != null) Destroy(currentPreview);
 
-        GameObject container = new GameObject("PreviewContainer");
-        container.transform.position = previewStartPoint.position;
-        container.transform.rotation = Quaternion.identity;
+        currentPreview = Instantiate(picked.prefab, previewStartPoint);
 
-        GameObject previewInstance = Instantiate(picked.prefab, container.transform);
+        // offset at start
+        currentPreview.transform.localPosition = new Vector3(0f, -50f, -50f);
 
-        float scaleFactor = 150f;
-        previewInstance.transform.localScale *= scaleFactor;
+        // prefab faces us at start
+        currentPreview.transform.localRotation = Quaternion.Euler(0, 180f, 0);
+
+        //currentPreview.transform.localPosition = Vector3.zero;
+        //currentPreview.transform.localRotation = Quaternion.identity;
+
+        float scaleFactor = 100f;
+        currentPreview.transform.localScale = Vector3.one * scaleFactor;
 
         // set picked class
         SelectedCharacter.pickedClass = picked;
-        currentPreview = container;
     }
 
     // Update is called once per frame
     // In this case, turns the prefab
     void Update() {
         // mouse 0 is left click
-        if(currentPreview != null) {
+        if(currentPreview != null && Mouse.current.leftButton.isPressed) {
             // mouse x is horizontal mouvement
             float mouseX = Mouse.current.delta.ReadValue().x;
             if (mouseX != 0)
-                currentPreview.transform.Rotate(Vector3.up, mouseX * 0.1f);
+                currentPreview.transform.Rotate(Vector3.up, mouseX * -5f, Space.World);
         }
     }
 
