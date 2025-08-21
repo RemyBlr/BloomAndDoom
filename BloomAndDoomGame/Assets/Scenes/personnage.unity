@@ -270,13 +270,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 407295465}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.13424559, y: 0, z: 0, w: 0.9909481}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.054, y: 1.34, z: 0.537}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450652575816643}
-  m_LocalEulerAnglesHint: {x: -15.43, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &595071710
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +306,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1482166225}
+  - {fileID: 1972123153}
   - {fileID: 543450652575816643}
   - {fileID: 1322746373}
   m_Father: {fileID: 0}
@@ -321,34 +321,14 @@ GameObject:
   m_Component:
   - component: {fileID: 903663024}
   - component: {fileID: 903663023}
-  - component: {fileID: 903663022}
-  m_Layer: 3
+  - component: {fileID: 903663025}
+  m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!154 &903663022
-TerrainCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903663021}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_TerrainData: {fileID: 15600000, guid: 2a6758e8e63ea3644b9907d4e1ee248b, type: 2}
-  m_EnableTreeColliders: 1
 --- !u!218 &903663023
 Terrain:
   m_ObjectHideFlags: 0
@@ -404,6 +384,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!154 &903663025
+TerrainCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903663021}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_TerrainData: {fileID: 15600000, guid: 2a6758e8e63ea3644b9907d4e1ee248b, type: 2}
+  m_EnableTreeColliders: 1
 --- !u!1 &1322746368
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,22 +604,6 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1371947342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148031291769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 513a577310b89a9408bf5e2b8ce99a7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Player_actions
-  animator: {fileID: 5866666020885856697}
-  arrow_spawn: {fileID: 407295465}
-  arrow: {fileID: 1482166224}
-  arrow_velocity: 750
 --- !u!114 &1371947343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,6 +717,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Erika Archer With Bow Arrow
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ced6b0b93cea62c4e92ca652d5d7495d, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2234995421923447144, guid: ced6b0b93cea62c4e92ca652d5d7495d, type: 3}
       propertyPath: 'm_Bones.Array.data[69]'
       value: 
@@ -764,34 +752,11 @@ PrefabInstance:
       addedObject: {fileID: 1371947343}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ced6b0b93cea62c4e92ca652d5d7495d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1371947342}
+      addedObject: {fileID: 5866666020885856698}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ced6b0b93cea62c4e92ca652d5d7495d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1371947341}
   m_SourcePrefab: {fileID: 100100000, guid: ced6b0b93cea62c4e92ca652d5d7495d, type: 3}
---- !u!1 &1482166224 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3437109981842104820, guid: 86a29fc32a196d042b5a08ee62b43d2d, type: 3}
-  m_PrefabInstance: {fileID: 1577107877104809215}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1482166225 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7841056748339428472, guid: 86a29fc32a196d042b5a08ee62b43d2d, type: 3}
-  m_PrefabInstance: {fileID: 1577107877104809215}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1482166229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482166224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a5ca0138b7a3324e86860ad1dc7ce5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Arrow
-  projectile: {fileID: 0}
 --- !u!1 &1945789261
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,10 +768,11 @@ GameObject:
   - component: {fileID: 1945789265}
   - component: {fileID: 1945789264}
   - component: {fileID: 1945789263}
+  - component: {fileID: 1945789266}
   - component: {fileID: 1945789262}
   m_Layer: 0
-  m_Name: target
-  m_TagString: enemy
+  m_Name: Target
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -897,23 +863,47 @@ Transform:
   m_GameObject: {fileID: 1945789261}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.91, y: 2.59, z: 20.49}
+  m_LocalPosition: {x: 7.43, y: 1.35, z: 20.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &543450652575816643 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ced6b0b93cea62c4e92ca652d5d7495d, type: 3}
-  m_PrefabInstance: {fileID: 1456797619}
+--- !u!114 &1945789266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &919132148031291769 stripped
+  m_GameObject: {fileID: 1945789261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a7e8a2a919b73847a5604d1422275a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyProjectile
+--- !u!1 &1972123148 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ced6b0b93cea62c4e92ca652d5d7495d, type: 3}
-  m_PrefabInstance: {fileID: 1456797619}
+  m_CorrespondingSourceObject: {fileID: 3437109981842104820, guid: 86a29fc32a196d042b5a08ee62b43d2d, type: 3}
+  m_PrefabInstance: {fileID: 2106878267}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1577107877104809215
+--- !u!4 &1972123153 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7841056748339428472, guid: 86a29fc32a196d042b5a08ee62b43d2d, type: 3}
+  m_PrefabInstance: {fileID: 2106878267}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1972123154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972123148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a7e8a2a919b73847a5604d1422275a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyProjectile
+--- !u!1001 &2106878267
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -927,15 +917,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7841056748339428472, guid: 86a29fc32a196d042b5a08ee62b43d2d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 7.1480403
       objectReference: {fileID: 0}
     - target: {fileID: 7841056748339428472, guid: 86a29fc32a196d042b5a08ee62b43d2d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.524
+      value: 1.76
       objectReference: {fileID: 0}
     - target: {fileID: 7841056748339428472, guid: 86a29fc32a196d042b5a08ee62b43d2d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.205
+      value: 7.6807804
       objectReference: {fileID: 0}
     - target: {fileID: 7841056748339428472, guid: 86a29fc32a196d042b5a08ee62b43d2d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -971,13 +961,39 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3437109981842104820, guid: 86a29fc32a196d042b5a08ee62b43d2d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1482166229}
+      addedObject: {fileID: 1972123154}
   m_SourcePrefab: {fileID: 100100000, guid: 86a29fc32a196d042b5a08ee62b43d2d, type: 3}
+--- !u!4 &543450652575816643 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ced6b0b93cea62c4e92ca652d5d7495d, type: 3}
+  m_PrefabInstance: {fileID: 1456797619}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &919132148031291769 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ced6b0b93cea62c4e92ca652d5d7495d, type: 3}
+  m_PrefabInstance: {fileID: 1456797619}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &5866666020885856697 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: ced6b0b93cea62c4e92ca652d5d7495d, type: 3}
   m_PrefabInstance: {fileID: 1456797619}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5866666020885856698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148031291769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513a577310b89a9408bf5e2b8ce99a7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player_actions
+  animator: {fileID: 5866666020885856697}
+  arrow_spawn: {fileID: 407295465}
+  arrow: {fileID: 3437109981842104820, guid: 86a29fc32a196d042b5a08ee62b43d2d, type: 3}
+  arrow_velocity: 25
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

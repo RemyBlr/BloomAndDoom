@@ -27,8 +27,7 @@ public class Player_actions : MonoBehaviour
     private void OnShoot(InputValue value)
     {
         animator.SetTrigger("Shoot");
-        Debug.Log("Terrorizing enemies around.");
-
+        
         GameObject arr = Instantiate(arrow, arrow_spawn.transform.position, arrow_spawn.transform.rotation);
         arr.GetComponent<Rigidbody>().AddForce(arrow_spawn.transform.forward * arrow_velocity, ForceMode.Impulse);
     }
