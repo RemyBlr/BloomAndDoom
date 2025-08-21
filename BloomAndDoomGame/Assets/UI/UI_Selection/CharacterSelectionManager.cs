@@ -76,7 +76,8 @@ public class CharacterSelectionManager : MonoBehaviour
 
         GameObject previewInstance = Instantiate(picked.prefab, container.transform);
 
-        float scaleFactor = 150f;
+        float scaleFactor = 100f;
+        previewInstance.transform.SetParent(previewStartPoint, false);
         previewInstance.transform.localScale *= scaleFactor;
 
         // set picked class
