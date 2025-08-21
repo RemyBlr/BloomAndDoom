@@ -23,6 +23,7 @@ public class CharacterSelectionManager : MonoBehaviour
     private GameObject currentPreview;
 
     private CharacterClass[] classes;
+    private ClassButtonUI[] classButtons;
     private string mainMenuSceneName = "MainMenu";
     private string mapSceneName = "ProceduralGeneration";
 
@@ -32,6 +33,8 @@ public class CharacterSelectionManager : MonoBehaviour
         classes = Resources.LoadAll<CharacterClass>("Classes");
 
         // create button for each class
+        classButtons = new ClassButtonUI[classes.Length];
+
         for(int i = 0; i < classes.Length; ++i) {
             int index = i;
             GameObject newButton = Instantiate(buttonPrefab, buttonParent);
@@ -42,6 +45,10 @@ public class CharacterSelectionManager : MonoBehaviour
                 btnUI.portrait.sprite = classes[i].portrait;
 
             newButton.GetComponent<Button>().onClick.AddListener(() => SelectClass(index));
+
+            classButtons[i] = btnUI;
+
+            newButton.GetComponent<Button>().onClick.AddListener(() => SelectClass(index));
         }
 
         // First class selected by default
@@ -49,6 +56,15 @@ public class CharacterSelectionManager : MonoBehaviour
     }
 
     public void SelectClass(int index) {
+
+        // Add border to selected class
+        for (int i = 0; i < classButtons.Length; i++) {
+            if (classButtons[i] != null) {
+                bool selected = (i == index);
+                classButtons[i].SetSelected(selected);
+                Debug.Log($"Button {i} selected = {selected}");
+            }
+        }
 
         // Update UI
         CharacterClass picked = classes[index];
