@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 6519046353428404028}
   - component: {fileID: 1670838573352943256}
   - component: {fileID: 7036952548140556849}
+  - component: {fileID: -4324210434912386276}
   - component: {fileID: 3639791273817228823}
   m_Layer: 0
   m_Name: Player
@@ -104,8 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b5f094e1dd502489c4f9101a239b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  speed: 5
-  jumpHeight: 2
+  speed: 8
+  jumpHeight: 3
   gravity: -9.8
   mouseSensitivity: 1
   turnSmoothTime: 0.1
@@ -116,6 +117,19 @@ MonoBehaviour:
   maxVerticalAngle: 60
   invertYAxis: 0
   lockCursor: 1
+--- !u!114 &-4324210434912386276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3114450542540327090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513a577310b89a9408bf5e2b8ce99a7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player_actions
+  damage: 1
 --- !u!114 &3639791273817228823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,7 +407,6 @@ GameObject:
   - component: {fileID: 8890093509587591018}
   - component: {fileID: 4622192038955981562}
   - component: {fileID: 135264962121728925}
-  - component: {fileID: 6558422513803245783}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -551,25 +564,3 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
---- !u!114 &6558422513803245783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9081941162421289403}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d2b375ecbfd7634d8fc8defeb1e35c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TPSCameraController
-  target: {fileID: 3778037864318234639}
-  pivotPoint: {fileID: 8129543271087185866}
-  distance: 5
-  mouseSensitivity: 2
-  minVerticalAngle: -30
-  maxVerticalAngle: 60
-  rotationSmoothTime: 0.1
-  positionSmoothTime: 0.1
-  invertYAxis: 0
-  lockCursor: 1
