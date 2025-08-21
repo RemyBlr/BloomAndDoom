@@ -24,6 +24,7 @@ public class Player_movement : MonoBehaviour
     [SerializeField] private bool lockCursor = true;
 
     // Variables privées
+    private AnimationStateController animationState;
     private CharacterController controller;
     private Vector2 moveInput;
     private Vector2 lookInput;
@@ -37,7 +38,7 @@ public class Player_movement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        
+        animationState = GetComponent<AnimationStateController>();
         // Verrouiller le curseur
         if (lockCursor)
         {
@@ -59,6 +60,7 @@ public class Player_movement : MonoBehaviour
     void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
+        animationState.OnRun(moveInput);
     }
 
     void OnLook(InputValue value)
@@ -69,7 +71,10 @@ public class Player_movement : MonoBehaviour
     void OnJump(InputValue value)
     {
         if (value.isPressed && controller.isGrounded)
+        {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            animationState.UpdateFallState(true);
+        }
     }
     
     void OnEscape(InputValue value)
@@ -141,6 +146,7 @@ public class Player_movement : MonoBehaviour
         if (controller.isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
+            animationState.UpdateFallState(false);
         }
     }
     

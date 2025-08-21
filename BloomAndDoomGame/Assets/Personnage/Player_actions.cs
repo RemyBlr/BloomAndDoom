@@ -14,8 +14,7 @@ public class Player_actions : MonoBehaviour
 
           private void OnAttack(InputValue value)
           {
-              animator.SetTrigger("Punch");
+              animator.SetTrigger("Aim");
               Debug.Log("Fired!");
-                    
           }
 }
