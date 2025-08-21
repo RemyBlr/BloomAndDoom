@@ -9,7 +9,9 @@ public class EnemyMovement : MonoBehaviour
     private GameObject m_PlayerObject;
     private Vector3 m_PlayerPosition;
     [SerializeField]
-    float m_AttackRange = 0.5f;
+    private float m_AttackRange = 0.5f;
+    [SerializeField]
+    private float m_RotationSpeed = 5f;
     bool m_IsMoving = false;
     Animator m_Animator;
 
@@ -39,6 +41,8 @@ public class EnemyMovement : MonoBehaviour
         m_PlayerPosition = m_PlayerObject.transform.position;
         if (m_PlayerPosition != null)
         {
+
+            // Check distance to player
             float distanceToPlayer = Vector3.Distance(transform.position, m_PlayerPosition);
 
             if (distanceToPlayer > m_AttackRange)
@@ -48,6 +52,11 @@ public class EnemyMovement : MonoBehaviour
                 m_IsMoving = true;
                 if(m_EnemyCombat != null)
                 {
+                    // Rotate towards the player before attacking
+//                    Vector3 direction = (m_PlayerPosition - transform.position).normalized;
+  //                  Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+    //                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * m_RotationSpeed);
+
                     m_EnemyCombat.StartAttacking(false);
                 }
             }
@@ -55,6 +64,9 @@ public class EnemyMovement : MonoBehaviour
             {
                 m_NavMeshAgent.isStopped = true;
                 m_IsMoving = false;
+
+                
+
                 if(m_EnemyCombat != null)
                 {
                     m_EnemyCombat.StartAttacking(true);
