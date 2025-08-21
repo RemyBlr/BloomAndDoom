@@ -6,10 +6,11 @@ public class DestroyProjectile : MonoBehaviour
 {
           void OnCollisionEnter(Collision collision)
           {
-                    if (collision.gameObject.tag.Equals("Ground"))
+                    if (collision.gameObject.tag.Equals("Ground") ||
+                    collision.gameObject.tag.Equals("enemy"))
                     {
-                              Debug.Log("Flèche détruite au contact du sol");
-                              Destroy(this.gameObject);
+                              Debug.Log("Flèche détruite !");
+                              Destroy(this);
                     }
           }
 }
