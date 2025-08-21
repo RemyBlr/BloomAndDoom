@@ -9,9 +9,9 @@ public class Player_actions : MonoBehaviour
 
     [SerializeField] GameObject arrow_spawn;
 
-    [SerializeField] Rigidbody arrow;
+    [SerializeField] GameObject arrow;
 
-    [SerializeField] private float arrow_velocity = 25f;
+    [SerializeField] private float arrow_velocity = 30f;
 
     private void Start()
     {
@@ -29,7 +29,7 @@ public class Player_actions : MonoBehaviour
         animator.SetTrigger("Shoot");
         Debug.Log("Terrorizing enemies around.");
 
-        Rigidbody arr = Instantiate(arrow, arrow_spawn.transform.position, arrow_spawn.transform.rotation);
-        arr.AddForce(arrow_spawn.transform.forward * arrow_velocity, ForceMode.Impulse);
+        GameObject arr = Instantiate(arrow, arrow_spawn.transform.position, arrow_spawn.transform.rotation);
+        arr.GetComponent<Rigidbody>().AddForce(arrow_spawn.transform.forward * arrow_velocity, ForceMode.Impulse);
     }
 }
