@@ -48,10 +48,7 @@ public class CharacterSelectionManager : MonoBehaviour
         if(classes.Length > 0) SelectClass(0);
     }
 
-    private int currentIndex = 0;
-
     public void SelectClass(int index) {
-        currentIndex = index;
 
         // Update UI
         CharacterClass picked = classes[index];
@@ -72,10 +69,19 @@ public class CharacterSelectionManager : MonoBehaviour
 
         // Preview
         if(currentPreview != null) Destroy(currentPreview);
-        currentPreview = Instantiate(picked.prefab, previewStartPoint.position, Quaternion.identity);
+
+        GameObject container = new GameObject("PreviewContainer");
+        container.transform.position = previewStartPoint.position;
+        container.transform.rotation = Quaternion.identity;
+
+        GameObject previewInstance = Instantiate(picked.prefab, container.transform);
+
+        float scaleFactor = 150f;
+        previewInstance.transform.localScale *= scaleFactor;
 
         // set picked class
         SelectedCharacter.pickedClass = picked;
+        currentPreview = container;
     }
 
     // Update is called once per frame
