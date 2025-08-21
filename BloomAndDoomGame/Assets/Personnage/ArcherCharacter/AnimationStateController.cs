@@ -5,28 +5,25 @@ public class AnimationStateController : MonoBehaviour
 {
     private Animator animator;
 
-    private int isRunningId;
+    //private int isRunningId;
     private int isFallingId;
+    private int velocityXId;
+    private int velocityYId;
     
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        isRunningId = Animator.StringToHash("IsRunning");
+        //isRunningId = Animator.StringToHash("IsRunning");
         isFallingId = Animator.StringToHash("IsFalling");
+        velocityXId = Animator.StringToHash("VelocityX");
+        velocityYId = Animator.StringToHash("VelocityY");
     }
 
     public void OnRun(Vector2 inputs)
     {
-        print($"inputs = {inputs}");
-        bool isRunning = animator.GetBool(isRunningId);
-        if (isRunning && inputs == Vector2.zero)
-        {
-            animator.SetBool(isRunningId, false);
-        }
-        else if (!isRunning && inputs != Vector2.zero)
-        {
-            animator.SetBool(isRunningId, true);
-        }
+        //print($"inputs = {inputs}");
+        animator.SetFloat(velocityXId, inputs.x);
+        animator.SetFloat(velocityYId, inputs.y);
     }
 
     public void UpdateFallState(bool state)
