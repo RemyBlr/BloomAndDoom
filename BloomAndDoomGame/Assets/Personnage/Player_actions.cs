@@ -31,4 +31,10 @@ public class Player_actions : MonoBehaviour
         GameObject arr = Instantiate(arrow, arrow_spawn.transform.position, arrow_spawn.transform.rotation);
         arr.GetComponent<Rigidbody>().AddForce(arrow_spawn.transform.forward * arrow_velocity, ForceMode.Impulse);
     }
+    
+    private void OnAttack(InputValue value)
+    {
+        animator.SetTrigger("Aim");
+        Debug.Log("Fired!");
+    }
 }
