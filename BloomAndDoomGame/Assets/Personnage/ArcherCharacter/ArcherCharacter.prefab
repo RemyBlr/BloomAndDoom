@@ -582,6 +582,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ced6b0b93cea62c4e92ca652d5d7495d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3256488801768939919}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ced6b0b93cea62c4e92ca652d5d7495d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1422553968012445908}
   m_SourcePrefab: {fileID: 100100000, guid: ced6b0b93cea62c4e92ca652d5d7495d, type: 3}
 --- !u!95 &2458312045284429819 stripped
 Animator:
@@ -706,3 +709,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationStateController
   cameraHolder: {fileID: 3792313703010081808}
+--- !u!114 &1422553968012445908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9202632772881190715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e99552ad59d5a54e8ce03bd80da6357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
+  m_MaxHealth: 100
