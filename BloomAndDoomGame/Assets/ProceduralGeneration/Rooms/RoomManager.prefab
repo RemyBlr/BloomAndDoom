@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomGeneration
   Level: 2
-  RoomCollection: {fileID: 11400000, guid: 664eed99aafeef14a99643b2239ec216, type: 2}
+  RoomCollection: {fileID: 11400000, guid: dbf9250685616174185b253ec64681dd, type: 2}
   Rooms: []
   BossRooms: []
