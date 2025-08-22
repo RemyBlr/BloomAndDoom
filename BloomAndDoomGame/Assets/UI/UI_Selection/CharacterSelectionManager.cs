@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -25,7 +26,7 @@ public class CharacterSelectionManager : MonoBehaviour
     private CharacterClass[] classes;
     private ClassButtonUI[] classButtons;
     private string mainMenuSceneName = "MainMenu";
-    private string mapSceneName = "ProceduralGeneration";
+    private string mapSceneName = "GameScene";
 
     // claled when script is laoded
     void Awake() {
@@ -52,7 +53,19 @@ public class CharacterSelectionManager : MonoBehaviour
         }
 
         // First class selected by default
-        if(classes.Length > 0) SelectClass(0);
+        if (classes.Length > 0)
+        {
+            SelectClass(0);
+            GameManager.Instance.character = classes[0].prefab;
+        }
+    }
+
+    private void Start()
+    {
+        SceneManager.sceneLoaded += (arg0, mode) =>
+        {
+            GameManager.Instance.InstantiatePlayer();
+        };
     }
 
     public void SelectClass(int index) {
@@ -62,6 +75,7 @@ public class CharacterSelectionManager : MonoBehaviour
             if (classButtons[i] != null) {
                 bool selected = (i == index);
                 classButtons[i].SetSelected(selected);
+                
                 Debug.Log($"Button {i} selected = {selected}");
             }
         }
@@ -73,6 +87,7 @@ public class CharacterSelectionManager : MonoBehaviour
         atk.text = $"Atk: {picked.atk}";
         spd.text = $"Spd: {picked.spd}";
 
+        GameManager.Instance.character = classes[index].prefab;
         // TODO : find better way to get the number of spells
         int numberOfSpells = 3;
 
@@ -86,7 +101,7 @@ public class CharacterSelectionManager : MonoBehaviour
         // Preview
         if(currentPreview != null) Destroy(currentPreview);
 
-        currentPreview = Instantiate(picked.prefab, previewStartPoint);
+        currentPreview = Instantiate(picked.prefabPreview, previewStartPoint);
 
         // offset at start
         currentPreview.transform.localPosition = new Vector3(0f, -50f, -50f);
@@ -128,6 +143,5 @@ public class CharacterSelectionManager : MonoBehaviour
             return;
         }
         SceneManager.LoadScene(mapSceneName);
-
     }
 }

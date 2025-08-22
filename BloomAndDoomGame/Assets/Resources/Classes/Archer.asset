@@ -17,7 +17,8 @@ MonoBehaviour:
   atk: 100
   spd: 60
   portrait: {fileID: 21300000, guid: b144801b1e4c34caca975db0f6730e6a, type: 3}
-  prefab: {fileID: 7515587546222981938, guid: d4c0d7159c5a44b4c9e0b1bb6c221fe1, type: 3}
+  prefabPreview: {fileID: 8603701713235859365, guid: 874a55db6c04152418e7dc79c66b71a7, type: 3}
+  prefab: {fileID: 8603701713235859365, guid: a84e40957232cae4cac61222dc89f8a0, type: 3}
   spells:
   - icon: {fileID: 21300000, guid: e311fda0b476b48c4bfe584d88f1aad6, type: 3}
     description: 1
