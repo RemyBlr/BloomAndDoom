@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class GameManager : MonoBehaviour
     private GameManager instance;
     
     public GameObject character;
+
+    public GameObject[] Monsters;
     
     private void Awake()
     {
@@ -18,5 +21,14 @@ public class GameManager : MonoBehaviour
     public void InstantiatePlayer()
     {
         Instantiate(character, Vector3.up, Quaternion.identity);
+    }
+
+    public void InstantiateMonsters(Vector3[] positions)
+    {
+        for (int i = 0; i < positions.Length; i++)
+        {
+            int monsterId = Random.Range(0, Monsters.Length);
+            Instantiate(Monsters[monsterId], positions[i], Quaternion.identity);
+        }
     }
 }

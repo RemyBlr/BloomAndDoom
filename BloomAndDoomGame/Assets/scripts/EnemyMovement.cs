@@ -53,9 +53,9 @@ public class EnemyMovement : MonoBehaviour
                 if(m_EnemyCombat != null)
                 {
                     // Rotate towards the player before attacking
-//                    Vector3 direction = (m_PlayerPosition - transform.position).normalized;
-  //                  Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-    //                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * m_RotationSpeed);
+                    Vector3 direction = (m_PlayerPosition - transform.position).normalized;
+                    Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * m_RotationSpeed);
 
                     m_EnemyCombat.StartAttacking(false);
                 }

@@ -1134,6 +1134,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   character: {fileID: 0}
+  Monsters:
+  - {fileID: 2066896392038628118, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+  - {fileID: 1695502807786733843, guid: c73a559184154c75991d095521bdea87, type: 3}
 --- !u!4 &1275721596
 Transform:
   m_ObjectHideFlags: 0
