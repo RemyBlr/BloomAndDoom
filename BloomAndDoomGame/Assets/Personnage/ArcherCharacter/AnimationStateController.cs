@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AnimationStateController : MonoBehaviour
 {
+    [SerializeField] private GameObject cameraHolder;
     private Animator animator;
 
     //private int isRunningId;
@@ -29,5 +30,10 @@ public class AnimationStateController : MonoBehaviour
     public void UpdateFallState(bool state)
     {
         animator.SetBool(isFallingId, state);
+    }
+
+    public void EnableCamera()
+    {
+        cameraHolder.SetActive(true);
     }
 }

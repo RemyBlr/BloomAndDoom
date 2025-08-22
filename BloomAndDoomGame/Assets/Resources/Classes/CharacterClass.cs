@@ -15,6 +15,7 @@ public class CharacterClass : ScriptableObject
 
     [Header("Preview")]
     public Sprite portrait;
+    public GameObject prefabPreview;
     public GameObject prefab;
 
     [System.Serializable]
