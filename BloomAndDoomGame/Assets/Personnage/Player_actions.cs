@@ -1,24 +1,40 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player_actions : MonoBehaviour
 {
-          [Header("Paramètres")]
-          [SerializeField] private float damage = 1f;
+    [Header("Paramètres")]
+    public Animator animator;
 
-          void Start()
-          {
+    [SerializeField] GameObject arrow_spawn;
 
-          }
+    [SerializeField] GameObject arrow;
 
-          private void OnAttack(InputValue value)
-          {
-                    Debug.Log("Fired!");
-                    
-          }
+    [SerializeField] private float arrow_velocity = 30f;
 
-          void Update()
-          {
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
-          }
+    private void OnPunch(InputValue value)
+    {
+        animator.SetTrigger("Punch");
+        Debug.Log("You punch his ego !");
+    }
+
+    private void OnShoot(InputValue value)
+    {
+        animator.SetTrigger("Shoot");
+        
+        GameObject arr = Instantiate(arrow, arrow_spawn.transform.position, arrow_spawn.transform.rotation);
+        arr.GetComponent<Rigidbody>().AddForce(arrow_spawn.transform.forward * arrow_velocity, ForceMode.Impulse);
+    }
+    
+    private void OnAttack(InputValue value)
+    {
+        animator.SetTrigger("Aim");
+        Debug.Log("Fired!");
+    }
 }

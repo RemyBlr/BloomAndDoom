@@ -27,16 +27,25 @@
                 {
                     "name": "Look",
                     "type": "Value",
-                    "id": "59d92590-3816-4c05-b07a-2134d209a36c",
+                    "id": "b0137e92-6098-4c5e-8911-fcc59c4c711b",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Attack",
+                    "name": "Shoot",
                     "type": "Button",
                     "id": "0a66d8a0-c0b7-49fb-92c7-754d9301e300",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Punch",
+                    "type": "Button",
+                    "id": "f69972a9-5552-4292-8c8e-05fe1ca64f7c",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -132,23 +141,12 @@
                 },
                 {
                     "name": "",
-                    "id": "0c3791af-63a9-48ed-870c-43e982f93e24",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "710ece61-7d44-4084-9b45-bf299e92b3f5",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Attack",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -160,6 +158,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "58a2f5ca-45a7-48c5-a833-e6d394b3c97e",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a8c00e0b-ef3b-4722-b33a-8ef14551422d",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Punch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
