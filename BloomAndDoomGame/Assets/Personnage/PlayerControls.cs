@@ -249,6 +249,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+
                     ""id"": ""58a2f5ca-45a7-48c5-a833-e6d394b3c97e"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
