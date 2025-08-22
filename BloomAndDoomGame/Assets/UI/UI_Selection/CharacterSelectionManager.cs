@@ -87,7 +87,7 @@ public class CharacterSelectionManager : MonoBehaviour
         atk.text = $"Atk: {picked.atk}";
         spd.text = $"Spd: {picked.spd}";
 
-        GameManager.Instance.character = classes[index].prefab;
+        GameManager.Instance.character = picked.prefab;
         // TODO : find better way to get the number of spells
         int numberOfSpells = 3;
 
