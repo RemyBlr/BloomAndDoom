@@ -19,6 +19,10 @@ public class CharacterSelectionManager : MonoBehaviour
     public Image[] spellIcons;
     public TextMeshProUGUI[] spellDescription;
 
+    [Header("Weapons")]
+    public Transform weaponsParent;
+    public GameObject weaponUIPrefab;
+
     [Header("Preview")]
     public Transform previewStartPoint;
     private GameObject currentPreview;
@@ -117,6 +121,18 @@ public class CharacterSelectionManager : MonoBehaviour
 
         // set picked class
         SelectedCharacter.pickedClass = picked;
+
+        // print weapons
+        foreach (Transform child in weaponsParent) Destroy(child.gameObject);
+
+        foreach (var weapon in picked.weapons)
+        {
+            bool alreadyUnlocked = weapon.unlockedByDefault || SaveSystem.IsWeaponUnlocked(picked.className, weapon.weaponName);
+
+            GameObject ui = Instantiate(weaponUIPrefab, weaponsParent);
+            ui.GetComponent<WeaponUI>().Setup(weapon, picked, alreadyUnlocked);
+        }
+
     }
 
     // Update is called once per frame
