@@ -1,12 +1,13 @@
 # BloomAndDoom
 
-> Auteurs
+Auteurs
+
 | Name               | Contact                      |
 | ------------------ | ---------------------------- |
-| Bleuer Rémy        |                              |
+| Bleuer Rémy        | remy.bleuer@heig-vd.ch       |
 | Changanaqui Yoann  | yoann.changanaqui@heig-vd.ch |
-| Duruz Florian      |                              |
-| Rajadurai Thirusan |                              |
+| Duruz Florian      | florian.duruz@heig-vd.ch     |
+| Rajadurai Thirusan | thirusan.rajadurai@heig-vd.ch|
 
 ---
 
@@ -18,13 +19,15 @@ Dans ce RogueLike, majoritairement inspiré du jeu **Risk of rain 2**, vous vain
 
 Dans ce petit guide, vous découvrirez deux manière d'accéder au projet.
 
-### Download
+### 1. Via Download
 
-La première consiste à simplement télécharger l'exécutable et il ne vous reste plus qu'à jouer. Cliquez sur ce lien [BloomAndDoom.exe for MacOS](https://github.com/RemyBlr/BloomAndDoom/actions/runs/17119696513/artifacts/3816262642) ou [BloomAndDoom.exe for Windows](https://github.com/RemyBlr/BloomAndDoom/actions/runs/17119696513/artifacts/3816290470).
+La première consiste à simplement télécharger l'exécutable et il ne vous reste plus qu'à lancer ce dernier. Cliquez sur ce lien [BloomAndDoom.exe for MacOS](https://github.com/RemyBlr/BloomAndDoom/actions/runs/17119696513/artifacts/3816262642) ou [BloomAndDoom.exe for Windows](https://github.com/RemyBlr/BloomAndDoom/actions/runs/17119696513/artifacts/3816290470).
 
 Ainsi vous aurez l'exécutable étant la version la plus récente du jeu.
 
-### Contribuer
+*Note: il se peut que le lien de téléchargement n'ai pas été mise à jour vers la dernière version du jeu. Veuillez contactez les auteurs du projet pour tous renseignements*
+
+### 2. En Contribuant
 
 La deuxième manière d'accèder au projet est de contribuer. Voici une marche à suivre étape par étape que vous pouvez suivre.
 
@@ -32,7 +35,7 @@ La deuxième manière d'accèder au projet est de contribuer. Voici une marche �
 
 2. Cloner ou forker le projet.
 
-3. Dans **Projects** > **Bloom & Doom Game**, ajoutez une **issue** qui sera considéré par les auteurs. Créez votre branch à partir de cette issue puis codez votre implémentation, bug fix ou quelconque modification souhaité.
+3. Sur Github, dans **Projects** > **Bloom & Doom Game**, ajoutez une **issue** qui sera considéré par les auteurs ultérieurement. Créez votre branche à partir de cette **issue** puis codez votre implémentation, bug fix ou quelconque modification souhaité.
 <img width="1083" height="843" alt="image" src="https://github.com/user-attachments/assets/b957cb22-06d8-44a7-83d6-16e33117b896" />
 
-4. Créer votre "Pull Request" pour qu'elle soit analyser par les auteurs. Une séries de tests unitaires sont automatiquement exécuter et une nouvelle version de l'application est créer, téléchargable et prête à exécuter.
+4. Créer une **Pull Request** pour qu'elle soit analyser par les auteurs. Une séries de tests unitaires sont automatiquement exécuter ainsi qu'une nouvelle version de l'application créé, téléchargable et prête à exécuter.
