@@ -26,7 +26,8 @@ public class HealthSystem : MonoBehaviour
     {
         m_Health -= damage;
 
-        if(dmgTextPrefab != null) {
+        // Commented for testing purpose, don't forget to decomment
+        if(/*ShouldShowDamagePopup() && */dmgTextPrefab != null) {
             Vector3 popupPos = transform.position + Vector3.up * 2f;
             popupPos += new Vector3(
                 Random.Range(-0.5f, 0.5f), // random horizontal movement
@@ -58,5 +59,11 @@ public class HealthSystem : MonoBehaviour
             //TODO DIE !!!
             Debug.Log("Character died");
         }
+    }
+
+    private bool ShouldShowDamagePopup()
+    {
+        // show only if Enemy
+        return gameObject.CompareTag("Enemy");
     }
 }
