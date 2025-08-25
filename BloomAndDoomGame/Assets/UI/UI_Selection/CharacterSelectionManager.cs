@@ -125,13 +125,27 @@ public class CharacterSelectionManager : MonoBehaviour
         // print weapons
         foreach (Transform child in weaponsParent) Destroy(child.gameObject);
 
+        Weapon defaultWeapon = null;
+
         foreach (var weapon in picked.weapons)
         {
             bool alreadyUnlocked = weapon.unlockedByDefault || SaveSystem.IsWeaponUnlocked(picked.className, weapon.weaponName);
 
             GameObject ui = Instantiate(weaponUIPrefab, weaponsParent);
             ui.GetComponent<WeaponUI>().Setup(weapon, picked, alreadyUnlocked);
+
+            // Default weapon selected
+            if (alreadyUnlocked && defaultWeapon == null)
+                defaultWeapon = weapon;
         }
+
+        // Select default weapon
+        if (SelectedCharacter.selectedWeapon == null && defaultWeapon != null)
+            SelectedCharacter.selectedWeapon = defaultWeapon;
+        
+        // Update UI
+        foreach (Transform child in weaponsParent)
+            child.GetComponent<WeaponUI>().UpdateUI();
 
     }
 

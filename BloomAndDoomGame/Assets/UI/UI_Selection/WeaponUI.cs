@@ -5,7 +5,7 @@ using TMPro;
 public class WeaponUI : MonoBehaviour
 {
     public Image icon;
-    public TextMeshProUGUI label;
+    public TextMeshProUGUI price;
     public Button button;
 
     private Weapon weapon;
@@ -18,34 +18,71 @@ public class WeaponUI : MonoBehaviour
         character = owner;
         unlocked = isUnlocked;
 
-        icon.sprite = weapon.icon;
+        if(icon != null)
+            icon.sprite = weapon.icon;
+
         UpdateUI();
 
         button.onClick.RemoveAllListeners();
-        if (unlocked)
-            button.onClick.AddListener(SelectWeapon);
-        else
-            button.onClick.AddListener(BuyWeapon);
+        button.onClick.AddListener(OnClick);
     }
 
-    void UpdateUI()
-    {
-        if (unlocked)
-            label.text = "Debloque";
+    void OnClick() {
+        if(!unlocked)
+            BuyWeapon();
+        else if(SelectedCharacter.selectedWeapon != weapon)
+            SelectWeapon();
+    }
+
+    public void UpdateUI() {
+        if (!unlocked) {
+            if(price != null)
+                price.text = $"Prix: {weapon.price}";
+
+            // button enabled
+            button.interactable = true;
+            button.GetComponentInChildren<TextMeshProUGUI>().text = "Acheter";
+        }
         else
         {
-            label.text = $"Prix: {weapon.price}";
+            if(price != null)
+                price.text = "";
+            
+            if(SelectedCharacter.selectedWeapon == weapon) {
+                // disable button
+                button.interactable = false;
+                button.GetComponentInChildren<TextMeshProUGUI>().text = "Selectionnee";
+            }
+            else
+            {
+                // enable button
+                button.interactable = true;
+                button.GetComponentInChildren<TextMeshProUGUI>().text = "Selectionner";
+            }
         }
     }
 
     void BuyWeapon()
     {
-        // TODO
+        Debug.Log($"Achat arme : {weapon.weaponName} pour {weapon.price} $");
+
+        // TODO check if enoguh money
+
+        unlocked = true;
+        SaveSystem.UnlockWeapon(character.className, weapon.weaponName);
+
+        // select weapon after buying
+        SelectWeapon();
     }
 
     void SelectWeapon()
     {
         SelectedCharacter.selectedWeapon = weapon;
         Debug.Log($"Arme sélectionnée : {weapon.weaponName}");
+
+        foreach (Transform sibling in transform.parent) {
+            var ui = sibling.GetComponent<WeaponUI>();
+            if (ui != null) ui.UpdateUI();
+        }
     }
 }

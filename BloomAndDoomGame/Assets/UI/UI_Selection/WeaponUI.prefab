@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeaponUI
   icon: {fileID: 1775830921562151871}
-  label: {fileID: 9137802600438509531}
+  price: {fileID: 9137802600438509531}
   button: {fileID: 466920253547357271}
 --- !u!1 &6461761286376604397
 GameObject:
