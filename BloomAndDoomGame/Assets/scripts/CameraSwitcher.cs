@@ -29,7 +29,7 @@ public class CameraSwitcher : MonoBehaviour
 
         input = new PlayerControls();
         input.Enable();
-        // aimAction = input.Gameplay.Aim;
+        aimAction = input.Gameplay.Aim;
 
     }
 

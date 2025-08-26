@@ -10,9 +10,9 @@ public class Player_movement : MonoBehaviour
     
     [Header("Rotation")]
     [SerializeField] private float mouseSensitivity = 2f;
-    [SerializeField] private float turnSmoothTime = 0.1f;
+    [SerializeField] private float turnSmoothTime = 0.6f;
     
-    [Header("Caméra")]
+    [Header("Camera")]
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private float cameraDistance = 5f;
     [SerializeField] private float cameraHeight = 2f;
@@ -96,31 +96,8 @@ public class Player_movement : MonoBehaviour
 
     void Update()
     {
-        HandleMouseLook();
         HandleMovement();
         HandleGravity();
-        UpdateCamera();
-    }
-    
-    void HandleMouseLook()
-    {
-        // Récupérer l'input de la souris
-        float mouseX = lookInput.x * mouseSensitivity;
-        float mouseY = lookInput.y * mouseSensitivity;
-        
-        if (invertYAxis)
-            mouseY = -mouseY;
-        
-        // Ajuster les angles
-        yaw += mouseX;
-        pitch -= mouseY;
-        
-        // Limiter l'angle vertical
-        pitch = Mathf.Clamp(pitch, minVerticalAngle, maxVerticalAngle);
-        
-        // Appliquer la rotation horizontale au personnage
-        float smoothedYaw = Mathf.SmoothDampAngle(transform.eulerAngles.y, yaw, ref turnSmoothVelocity, turnSmoothTime);
-        transform.rotation = Quaternion.Euler(0f, smoothedYaw, 0f);
     }
     
     void HandleMovement()
@@ -148,41 +125,5 @@ public class Player_movement : MonoBehaviour
             velocity.y = -2f;
             animationState.UpdateFallState(false);
         }
-    }
-    
-    void UpdateCamera()
-    {
-        if (cameraTransform == null) return;
-        
-        // Position de base de la caméra (au-dessus du personnage)
-        Vector3 targetPosition = transform.position + Vector3.up * cameraHeight;
-        
-        // Calculer la rotation de la caméra (combinaison yaw + pitch)
-        Quaternion cameraRotation = Quaternion.Euler(pitch, yaw, 0);
-        
-        // Calculer la position de la caméra derrière le personnage
-        Vector3 cameraOffset = cameraRotation * Vector3.back * cameraDistance;
-        Vector3 desiredCameraPosition = targetPosition + cameraOffset;
-        
-        // Vérifier les collisions
-        desiredCameraPosition = CheckCameraCollisions(targetPosition, desiredCameraPosition);
-        
-        // Appliquer la position et rotation à la caméra
-        cameraTransform.position = desiredCameraPosition;
-        cameraTransform.LookAt(targetPosition);
-    }
-    
-    Vector3 CheckCameraCollisions(Vector3 targetPosition, Vector3 desiredPosition)
-    {
-        Vector3 direction = desiredPosition - targetPosition;
-        float distance = direction.magnitude;
-        
-        RaycastHit hit;
-        if (Physics.Raycast(targetPosition, direction.normalized, out hit, distance))
-        {
-            return hit.point - direction.normalized * 0.2f;
-        }
-        
-        return desiredPosition;
     }
 }

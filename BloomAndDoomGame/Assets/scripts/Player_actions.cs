@@ -14,10 +14,6 @@ public class Player_actions : MonoBehaviour
 
     [SerializeField] private float arrow_velocity = 30f;
 
-    [Header("Camera")]
-    [SerializeField] private CinemachineCamera ThirdPersonCam;
-    [SerializeField] private CinemachineCamera AimingCam;
-
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -41,17 +37,5 @@ public class Player_actions : MonoBehaviour
     {
         animator.SetTrigger("Aim");
         Debug.Log("Fired!");
-    }
-
-    private void OnFocus(InputValue value)
-    {
-        ThirdPersonCam.gameObject.SetActive(false);
-        AimingCam.gameObject.SetActive(true);
-    }
-
-    private void OnDefocus(InputValue value)
-    {
-        AimingCam.gameObject.SetActive(false);
-        ThirdPersonCam.gameObject.SetActive(true);
     }
 }
