@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class GameOverManager : MonoBehaviour
     public Transform itemsParent;
     public GameObject itemUIPrefab;
 
+    [Header("Navigation")]
+    public string mainMenu = "MainMenu";
+    public string playAgain = "CharacterSelectionScene";
+
+
     void Start()
     {
         duration.text = $"Durée : {GameStats.Instance.runDuration:F1} sec";
@@ -28,5 +34,13 @@ public class GameOverManager : MonoBehaviour
             GameObject go = Instantiate(itemUIPrefab, itemsParent);
             go.GetComponentInChildren<TextMeshProUGUI>().text = item;
         }
+    }
+
+    public void PlayAgain() {
+        SceneManager.LoadScene(playAgain);
+    }
+
+    public void GoMainMenu() {
+        SceneManager.LoadScene(mainMenu);
     }
 }
