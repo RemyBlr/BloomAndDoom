@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wall_Brick_C
+  m_Name: Level_1_Grass_Dense_Tint_01_Base_C
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -31,11 +31,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 52b99d64baa59234e83d32cd8818704e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 84a0082a671cb3642819cc69b89b9353, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 2c49d12fb89450b488277e7bfc402e8a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8b6ec8cd3adbc7a45a52309309dff911, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -55,19 +55,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 52b99d64baa59234e83d32cd8818704e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 84a0082a671cb3642819cc69b89b9353, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: a9975ebe1309ad04f85c4acbb5d3c25e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8e04de8547435554b8c484ffb2af8cab, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 572981d23c249024a9189323bf08a0fb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 613465bcd7292c04e9e22cb9c2b62711, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: 17aeb35c067cd4043bfd58e7e7b6cf6c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 37c1e9a27bd81b34394f21e47a60898d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -129,7 +129,7 @@ Material:
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &2900977131559523574
+--- !u!114 &276526719083706837
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
