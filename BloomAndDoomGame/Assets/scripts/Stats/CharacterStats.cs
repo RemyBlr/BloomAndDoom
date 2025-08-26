@@ -25,7 +25,7 @@ public enum StatType {
 //-------------------------------------------------------------------------------------
 // This class manages the base stats for the character, stats are coming from the class
 // This class also manages experience gain, aswell as levels and currency
-// There are 2 types of stats, flat (+10 hp on level up), or percentage (unused for now)
+// There are 2 types of stats, flat (+10 health on level up), or percentage (unused for now)
 // As we manage health in here, there are methods that can be used in HealthSystem
 //-------------------------------------------------------------------------------------
 public class CharacterStats : MonoBehaviour
@@ -34,16 +34,16 @@ public class CharacterStats : MonoBehaviour
     private CharacterClass characterClass;
 
     [Header("Dynamic")]
-    public StatModifier hp = new StatModifier();
-    public StatModifier atk = new StatModifier();
-    public StatModifier spd = new StatModifier();
-    public StatModifier def = new StatModifier();
+    public StatModifier health = new StatModifier();
+    public StatModifier attack = new StatModifier();
+    public StatModifier speed = new StatModifier();
+    public StatModifier defence = new StatModifier();
     public StatModifier critChance = new StatModifier();
-    public StatModifier critDmg = new StatModifier();
+    public StatModifier critDamage = new StatModifier();
     
     [Header("Current")]
     [SerializeField]
-    private float currentHp;
+    private float currentHealth;
     private int currentLevel = 1;
     private int currentXp = 0;
     private int xpForNextLevel = 100;
@@ -61,25 +61,25 @@ public class CharacterStats : MonoBehaviour
         if (characterClass == null) return;
         
         // Base stats from class
-        hp.baseValue = characterClass.hp;
-        atk.baseValue = characterClass.atk;
-        spd.baseValue = characterClass.spd;
+        health.baseValue = characterClass.hp;
+        attack.baseValue = characterClass.atk;
+        speed.baseValue = characterClass.spd;
         
         // Current health
-        currentHp = hp.GetValue();
+        currentHealth = health.GetValue();
         
         OnStatChanged?.Invoke(this);
     }
 
     //---------------- Getters ----------------
-    public float GetMaxHealth() => hp.GetValue();
-    public float GetAttack() => atk.GetValue();
-    public float GetSpeed() => spd.GetValue();
-    public float GetDefense() => def.GetValue();
+    public float GetMaxHealth() => health.GetValue();
+    public float GetAttack() => attack.GetValue();
+    public float GetSpeed() => speed.GetValue();
+    public float GetDefense() => defence.GetValue();
     public float GetCritChance() => Mathf.Clamp01(critChance.GetValue());
-    public float GetCritDamage() => critDmg.GetValue();
+    public float GetCritDamage() => critDamage.GetValue();
     
-    public float GetCurrentHealth() => currentHp;
+    public float GetCurrentHealth() => currentHealth;
     public int GetLevel() => currentLevel;
     public int GetCurrency() => currency;
     public CharacterClass GetCharacterClass() => characterClass;
@@ -87,12 +87,12 @@ public class CharacterStats : MonoBehaviour
     //---------------- Stat modifiers ----------------
     private StatModifier GetStatModifier(StatType statType) {
         return statType switch {
-            StatType.Health => hp,
-            StatType.Attack => atk,
-            StatType.Speed => spd,
-            StatType.Defense => def,
+            StatType.Health => health,
+            StatType.Attack => attack,
+            StatType.Speed => speed,
+            StatType.Defense => defence,
             StatType.CritChance => critChance,
-            StatType.CritDamage => critDmg,
+            StatType.CritDamage => critDamage,
             _ => throw new ArgumentException("Stat pas trouvée")
         };
     }
@@ -110,21 +110,21 @@ public class CharacterStats : MonoBehaviour
     //---------------- Xp gain ----------------
     private void LevelUp() {
         float nextLevelRatio = 1.2f; // 20% more xp per level
-        float hpToAdd = 10f; // +10 hp per level
-        float atkToAdd = 2f; // +2 attack per level
-        float defToAdd = 1f; // +1 defence per level
+        float healthToAdd = 10f; // +10 health per level
+        float attackToAdd = 2f; // +2 attack per level
+        float defenceToAdd = 1f; // +1 defence per level
 
         currentXp -= xpForNextLevel;
         currentLevel++;
         xpForNextLevel = Mathf.RoundToInt(xpForNextLevel * nextLevelRatio);
 
         // Add flat bonus per level up
-        AddFlatBonus(StatType.Health, hpToAdd);
-        AddFlatBonus(StatType.Attack, atkToAdd);
-        AddFlatBonus(StatType.Defense, defToAdd);
+        AddFlatBonus(StatType.Health, healthToAdd);
+        AddFlatBonus(StatType.Attack, attackToAdd);
+        AddFlatBonus(StatType.Defense, defenceToAdd);
         
         // Full health on level up ?
-        currentHp = GetMaxHealth();
+        currentHealth = GetMaxHealth();
         
         OnLevelUp?.Invoke(currentLevel);
         OnStatChanged?.Invoke(this);
@@ -159,16 +159,16 @@ public class CharacterStats : MonoBehaviour
     public void TakeDamage(float damage) {
         // Defence calculation
         float finalDamage = Mathf.Max(1f, damage - GetDefense());
-        currentHp = Mathf.Max(0f, currentHp - finalDamage);
+        currentHealth = Mathf.Max(0f, currentHealth - finalDamage);
         
         GameStats.Instance?.AddDamageTaken(finalDamage);
         
-        if (currentHp <= 0)
+        if (currentHealth <= 0)
             Die();
     }
 
     public void Heal(float amount) {
-        currentHp = Mathf.Min(GetMaxHealth(), currentHp + amount);
+        currentHealth = Mathf.Min(GetMaxHealth(), currentHealth + amount);
     }
 
     private void Die() {
