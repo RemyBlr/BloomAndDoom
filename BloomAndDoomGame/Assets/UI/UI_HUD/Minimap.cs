@@ -2,22 +2,50 @@ using UnityEngine;
 
 public class Minimap : MonoBehaviour
 {
-    public Transform target;
-    public float height = 50f;
-    public bool rotateWithPlayer = true;
+    [HideInInspector]public Transform target;
 
-    void LateUpdate()
+    [Header("Camera offset")]
+    public Vector3 offset = new Vector3(0, 30f, -20f);
+
+    [Header("Camera angle")]
+    public Vector3 rotation = new Vector3(45f, 0f, 0f);
+    //public Vector3 rotation = new Vector3(45f, target.eulerAngles.y, 0f); // minimap turns with player
+
+    private void Start()
     {
-        if (!target) return;
+        if (target == null)
+            FindPlayerTarget();
+    }
 
-        // Camera is above player
-        Vector3 pos = target.position;
-        pos.y += height;
-        transform.position = pos;
+    private void LateUpdate()
+    {
+        if (target == null) {
+            FindPlayerTarget();
+            return;
+        }
 
-        if (rotateWithPlayer)
-            transform.rotation = Quaternion.Euler(90f, target.eulerAngles.y, 0f);
-        else
-            transform.rotation = Quaternion.Euler(90f, 0f, 0f); // North is up
+        // Camera follows player
+        transform.position = target.position + offset;
+
+        // Camera angle
+        transform.rotation = Quaternion.Euler(rotation);
+    }
+
+    private void FindPlayerTarget()
+    {
+        // Check for player tag
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            target = player.transform;
+            return;
+        }
+
+        // Check in GameManager
+        if (GameManager.Instance != null && GameManager.Instance.playerInstance != null)
+        {
+            target = GameManager.Instance.playerInstance.transform;
+            return;
+        }
     }
 }

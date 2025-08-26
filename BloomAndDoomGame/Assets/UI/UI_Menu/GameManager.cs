@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     [Header("HUD")]
     public GameObject hudPrefab;
-    
+
     private void Awake()
     {
         if (Instance != null && Instance != this) {
@@ -30,16 +30,15 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        Instantiate(SelectedCharacter.pickedClass.prefab, Vector3.up, Quaternion.identity);
+        playerInstance = Instantiate(SelectedCharacter.pickedClass.prefab, Vector3.up, Quaternion.identity);
+
+        if (!playerInstance.CompareTag("Player"))
+            playerInstance.tag = "Player";
 
         if (hudInstance == null && hudPrefab != null) {
             hudInstance = Instantiate(hudPrefab);
             DontDestroyOnLoad(hudInstance);
         }
-
-        Minimap minimap = FindObjectOfType<Minimap>();
-        if (minimap != null)
-            minimap.target = playerInstance.transform;
     }
 
     public void InstantiateMonsters(Vector3[] positions)
