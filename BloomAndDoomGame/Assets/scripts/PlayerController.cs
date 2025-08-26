@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform yawTarget;
 
     private CharacterController controller;
+    private AnimationStateController animationState;
     private Vector2 moveInput;
     private Vector3 velocity;
     public bool isAiming;
@@ -20,7 +21,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        
+        animationState = GetComponent<AnimationStateController>();
+
         // Si pas de caméra assignée, utiliser la caméra principale
         if (cameraTransform == null)
         {
@@ -32,15 +34,14 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
-        Debug.Log($"Move Input: {moveInput}");
+        animationState.OnRun(moveInput);
     }
 
     void OnJump(InputValue value)
     {
-        Debug.Log($"Jumping {value.isPressed} - Is Grounded: {controller.isGrounded}");
         if (value.isPressed && controller.isGrounded)
         {
-            Debug.Log("We are supposed to jump");
+            animationState.UpdateFallState(true);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }
@@ -133,11 +134,12 @@ public class PlayerController : MonoBehaviour
     {
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-        
+
         // Réinitialiser la vélocité Y si on touche le sol
         if (controller.isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
+            animationState.UpdateFallState(false);
         }
     }
 }
