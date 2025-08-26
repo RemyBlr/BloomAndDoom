@@ -1,3 +1,29 @@
+// using System;
+// using Unity.Cinemachine;
+// using UnityEngine;
+
+// public class CameraSwitcher : MonoBehaviour
+// {
+//     [SerializeField] private CinemachineCamera aimCam;
+//     [SerializeField] private PlayerController player;
+//     [SerializeField] private GameObject crosshairUI;
+
+//     private AimCameraController aimCamController;
+
+//     void Start()
+//     {
+//         aimCamController = aimCam.GetComponent<AimCameraController>();
+
+//         if (aimCam != null)
+//             aimCam.Priority = 20;
+
+//         if (crosshairUI != null)
+//             crosshairUI.SetActive(true);
+
+//         //aimCamController.SetYawPitchFromCameraForward(freelookCam.transform);
+//     }
+// }
+
 using System;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -36,29 +62,7 @@ public class CameraSwitcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool aimPressed = aimAction.IsPressed();
-        player.isAiming = aimPressed;
-
-        if (aimPressed && !isAiming)
-        {
-            EnterAimMode();
-        }
-        else if (!aimPressed && isAiming)
-        {
-            ExitAimMode();
-        }
-    }
-
-    private void ExitAimMode()
-    {
-        isAiming = false;
-
-        SnapFreeLookBehindPlayer();
-
-        aimCam.Priority = 10;
-        freelookCam.Priority = 20;
-
-        inputAxisController.enabled = true;
+        EnterAimMode();
     }
 
     private void SnapFreeLookBehindPlayer()
@@ -77,7 +81,7 @@ public class CameraSwitcher : MonoBehaviour
     private void EnterAimMode()
     {
         isAiming = true;
-        
+
         SnapAimCameraToPlayerForward();
 
         aimCam.Priority = 20;

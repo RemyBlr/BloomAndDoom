@@ -12,14 +12,12 @@ public class AimCameraController : MonoBehaviour
     [SerializeField] private InputActionReference switchShouldInput;
 
     [SerializeField] private float mouseSensitivity = 0.05f;
-    [SerializeField] private float gamepadSensitivity = 0.5f;
     [SerializeField] private float sensitivity = 1.5f;
 
     [SerializeField] private float pitchMin = -40f;
     [SerializeField] private float pitchMax = 80f;
 
     [SerializeField] private CinemachineThirdPersonFollow aimCam;
-
     [SerializeField] private float shoulderSwitchSpeed = 5f;
 
     private float yaw;
@@ -32,7 +30,6 @@ public class AimCameraController : MonoBehaviour
         targetCameraSide = aimCam.CameraSide;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Vector3 angles = yawTarget.rotation.eulerAngles;
@@ -59,7 +56,6 @@ public class AimCameraController : MonoBehaviour
         targetCameraSide = aimCam.CameraSide < 0.5f ? 1f : 0f;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector2 look = lookInput.action.ReadValue<Vector2>();
@@ -68,13 +64,11 @@ public class AimCameraController : MonoBehaviour
         {
             look *= mouseSensitivity;
         }
-        else if (Gamepad.current != null && Gamepad.current.rightStick.IsActuated())
-        {
-            look *= gamepadSensitivity;
-        }
 
         yaw += look.x * sensitivity;
         pitch -= look.y * sensitivity;
+
+        pitch = Mathf.Clamp(pitch, pitchMin, pitchMax);
 
         yawTarget.rotation = Quaternion.Euler(0f, yaw, 0f);
         pitchTarget.localRotation = Quaternion.Euler(pitch, 0f, 0f);
