@@ -58,12 +58,12 @@ public class EnemyPerception : MonoBehaviour
 
 
     //Note: this weird way of checking avoid lots of recalculations
-    public bool IsInFieldOfView()
+    public GameObject DetectTarget()
     {
         if (m_TargetObject == null || m_Eyes == null)
         {
             Debug.LogError("Target object or eyes transform is not assigned.");
-            return false;
+            return null;
         }
 
         // Get the closest point on the target's collider
@@ -76,19 +76,19 @@ public class EnemyPerception : MonoBehaviour
 
         //check the distance
         float distance = Vector3.SqrMagnitude(vectorToTarget);
-        if (distance > m_DetectionRangeSqr) return false;
-        if (distance < m_TargetHuggingDistanceSqr) return true; // if the target is extremely close, consider it visible
+        if (distance > m_DetectionRangeSqr) return null;
+        if (distance < m_TargetHuggingDistanceSqr) return m_TargetObject; // if the target is extremely close, consider it visible
 
         //check the angle
         Vector3 directionToTarget = vectorToTarget.normalized; // we reuse this in sphere cast
         float dotProduct = Vector3.Dot(m_Eyes.forward, directionToTarget);
-        if (dotProduct < m_HalfFovCosine) return false;
+        if (dotProduct < m_HalfFovCosine) return null;
 
 
         //check to see if there are any obstacles in the way
-        if (Physics.SphereCast(m_Eyes.position, m_ObstacleCheckRadius, directionToTarget, out RaycastHit hitInfo, Mathf.Sqrt(distance), m_ObstacleMask, QueryTriggerInteraction.Ignore)) return false;
+        if (Physics.SphereCast(m_Eyes.position, m_ObstacleCheckRadius, directionToTarget, out RaycastHit hitInfo, Mathf.Sqrt(distance), m_ObstacleMask, QueryTriggerInteraction.Ignore)) return null;
 
-        return true;
+        return m_TargetObject;
     }
 
     //This function is called when the script is loaded or a value is changed in the inspector

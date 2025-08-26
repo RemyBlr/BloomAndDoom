@@ -25,7 +25,7 @@ public class Routine : MonoBehaviour
     {
         while (true && !m_PlayerDetected)
         {
-            if (m_EnemyPerception.IsInFieldOfView())
+            if (m_EnemyPerception.DetectTarget() != null)
             {
                 m_PlayerDetected = true;
                 Debug.Log("Player detected!");

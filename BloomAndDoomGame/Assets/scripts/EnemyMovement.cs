@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private string m_PlayerTag = "Player";
 
+    private EnemyState m_CurrentState;
     private GameObject m_PlayerObject;
     private Vector3 m_PlayerPosition;
     [SerializeField]
@@ -21,11 +22,12 @@ public class EnemyMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        m_CurrentState = new EnemyWanderState(this, GetComponent<EnemyPerception>());
         m_Animator = GetComponent<Animator>();
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
         m_EnemyCombat = GetComponent<EnemyCombat>();
         m_PlayerObject = GameObject.FindGameObjectWithTag(m_PlayerTag);
-        if(m_PlayerObject == null)
+        if (m_PlayerObject == null)
         {
             Debug.LogError("Player object with tag " + m_PlayerTag + " not found.");
         }
@@ -50,13 +52,14 @@ public class EnemyMovement : MonoBehaviour
                 m_NavMeshAgent.isStopped = false;
                 m_NavMeshAgent.SetDestination(m_PlayerPosition);
                 m_IsMoving = true;
-                if(m_EnemyCombat != null)
-                {
-                    // Rotate towards the player before attacking
-                    Vector3 direction = (m_PlayerPosition - transform.position).normalized;
-                    Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * m_RotationSpeed);
 
+                //turn towards player
+                Vector3 direction = (m_PlayerPosition - transform.position).normalized;
+                Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * m_RotationSpeed);
+
+                if (m_EnemyCombat != null)
+                {
                     m_EnemyCombat.StartAttacking(false);
                 }
             }
@@ -65,9 +68,9 @@ public class EnemyMovement : MonoBehaviour
                 m_NavMeshAgent.isStopped = true;
                 m_IsMoving = false;
 
-                
 
-                if(m_EnemyCombat != null)
+
+                if (m_EnemyCombat != null)
                 {
                     m_EnemyCombat.StartAttacking(true);
                 }
@@ -76,6 +79,23 @@ public class EnemyMovement : MonoBehaviour
             {
                 m_Animator.SetBool("isRunning", m_IsMoving);
             }
+        }
+    }
+    public string GetTargetTag()
+    {
+        return m_PlayerTag;
+    }
+
+    public void ChangeState(EnemyState newState)
+    {
+        if (m_CurrentState != null)
+        {
+            m_CurrentState.ExitState();
+        }
+        m_CurrentState = newState;
+        if (m_CurrentState != null)
+        {
+            m_CurrentState.EnterState();
         }
     }
 }

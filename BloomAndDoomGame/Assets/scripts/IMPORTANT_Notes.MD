@@ -23,3 +23,9 @@ Conserver la dernière position vue/entendue pendant N secondes (memoryDuration)
 Déclencher OnTargetSpotted/OnTargetLost/OnNoiseHeard pour orchestrer les transitions d’état.
 Performance:
 Cibler les layers (LayerMask), éviter les allocations, time-slicer (ne pas faire toutes les vérifs chaque frame pour tous les agents), gizmos activables seulement en sélection.
+
+
+
+## AI Sound Perception
+
+TOUT les objets qui doivent bloquer ou réfléchir le son doivent avoir le composant *Steam Audio Geometry* -> On peut aussi leur assigner des matériaux acoustiques du type brique, verre.
