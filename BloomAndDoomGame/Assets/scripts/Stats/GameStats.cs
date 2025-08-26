@@ -22,6 +22,10 @@ public class GameSession
     
     // Curreny
     public int currencyGained;
+
+    //
+    public int currencySpent;
+    public int experienceGained;
 }
 
 //-------------------------------------------------------------------------------------
@@ -43,10 +47,8 @@ public class GameStats : MonoBehaviour
 
     public static GameStats Instance { get; private set; }
 
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
+    private void Awake() {
+        if (Instance != null && Instance != this) {
             Destroy(gameObject);
             return;
         }
@@ -54,15 +56,13 @@ public class GameStats : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    void Start()
-    {
-        if (GameManager.Instance?.playerInstance != null)
+    void Start() {
+        if (GameManager.Instance?.character != null)
             StartSession();
     }
 
-    void Update()
-    {
-        if (sessionActive && GameManager.Instance?.playerInstance != null)
+    void Update() {
+        if (sessionActive && GameManager.Instance?.character != null)
             CalcDistance();
     }
 
@@ -72,18 +72,16 @@ public class GameStats : MonoBehaviour
         if (sessionActive) return;
         
         currentSession = new GameSession();
-        currentSession.sessionStartTime = Time.time;
+        currentSession.startTime = Time.time;
         
-        if (GameManager.Instance?.playerInstance != null)
-        {
-            CharacterStats playerStats = GameManager.Instance.playerInstance.GetComponent<CharacterStats>();
-            if (playerStats != null && playerStats.GetCharacterClass() != null)
-            {
+        if (GameManager.Instance?.character != null) {
+            CharacterStats playerStats = GameManager.Instance.character.GetComponent<CharacterStats>();
+            if (playerStats != null && playerStats.GetCharacterClass() != null) {
                 currentSession.characterClassName = playerStats.GetCharacterClass().className;
                 currentSession.finalLevel = playerStats.GetLevel();
             }
             
-            lastPosition = GameManager.Instance.playerInstance.transform.position;
+            lastPosition = GameManager.Instance.character.transform.position;
         }
         
         sessionActive = true;
@@ -94,11 +92,10 @@ public class GameStats : MonoBehaviour
     {
         if (!sessionActive) return;
         
-        currentSession.sessionEndTime = Time.time;
+        currentSession.endTime = Time.time;
         
-        if (GameManager.Instance?.playerInstance != null)
-        {
-            CharacterStats playerStats = GameManager.Instance.playerInstance.GetComponent<CharacterStats>();
+        if (GameManager.Instance?.character != null) {
+            CharacterStats playerStats = GameManager.Instance.character.GetComponent<CharacterStats>();
             if (playerStats != null)
                 currentSession.finalLevel = playerStats.GetLevel();
         }
@@ -108,52 +105,60 @@ public class GameStats : MonoBehaviour
     }
 
     //---------------- Distance ----------------
-    private void CalcDistance()
-    {
-        if (GameManager.Instance?.playerInstance == null) return;
+    private void CalcDistance() {
+        if (GameManager.Instance?.character == null) return;
         
-        Vector3 currentPosition = GameManager.Instance.playerInstance.transform.position;
+        Vector3 currentPosition = GameManager.Instance.character.transform.position;
         float distance = Vector3.Distance(lastPosition, currentPosition);
         currentSession.distanceTraveled += distance;
         lastPosition = currentPosition;
     }
 
     //---------------- Update stats ----------------
-    public void AddDamageDealt(float damage)
-    {
+    public void AddDamageDealt(float damage) {
         if (!sessionActive) return;
         currentSession.totalDamageDealt += damage;
-        OnStatsUpdated?.Invoke(currentSession);
+        OnStatUpdated?.Invoke(currentSession);
     }
 
-    public void AddDamageTaken(float damage)
-    {
+    public void AddDamageTaken(float damage) {
         if (!sessionActive) return;
         currentSession.totalDamageTaken += damage;
-        OnStatsUpdated?.Invoke(currentSession);
+        OnStatUpdated?.Invoke(currentSession);
     }
 
-    public void AddEnemyKilled()
-    {
+    public void AddEnemyKilled() {
         if (!sessionActive) return;
         currentSession.enemiesKilled++;
-        OnStatsUpdated?.Invoke(currentSession);
+        OnStatUpdated?.Invoke(currentSession);
     }
 
-    public void AddCurrencyGained(int currency)
-    {
+    public void AddCurrencyGained(int currency) {
         if (!sessionActive) return;
         currentSession.currencyGained += currency;
-        OnStatsUpdated?.Invoke(currentSession);
+        OnStatUpdated?.Invoke(currentSession);
+    }
+
+    //---------------- Used in CharacterStats ----------------
+    public void AddExperienceGained(int xp) {
+        if (!sessionActive) return;
+        currentSession.experienceGained += xp;
+        OnStatUpdated?.Invoke(currentSession);
+    }
+
+    public void AddCurrencySpent(int currency) {
+        if (!sessionActive) return;
+        currentSession.currencySpent += currency;
+        OnStatUpdated?.Invoke(currentSession);
     }
 
     //---------------- End Game panel ----------------
     public GameSession GetCurrentSession() => currentSession;
     public bool IsSessionActive() => sessionActive;
 
-    public string GetFormattedSummary()
-    {
+    public string GetFormattedSummary() {
         // TODO complete when merged with end game panel
+        // can get info with currentSession.finalLevel
         return "";
     }
 }

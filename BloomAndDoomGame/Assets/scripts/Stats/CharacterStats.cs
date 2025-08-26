@@ -7,15 +7,13 @@ public class StatModifier {
     public float flatBonus;
     public float percentageBonus;
 
-    public float GetValue()
-    {
+    public float GetValue() {
         // TODO adapt, when testing is possible
         return (baseValue + flatBonus) * percentageBonus; // maybe (1f + percentageBonus) idk
     }
 }
 
-public enum StatType
-{
+public enum StatType {
     Health,
     Attack,
     Speed,
@@ -59,8 +57,7 @@ public class CharacterStats : MonoBehaviour
     public static event Action<int> OnCurrencyChanged;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    void Start() {
         if (characterClass == null) return;
         
         // Base stats from class
@@ -88,10 +85,8 @@ public class CharacterStats : MonoBehaviour
     public CharacterClass GetCharacterClass() => characterClass;
 
     //---------------- Stat modifiers ----------------
-    private StatModifier GetStatModifier(StatType statType)
-    {
-        return statType switch
-        {
+    private StatModifier GetStatModifier(StatType statType) {
+        return statType switch {
             StatType.Health => hp,
             StatType.Attack => atk,
             StatType.Speed => spd,
@@ -102,25 +97,22 @@ public class CharacterStats : MonoBehaviour
         };
     }
 
-    public void AddFlatBonus(StatType statType, float value)
-    {
+    public void AddFlatBonus(StatType statType, float value) {
         GetStatModifier(statType).flatBonus += value;
         OnStatChanged?.Invoke(this);
     }
 
-    public void AddPercentageBonus(StatType statType, float percentage)
-    {
+    public void AddPercentageBonus(StatType statType, float percentage) {
         GetStatModifier(statType).percentageBonus += percentage;
         OnStatChanged?.Invoke(this);
     }
 
     //---------------- Xp gain ----------------
-    private void LevelUp()
-    {
+    private void LevelUp() {
         float nextLevelRatio = 1.2f; // 20% more xp per level
-        float hpToAdd = 10f;
-        float atkToAdd = 2f;
-        float defToAdd = 1f;
+        float hpToAdd = 10f; // +10 hp per level
+        float atkToAdd = 2f; // +2 attack per level
+        float defToAdd = 1f; // +1 defence per level
 
         currentXp -= xpForNextLevel;
         currentLevel++;
@@ -132,14 +124,13 @@ public class CharacterStats : MonoBehaviour
         AddFlatBonus(StatType.Defense, defToAdd);
         
         // Full health on level up ?
-        // currentHp = GetMaxHealth();
+        currentHp = GetMaxHealth();
         
         OnLevelUp?.Invoke(currentLevel);
         OnStatChanged?.Invoke(this);
     }
 
-    public void AddExperience(int xp)
-    {
+    public void AddExperience(int xp) {
         currentXp += xp;
         GameStats.Instance?.AddExperienceGained(xp);
         
@@ -148,17 +139,14 @@ public class CharacterStats : MonoBehaviour
     }
 
     //---------------- Currency ----------------
-    public void AddCurrency(int amount)
-    {
+    public void AddCurrency(int amount) {
         currency += amount;
         GameStats.Instance?.AddCurrencyGained(amount);
         OnCurrencyChanged?.Invoke(currency);
     }
 
-    public bool CanSpendCurrency(int amount)
-    {
-        if (currency >= amount)
-        {
+    public bool CanSpendCurrency(int amount) {
+        if (currency >= amount) {
             currency -= amount;
             GameStats.Instance?.AddCurrencySpent(amount);
             OnCurrencyChanged?.Invoke(currency);
@@ -168,8 +156,7 @@ public class CharacterStats : MonoBehaviour
     }
 
     //---------------- Interface used in HealthSystem ----------------
-    public void TakeDamage(float damage)
-    {
+    public void TakeDamage(float damage) {
         // Defence calculation
         float finalDamage = Mathf.Max(1f, damage - GetDefense());
         currentHp = Mathf.Max(0f, currentHp - finalDamage);
@@ -180,13 +167,11 @@ public class CharacterStats : MonoBehaviour
             Die();
     }
 
-    public void Heal(float amount)
-    {
+    public void Heal(float amount) {
         currentHp = Mathf.Min(GetMaxHealth(), currentHp + amount);
     }
 
-    private void Die()
-    {
+    private void Die() {
         Debug.Log("Player died!");
     }
 }
