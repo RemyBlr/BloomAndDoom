@@ -5,11 +5,13 @@ using Random = UnityEngine.Random;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    private GameManager instance;
-    
     public GameObject playerInstance;
+    public GameObject hudInstance;
 
     public GameObject[] Monsters;
+
+    [Header("HUD")]
+    public GameObject hudPrefab;
     
     private void Awake()
     {
@@ -29,6 +31,11 @@ public class GameManager : MonoBehaviour
         }
 
         Instantiate(SelectedCharacter.pickedClass.prefab, Vector3.up, Quaternion.identity);
+
+        if (hudInstance == null && hudPrefab != null) {
+            hudInstance = Instantiate(hudPrefab);
+            DontDestroyOnLoad(hudInstance);
+        }
 
         Minimap minimap = FindObjectOfType<Minimap>();
         if (minimap != null)
