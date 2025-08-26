@@ -7,20 +7,32 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     private GameManager instance;
     
-    public GameObject character;
+    public GameObject playerInstance;
 
     public GameObject[] Monsters;
     
     private void Awake()
     {
-        instance = this;
-        Instance = instance;
+        if (Instance != null && Instance != this) {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
         DontDestroyOnLoad(this);
     }
 
     public void InstantiatePlayer()
     {
-        Instantiate(character, Vector3.up, Quaternion.identity);
+        if (SelectedCharacter.pickedClass == null) {
+            Debug.LogError("Aucune classe sélectionnée");
+            return;
+        }
+
+        Instantiate(SelectedCharacter.pickedClass.prefab, Vector3.up, Quaternion.identity);
+
+        Minimap minimap = FindObjectOfType<Minimap>();
+        if (minimap != null)
+            minimap.target = playerInstance.transform;
     }
 
     public void InstantiateMonsters(Vector3[] positions)

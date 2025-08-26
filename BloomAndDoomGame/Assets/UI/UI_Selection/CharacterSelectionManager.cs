@@ -60,7 +60,7 @@ public class CharacterSelectionManager : MonoBehaviour
         if (classes.Length > 0)
         {
             SelectClass(0);
-            GameManager.Instance.character = classes[0].prefab;
+            GameManager.Instance.playerInstance = classes[0].prefab;
         }
     }
 
@@ -91,7 +91,6 @@ public class CharacterSelectionManager : MonoBehaviour
         atk.text = $"Atk: {picked.atk}";
         spd.text = $"Spd: {picked.spd}";
 
-        GameManager.Instance.character = classes[index].prefab;
         // TODO : find better way to get the number of spells
         int numberOfSpells = 3;
 
