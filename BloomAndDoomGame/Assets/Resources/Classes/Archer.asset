@@ -35,3 +35,12 @@ MonoBehaviour:
     description: 2
   - icon: {fileID: 21300000, guid: bb4657f9500974f188a58fd0efc6f76a, type: 3}
     description: 3
+  weapons:
+  - weaponName: Normal
+    icon: {fileID: 21300000, guid: d36208c236f2f41499f60172a974abe4, type: 3}
+    unlockedByDefault: 1
+    price: 0
+  - weaponName: Fire
+    icon: {fileID: 21300000, guid: c5ce0df9e12284acc8ea9210b79c071b, type: 3}
+    unlockedByDefault: 0
+    price: 69

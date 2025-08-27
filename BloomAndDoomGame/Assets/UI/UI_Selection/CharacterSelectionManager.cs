@@ -22,6 +22,10 @@ public class CharacterSelectionManager : MonoBehaviour
     public Image[] spellIcons;
     public TextMeshProUGUI[] spellDescription;
 
+    [Header("Weapons")]
+    public Transform weaponsParent;
+    public GameObject weaponUIPrefab;
+
     [Header("Preview")]
     public Transform previewStartPoint;
     private GameObject currentPreview;
@@ -58,7 +62,11 @@ public class CharacterSelectionManager : MonoBehaviour
         // First class selected by default
         if (classes.Length > 0) {
             SelectClass(0);
+<<<<<<< HEAD
+            GameManager.Instance.playerInstance = classes[0].prefab;
+=======
             //GameManager.Instance.character = classes[0].prefab;
+>>>>>>> main
         }
     }
 
@@ -87,7 +95,10 @@ public class CharacterSelectionManager : MonoBehaviour
         DisplayClassStats(picked);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
         GameManager.Instance.character = picked.prefab;
+>>>>>>> main
         // TODO : find better way to get the number of spells
         int numberOfSpells = 3;
 
@@ -145,6 +156,37 @@ public class CharacterSelectionManager : MonoBehaviour
         float scaleFactor = 100f;
         currentPreview.transform.localScale = Vector3.one * scaleFactor;
 
+<<<<<<< HEAD
+        // set picked class
+        SelectedCharacter.pickedClass = picked;
+
+        // print weapons
+        foreach (Transform child in weaponsParent) Destroy(child.gameObject);
+
+        Weapon defaultWeapon = null;
+
+        foreach (var weapon in picked.weapons)
+        {
+            bool alreadyUnlocked = weapon.unlockedByDefault || SaveSystem.IsWeaponUnlocked(picked.className, weapon.weaponName);
+
+            GameObject ui = Instantiate(weaponUIPrefab, weaponsParent);
+            ui.GetComponent<WeaponUI>().Setup(weapon, picked, alreadyUnlocked);
+
+            // Default weapon selected
+            if (alreadyUnlocked && defaultWeapon == null)
+                defaultWeapon = weapon;
+        }
+
+        // Select default weapon
+        if (SelectedCharacter.selectedWeapon == null && defaultWeapon != null)
+            SelectedCharacter.selectedWeapon = defaultWeapon;
+        
+        // Update UI
+        foreach (Transform child in weaponsParent)
+            child.GetComponent<WeaponUI>().UpdateUI();
+
+=======
+>>>>>>> main
     }
 
     // Update is called once per frame

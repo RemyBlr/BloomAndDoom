@@ -5,26 +5,47 @@ using Random = UnityEngine.Random;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    private GameManager instance;
-    
-    public GameObject character;
+    public GameObject playerInstance;
+    public GameObject hudInstance;
 
     public GameObject[] Monsters;
-    
+
+    [Header("HUD")]
+    public GameObject hudPrefab;
+
     private void Awake()
     {
-        instance = this;
-        Instance = instance;
+        if (Instance != null && Instance != this) {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
         DontDestroyOnLoad(this);
     }
 
     public void InstantiatePlayer()
     {
+<<<<<<< HEAD
+        if (SelectedCharacter.pickedClass == null) {
+            Debug.LogError("Aucune classe sélectionnée");
+            return;
+        }
+
+        playerInstance = Instantiate(SelectedCharacter.pickedClass.prefab, Vector3.up, Quaternion.identity);
+
+        if (!playerInstance.CompareTag("Player"))
+            playerInstance.tag = "Player";
+
+        if (hudInstance == null && hudPrefab != null) {
+            hudInstance = Instantiate(hudPrefab);
+            DontDestroyOnLoad(hudInstance);
+=======
         Instantiate(character, Vector3.up, Quaternion.identity);
 
         if (GameStats.Instance == null) {
             GameObject statsManager = new GameObject("GameStats");
             statsManager.AddComponent<GameStats>();
+>>>>>>> main
         }
     }
 
