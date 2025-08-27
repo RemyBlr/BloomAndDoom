@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     public void InstantiatePlayer()
     {
+<<<<<<< HEAD
         if (SelectedCharacter.pickedClass == null) {
             Debug.LogError("Aucune classe sélectionnée");
             return;
@@ -38,6 +39,13 @@ public class GameManager : MonoBehaviour
         if (hudInstance == null && hudPrefab != null) {
             hudInstance = Instantiate(hudPrefab);
             DontDestroyOnLoad(hudInstance);
+=======
+        Instantiate(character, Vector3.up, Quaternion.identity);
+
+        if (GameStats.Instance == null) {
+            GameObject statsManager = new GameObject("GameStats");
+            statsManager.AddComponent<GameStats>();
+>>>>>>> main
         }
     }
 
