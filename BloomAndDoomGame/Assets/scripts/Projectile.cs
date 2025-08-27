@@ -5,17 +5,11 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private float speed;
-
-    private float lifetime; //if projectile lasts longer than this, it will be destroyed
-
+    private float lifetime;
     private float m_Damage;
-
-    private string m_TargetTag="Player";
+    private string m_TargetTag = "Player";
     
     private Rigidbody m_Rigidbody;
-
-    private DamageInfo damageInfo;
-    private bool damageCalculated = false;
 
     void Awake()
     {
@@ -23,60 +17,92 @@ public class Projectile : MonoBehaviour
         GetComponent<Collider>().isTrigger = true;
     }
 
-    public void Initialize(DamageInfo damage)
-    {
-        damageInfo = damage;
-        damageCalculated = true;
-    }
-
     void OnTriggerEnter(Collider other)
     {
-        /*Debug.Log("Projectile hit: " + other.name);
+        Debug.Log($"Projectile collision avec {other.name} (tag: '{other.tag}')");
+        
+        // Vérifier si c'est la bonne cible
         if (other.CompareTag(m_TargetTag))
         {
-           I_Damageable victimHealth = other.GetComponent<I_Damageable>();
-           if (victimHealth != null)
-           {
-               victimHealth.TakeDamage(m_Damage);
-           }
-
-        }
-        Destroy(gameObject); */
-
-        I_Damageable target = other.GetComponent<I_Damageable>();
-        
-        if (target != null && damageCalculated) {
-
-            target.TakeDamage(damageInfo.damage);
-            Debug.Log("Je suis ici");
+            // Chercher HealthSystem de plusieurs façons
+            HealthSystem victimHealth = FindHealthSystem(other);
             
-            if (damageInfo.isCritical)
-                ShowCriticalEffect();
-            
-            Destroy(gameObject);
+            if (victimHealth != null)
+            {
+                Debug.Log($"HealthSystem trouvé! Infligeant {m_Damage} dégâts à {other.name}");
+                victimHealth.TakeDamage(m_Damage);
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.LogWarning($"HealthSystem introuvable sur {other.name} ou sa hiérarchie!");
+            }
         }
         else if (other.CompareTag("Ground"))
+        {
+            Debug.Log("Projectile touche le terrain");
             Destroy(gameObject);
+        }
     }
 
-    public void Initialize(float damage, float speed, float lifetime, string targetTag) //We can't use constructors so the initialization has to be done this way in unity
+    private HealthSystem FindHealthSystem(Collider collider)
+    {
+        // 1. Essayer sur l'objet directement
+        HealthSystem health = collider.GetComponent<HealthSystem>();
+        if (health != null)
+        {
+            Debug.Log("HealthSystem trouvé sur l'objet principal");
+            return health;
+        }
+
+        // 2. Essayer sur le parent
+        health = collider.GetComponentInParent<HealthSystem>();
+        if (health != null)
+        {
+            Debug.Log($"HealthSystem trouvé sur le parent: {health.gameObject.name}");
+            return health;
+        }
+
+        // 3. Essayer dans les enfants
+        health = collider.GetComponentInChildren<HealthSystem>();
+        if (health != null)
+        {
+            Debug.Log($"HealthSystem trouvé dans les enfants: {health.gameObject.name}");
+            return health;
+        }
+
+        // 4. Dernier recours : chercher sur le GameObject racine
+        Transform root = collider.transform;
+        while (root.parent != null)
+            root = root.parent;
+        
+        health = root.GetComponentInChildren<HealthSystem>();
+        if (health != null)
+        {
+            Debug.Log($"HealthSystem trouvé sur la racine: {health.gameObject.name}");
+            return health;
+        }
+
+        return null;
+    }
+
+    public void Initialize(float damage, float speed, float lifetime, string targetTag)
     {
         this.m_Damage = damage;
         this.speed = speed;
         this.lifetime = lifetime;
         this.m_TargetTag = targetTag;
-        m_Rigidbody.linearVelocity = transform.forward * speed;
+        
+        Debug.Log($"Projectile initialisé - Dégâts: {damage}, Cible: '{targetTag}'");
+        
+        if (m_Rigidbody != null)
+            m_Rigidbody.linearVelocity = transform.forward * speed;
+        
         Destroy(gameObject, lifetime);
-    }
-
-    private void ShowCriticalEffect() {
-        // TODO change popup color, and add ! after damage
-        Debug.Log("critical hit");
     }
 
     private void Update()
     {
-        // move projectile
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 }
