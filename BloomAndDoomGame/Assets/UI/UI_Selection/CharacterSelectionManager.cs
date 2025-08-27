@@ -86,7 +86,20 @@ public class CharacterSelectionManager : MonoBehaviour
         CharacterClass picked = classes[index];
         DisplayClassStats(picked);
 
+<<<<<<< HEAD
+        GameManager.Instance.character = picked.prefab;
+        // TODO : find better way to get the number of spells
+        int numberOfSpells = 3;
+
+        for(int i = 0; i < numberOfSpells; ++i) {
+            if(i < picked.spells.Length) {
+                spellIcons[i].sprite = picked.spells[i].icon;
+                spellDescription[i].text = picked.spells[i].description;
+            }
+        }
+=======
         //GameManager.Instance.character = classes[index].prefab;
+>>>>>>> main
 
         // Preview
         if(currentPreview != null) Destroy(currentPreview);
