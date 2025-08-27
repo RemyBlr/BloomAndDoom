@@ -12,6 +12,9 @@ public class CharacterSelectionManager : MonoBehaviour
     public TextMeshProUGUI hp;
     public TextMeshProUGUI atk;
     public TextMeshProUGUI spd;
+    public TextMeshProUGUI def;
+    public TextMeshProUGUI critChance;
+    public TextMeshProUGUI critDamage;
     public Transform buttonParent;
     public GameObject buttonPrefab;
 
@@ -49,14 +52,13 @@ public class CharacterSelectionManager : MonoBehaviour
 
             classButtons[i] = btnUI;
 
-            newButton.GetComponent<Button>().onClick.AddListener(() => SelectClass(index));
+            //newButton.GetComponent<Button>().onClick.AddListener(() => SelectClass(index));
         }
 
         // First class selected by default
-        if (classes.Length > 0)
-        {
+        if (classes.Length > 0) {
             SelectClass(0);
-            GameManager.Instance.character = classes[0].prefab;
+            //GameManager.Instance.character = classes[0].prefab;
         }
     }
 
@@ -82,11 +84,9 @@ public class CharacterSelectionManager : MonoBehaviour
 
         // Update UI
         CharacterClass picked = classes[index];
-        name.text = picked.className;
-        hp.text = $"Hp: {picked.hp}";
-        atk.text = $"Atk: {picked.atk}";
-        spd.text = $"Spd: {picked.spd}";
+        DisplayClassStats(picked);
 
+<<<<<<< HEAD
         GameManager.Instance.character = picked.prefab;
         // TODO : find better way to get the number of spells
         int numberOfSpells = 3;
@@ -97,11 +97,44 @@ public class CharacterSelectionManager : MonoBehaviour
                 spellDescription[i].text = picked.spells[i].description;
             }
         }
+=======
+        //GameManager.Instance.character = classes[index].prefab;
+>>>>>>> main
 
         // Preview
         if(currentPreview != null) Destroy(currentPreview);
+        CreatePreview(picked);
+       
+        // set picked class
+        SelectedCharacter.pickedClass = picked;
+    }
 
-        currentPreview = Instantiate(picked.prefabPreview, previewStartPoint);
+    private void DisplayClassStats(CharacterClass characterClass) {
+        name.text = characterClass.className;
+        
+        // Get base stats at start of game
+        CharacterBaseStats baseStats = characterClass.GetStatsAtLevel(1);
+        
+        // Display stats
+        hp.text = $"HP: {baseStats.hp:F0}";
+        atk.text = $"ATK: {baseStats.atk:F0}";
+        spd.text = $"SPD: {baseStats.spd:F0}";
+        def.text = $"DEF: {baseStats.def:F0}";
+        critChance.text = $"CRIT: {baseStats.critChance:P0}";
+        critDamage.text = $"CRIT DMG: +{baseStats.critDamage:P0}";
+        
+        // Display spells
+        int numberOfSpells = 3;
+        for(int i = 0; i < numberOfSpells; ++i) {
+            if(i < characterClass.spells.Length) {
+                spellIcons[i].sprite = characterClass.spells[i].icon;
+                spellDescription[i].text = characterClass.spells[i].description;
+            }
+        }
+    }
+
+    private void CreatePreview(CharacterClass characterClass) {
+        currentPreview = Instantiate(characterClass.prefabPreview, previewStartPoint);
 
         // offset at start
         currentPreview.transform.localPosition = new Vector3(0f, -50f, -50f);
@@ -109,14 +142,9 @@ public class CharacterSelectionManager : MonoBehaviour
         // prefab faces us at start
         currentPreview.transform.localRotation = Quaternion.Euler(0, 180f, 0);
 
-        //currentPreview.transform.localPosition = Vector3.zero;
-        //currentPreview.transform.localRotation = Quaternion.identity;
-
         float scaleFactor = 100f;
         currentPreview.transform.localScale = Vector3.one * scaleFactor;
 
-        // set picked class
-        SelectedCharacter.pickedClass = picked;
     }
 
     // Update is called once per frame

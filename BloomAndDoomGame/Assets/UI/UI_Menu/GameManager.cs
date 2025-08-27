@@ -21,6 +21,11 @@ public class GameManager : MonoBehaviour
     public void InstantiatePlayer()
     {
         Instantiate(character, Vector3.up, Quaternion.identity);
+
+        if (GameStats.Instance == null) {
+            GameObject statsManager = new GameObject("GameStats");
+            statsManager.AddComponent<GameStats>();
+        }
     }
 
     public void InstantiateMonsters(Vector3[] positions)
