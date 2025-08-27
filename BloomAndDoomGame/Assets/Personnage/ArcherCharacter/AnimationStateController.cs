@@ -20,6 +20,17 @@ public class AnimationStateController : MonoBehaviour
         velocityYId = Animator.StringToHash("VelocityY");
     }
 
+    void Start()
+    {
+        // Get animator from child object instead of this GameObject
+        animator = GetComponentInChildren<Animator>();
+        
+        if (animator == null)
+        {
+            Debug.LogError("No Animator found in children!");
+        }
+    }
+
     public void OnRun(Vector2 inputs)
     {
         //print($"inputs = {inputs}");
