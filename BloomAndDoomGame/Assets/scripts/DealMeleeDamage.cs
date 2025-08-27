@@ -23,7 +23,7 @@ public class DealMeleeDamage : MonoBehaviour
     {
         if (other.CompareTag(m_TargetTag))
         {
-            HealthSystem VictimHealth = other.GetComponent<HealthSystem>();
+            I_Damageable VictimHealth = other.GetComponent<I_Damageable>();
             if (VictimHealth != null)
             {
                 VictimHealth.TakeDamage(m_Damage);
