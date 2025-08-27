@@ -9,6 +9,7 @@ public class GameSession
     // Timer
     public float startTime;
     public float endTime;
+    public float runDuration;
     public float GetSessionDuration() => endTime - startTime;
     
     // Atk stats
@@ -57,12 +58,12 @@ public class GameStats : MonoBehaviour
     }
 
     void Start() {
-        if (GameManager.Instance?.character != null)
+        if (GameManager.Instance?.playerInstance != null)
             StartSession();
     }
 
     void Update() {
-        if (sessionActive && GameManager.Instance?.character != null)
+        if (sessionActive && GameManager.Instance?.playerInstance != null)
             CalcDistance();
     }
 
@@ -74,14 +75,14 @@ public class GameStats : MonoBehaviour
         currentSession = new GameSession();
         currentSession.startTime = Time.time;
         
-        if (GameManager.Instance?.character != null) {
-            CharacterStats playerStats = GameManager.Instance.character.GetComponent<CharacterStats>();
+        if (GameManager.Instance?.playerInstance != null) {
+            CharacterStats playerStats = GameManager.Instance.playerInstance.GetComponent<CharacterStats>();
             if (playerStats != null && playerStats.GetCharacterClass() != null) {
                 currentSession.characterClassName = playerStats.GetCharacterClass().className;
                 currentSession.finalLevel = playerStats.GetLevel();
             }
             
-            lastPosition = GameManager.Instance.character.transform.position;
+            lastPosition = GameManager.Instance.playerInstance.transform.position;
         }
         
         sessionActive = true;
@@ -94,8 +95,8 @@ public class GameStats : MonoBehaviour
         
         currentSession.endTime = Time.time;
         
-        if (GameManager.Instance?.character != null) {
-            CharacterStats playerStats = GameManager.Instance.character.GetComponent<CharacterStats>();
+        if (GameManager.Instance?.playerInstance != null) {
+            CharacterStats playerStats = GameManager.Instance.playerInstance.GetComponent<CharacterStats>();
             if (playerStats != null)
                 currentSession.finalLevel = playerStats.GetLevel();
         }
@@ -106,9 +107,9 @@ public class GameStats : MonoBehaviour
 
     //---------------- Distance ----------------
     private void CalcDistance() {
-        if (GameManager.Instance?.character == null) return;
+        if (GameManager.Instance?.playerInstance == null) return;
         
-        Vector3 currentPosition = GameManager.Instance.character.transform.position;
+        Vector3 currentPosition = GameManager.Instance.playerInstance.transform.position;
         float distance = Vector3.Distance(lastPosition, currentPosition);
         currentSession.distanceTraveled += distance;
         lastPosition = currentPosition;

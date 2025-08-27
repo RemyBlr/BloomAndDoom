@@ -13,6 +13,11 @@ public class MenuManager : MonoBehaviour
 
     public void newGame() {
         Debug.Log("New game");
+
+        // FOR TESTING PRURPOSE, DELETES ALL PLAYERPREFS
+        //PlayerPrefs.DeleteAll();
+        //PlayerPrefs.Save();
+
         SceneManager.LoadScene(charaSelec);
     }
 
