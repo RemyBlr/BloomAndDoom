@@ -18,7 +18,7 @@ public class CrosshairController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
+        Vector3 screenCenter = new Vector3(Screen.width / 2f - 30f, Screen.height / 2f - 30f, 0);
         Ray ray = aimCamera.ScreenPointToRay(screenCenter);
 
         Vector3 targetPos;

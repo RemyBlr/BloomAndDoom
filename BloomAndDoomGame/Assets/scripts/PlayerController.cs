@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpHeight = 2f;
     [SerializeField] private float gravity = -9.8f;
-    [SerializeField] private bool shouldFaceMoveDirection = true; // ← Activez ceci pour TPS
+    [SerializeField] private bool shouldFaceMoveDirection = true;
     [SerializeField] private Transform yawTarget;
 
     private CharacterController controller;
