@@ -13,6 +13,7 @@ public class CrosshairController : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        aimCamera = Camera.main;
     }
 
     // Update is called once per frame

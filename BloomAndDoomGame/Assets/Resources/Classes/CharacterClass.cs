@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-<<<<<<< HEAD
 public class Weapon
 {
     public string weaponName;
@@ -16,7 +15,8 @@ public class Weapon
 public class Spell {
     public Sprite icon;
     public string description;
-=======
+}
+
 public struct CharacterBaseStats
 {
     public float hp;
@@ -25,7 +25,6 @@ public struct CharacterBaseStats
     public float def;
     public float critChance;
     public float critDamage;
->>>>>>> main
 }
 
 [CreateAssetMenu(fileName="NewCharacterClass", menuName="Character/CharacterClass")]
@@ -63,10 +62,9 @@ public class CharacterClass : ScriptableObject
     [Header("Spells")]
     public Spell[] spells = new Spell[3];
 
-<<<<<<< HEAD
     [Header("Weapons")]
     public Weapon[] weapons;
-=======
+    
     public CharacterBaseStats GetStatsAtLevel(int level)
     {
         return new CharacterBaseStats
@@ -79,5 +77,4 @@ public class CharacterClass : ScriptableObject
             critDamage = critDamage
         };
     }
->>>>>>> main
 }

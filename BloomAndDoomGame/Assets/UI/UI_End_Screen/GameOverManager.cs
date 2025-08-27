@@ -19,11 +19,10 @@ public class GameOverManager : MonoBehaviour
     [Header("Navigation")]
     public string mainMenu = "MainMenu";
     public string playAgain = "CharacterSelectionScene";
-
-
+    /*
     void Start()
     {
-        duration.text = $"Durée : {GameStats.Instance.runDuration:F1} sec";
+        duration.text = $"Durée : {GameStats.Instance.duration:F1} sec";
         damageDealt.text = $"Dégâts infligés : {GameStats.Instance.damageDealt}";
         damageTaken.text = $"Dégâts reçus : {GameStats.Instance.damageTaken}";
         goldEarned.text = $"Argent gagné : {GameStats.Instance.goldEarned}";
@@ -43,4 +42,5 @@ public class GameOverManager : MonoBehaviour
     public void GoMainMenu() {
         SceneManager.LoadScene(mainMenu);
     }
+    */
 }

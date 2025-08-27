@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrosshairController
   crosshairUI: {fileID: 8653795350807094029}
-  aimCamera: {fileID: 0}
+  aimCamera: {fileID: 3125703176561798961}
   maxDistance: 20
   crossHairOffsetMultiplier: 0.01
   raycastMask:
@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 445338923214020950}
   - component: {fileID: 2458531652357612696}
   - component: {fileID: 8111781848147628747}
+  - component: {fileID: 9086601245988728589}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -345,7 +346,7 @@ MonoBehaviour:
   yawTarget: {fileID: 1604136106681388990}
   animator: {fileID: 0}
   arrow_spawn: {fileID: 111636810015466042}
-  arrow: {fileID: 0}
+  arrow: {fileID: 3437109981842104820, guid: 86a29fc32a196d042b5a08ee62b43d2d, type: 3}
   arrow_velocity: 50
 --- !u!114 &445338923214020950
 MonoBehaviour:
@@ -412,6 +413,20 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &9086601245988728589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7046377414480159205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e99552ad59d5a54e8ce03bd80da6357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
+  m_MaxHealth: 100
+  dmgTextPrefab: {fileID: 5403528675670166939, guid: 3988ab43343e24e76987bf79c16005c9, type: 3}
 --- !u!1 &8275847566554965446
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,6 +710,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 646fd803187ded24595d6411d1d12b91, type: 3}
+--- !u!20 &3125703176561798961 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8449275629672518495, guid: 646fd803187ded24595d6411d1d12b91, type: 3}
+  m_PrefabInstance: {fileID: 6782809240440962158}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6399163888548200297 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 499623264462848775, guid: 646fd803187ded24595d6411d1d12b91, type: 3}

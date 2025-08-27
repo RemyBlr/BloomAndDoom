@@ -24,7 +24,7 @@ public class EnemyMovement : MonoBehaviour
         m_Animator = GetComponent<Animator>();
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
         m_EnemyCombat = GetComponent<EnemyCombat>();
-        m_PlayerObject = GameObject.FindGameObjectWithTag(m_PlayerTag);
+        m_PlayerObject = FindFirstObjectByType<PlayerController>().gameObject;
         if(m_PlayerObject == null)
         {
             Debug.LogError("Player object with tag " + m_PlayerTag + " not found.");

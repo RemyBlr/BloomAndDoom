@@ -62,11 +62,7 @@ public class CharacterSelectionManager : MonoBehaviour
         // First class selected by default
         if (classes.Length > 0) {
             SelectClass(0);
-<<<<<<< HEAD
-            GameManager.Instance.playerInstance = classes[0].prefab;
-=======
-            //GameManager.Instance.character = classes[0].prefab;
->>>>>>> main
+            //GameManager.Instance.playerInstance = classes[0].prefab;
         }
     }
 
@@ -94,23 +90,7 @@ public class CharacterSelectionManager : MonoBehaviour
         CharacterClass picked = classes[index];
         DisplayClassStats(picked);
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-        GameManager.Instance.character = picked.prefab;
->>>>>>> main
-        // TODO : find better way to get the number of spells
-        int numberOfSpells = 3;
-
-        for(int i = 0; i < numberOfSpells; ++i) {
-            if(i < picked.spells.Length) {
-                spellIcons[i].sprite = picked.spells[i].icon;
-                spellDescription[i].text = picked.spells[i].description;
-            }
-        }
-=======
-        //GameManager.Instance.character = classes[index].prefab;
->>>>>>> main
+        //GameManager.Instance.character = picked.prefab;
 
         // Preview
         if(currentPreview != null) Destroy(currentPreview);
@@ -156,21 +136,20 @@ public class CharacterSelectionManager : MonoBehaviour
         float scaleFactor = 100f;
         currentPreview.transform.localScale = Vector3.one * scaleFactor;
 
-<<<<<<< HEAD
         // set picked class
-        SelectedCharacter.pickedClass = picked;
+        SelectedCharacter.pickedClass = characterClass;
 
         // print weapons
         foreach (Transform child in weaponsParent) Destroy(child.gameObject);
 
         Weapon defaultWeapon = null;
 
-        foreach (var weapon in picked.weapons)
+        foreach (var weapon in characterClass.weapons)
         {
-            bool alreadyUnlocked = weapon.unlockedByDefault || SaveSystem.IsWeaponUnlocked(picked.className, weapon.weaponName);
+            bool alreadyUnlocked = weapon.unlockedByDefault || SaveSystem.IsWeaponUnlocked(characterClass.className, weapon.weaponName);
 
             GameObject ui = Instantiate(weaponUIPrefab, weaponsParent);
-            ui.GetComponent<WeaponUI>().Setup(weapon, picked, alreadyUnlocked);
+            ui.GetComponent<WeaponUI>().Setup(weapon, characterClass, alreadyUnlocked);
 
             // Default weapon selected
             if (alreadyUnlocked && defaultWeapon == null)
@@ -185,8 +164,6 @@ public class CharacterSelectionManager : MonoBehaviour
         foreach (Transform child in weaponsParent)
             child.GetComponent<WeaponUI>().UpdateUI();
 
-=======
->>>>>>> main
     }
 
     // Update is called once per frame

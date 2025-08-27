@@ -34,7 +34,7 @@ public class Minimap : MonoBehaviour
     private void FindPlayerTarget()
     {
         // Check for player tag
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = FindFirstObjectByType<PlayerController>().gameObject;
         if (player != null)
         {
             target = player.transform;
