@@ -21,6 +21,7 @@ public struct CharacterBaseStats
 {
     public float hp;
     public float atk;
+    public float atkSpd;
     public float spd;
     public float def;
     public float critChance;
@@ -43,6 +44,7 @@ public class CharacterClass : ScriptableObject
     [Range(0f, 1f)]
     public float critChance = 0.05f;
     public float critDamage = 0.5f;
+    public float atkSpd = 5f;
 
     [Header("Resources")]
     public int startingLevel = 1;
@@ -74,7 +76,8 @@ public class CharacterClass : ScriptableObject
             spd = spd + (spdPerLevel * (level - 1)),
             def = def + (defPerLevel * (level - 1)),
             critChance = critChance,
-            critDamage = critDamage
+            critDamage = critDamage,
+            atkSpd = atkSpd
         };
     }
 }
