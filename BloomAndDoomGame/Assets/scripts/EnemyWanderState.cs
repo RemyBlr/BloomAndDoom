@@ -5,6 +5,9 @@ public class EnemyWanderState : EnemyState
 {
     private GameObject m_TargetObject;
 
+    private Animator m_Animator;
+    private bool m_IsWalking = false;
+
     [SerializeField]
     private float m_WanderRadiusMin = 10f;
     [SerializeField]
@@ -13,7 +16,6 @@ public class EnemyWanderState : EnemyState
 
     private bool m_ArrivedAtTarget = true;
 
-    private NavMeshAgent m_NavMeshAgent;
 
     [Tooltip("How quickly the enemy becomes alert to the player")]
     [SerializeField]
@@ -23,12 +25,12 @@ public class EnemyWanderState : EnemyState
     public EnemyWanderState(EnemyMovement enemyMovement, EnemyPerception enemyPerception)
         : base(enemyMovement, enemyPerception)
     {
-        m_NavMeshAgent = m_EnemyMovement.GetComponent<NavMeshAgent>();
-    }
-
-    public override void EnterState()
-    {
-        Debug.Log("Entering Wander State");
+        m_NavMeshAgent.speed = enemyMovement.GetWanderingSpeed();
+        m_Animator = m_EnemyMovement.GetComponent<Animator>();
+        if (m_EnemyPerception == null)
+        {
+            Debug.LogError("EnemyPerception component not found on " + m_EnemyMovement.gameObject.name);
+        }
     }
 
     public override void UpdateState()
@@ -49,22 +51,28 @@ public class EnemyWanderState : EnemyState
             m_ArrivedAtTarget = false;
             Debug.Log("New wander target: " + m_WanderTarget);
             m_NavMeshAgent.isStopped = false;
-        }else
+            if (!m_IsWalking && m_Animator != null)
+            {
+                m_Animator.SetBool("IsWalking", true);
+                m_IsWalking = true; // Set the flag to true after starting to walk
+            }
+        }
+        else
         {
             if (!m_NavMeshAgent.pathPending
                 && m_NavMeshAgent.remainingDistance <= m_NavMeshAgent.stoppingDistance)
             {
                 m_ArrivedAtTarget = true;
+                m_NavMeshAgent.isStopped = true;
+                if (m_Animator != null)
+                {
+                    m_Animator.SetBool("IsWalking", false);
+                    m_IsWalking = false;
+                }
             }
         }
 
     }
-
-    public override void ExitState()
-    {
-        // Logic for exiting the wander state
-    }
-
 
     private Vector3 GetRandomWanderPoint()
     {

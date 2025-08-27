@@ -3,25 +3,20 @@ using UnityEngine.AI;
 
 public class EnemyInvestigateState : EnemyState
 {
+    private Animator m_Animator;
     private Vector3 m_InvestigatePosition;
     private float m_InvestigateTimer = 0f;
 
     [SerializeField]
     private float m_InvestigateDuration = 5f;
 
-    private NavMeshAgent m_NavMeshAgent;
 
     public EnemyInvestigateState(Vector3 investigatePosition, EnemyMovement enemyMovement, EnemyPerception enemyPerception)
         : base(enemyMovement, enemyPerception)
     {
         m_InvestigatePosition = investigatePosition;
-        m_NavMeshAgent = m_EnemyMovement.GetComponent<NavMeshAgent>();
-    }
-
-    public override void EnterState()
-    {
-        Debug.Log("Entering Investigate State");
         m_NavMeshAgent.SetDestination(m_InvestigatePosition);
+        m_Animator = m_EnemyMovement.GetComponent<Animator>();
     }
 
     public override void UpdateState()
@@ -48,13 +43,9 @@ public class EnemyInvestigateState : EnemyState
 
     }
 
-    public override void ExitState()
-    {
-        Debug.Log("Exiting Investigate State");
-    }
-
     private void EnterWanderState()
     {
+        m_Animator.SetBool("IsRunning", false);
         m_EnemyMovement.ChangeState(new EnemyWanderState(m_EnemyMovement, m_EnemyPerception));
     }
 

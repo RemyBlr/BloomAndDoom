@@ -7,7 +7,7 @@ public class EnemyChaseState : EnemyState
     private Vector3 m_TargetLastPosition;
 
     [SerializeField]
-    private float m_AttackRange = 0.5f;
+    private float m_AttackRange;
     [SerializeField]
     private float m_RotationSpeed = 5f;
 
@@ -20,20 +20,23 @@ public class EnemyChaseState : EnemyState
     private float m_TimeToLoseTarget = 5f;
     private float m_LoseTargetTimer = 0f;
 
-    private NavMeshAgent m_NavMeshAgent;
     private EnemyCombat m_EnemyCombat;
+    private Animator m_Animator;
+
+    private bool m_IsRunning = false;
 
     public EnemyChaseState(GameObject target, EnemyMovement enemyMovement, EnemyPerception enemyPerception)
         : base(enemyMovement, enemyPerception)
     {
         m_TargetObject = target;
-        m_NavMeshAgent = m_EnemyMovement.GetComponent<NavMeshAgent>();
+        m_NavMeshAgent.speed = enemyMovement.GetChasingSpeed();
         m_EnemyCombat = m_EnemyMovement.GetComponent<EnemyCombat>();
-    }
-
-    public override void EnterState()
-    {
-        Debug.Log("Entering Chase State");
+        if(m_EnemyCombat == null)
+        {
+            Debug.LogError("EnemyCombat component not found on " + m_EnemyMovement.gameObject.name);
+        }
+        m_Animator = m_EnemyMovement.GetComponent<Animator>();
+        m_AttackRange = m_EnemyCombat.GetAttackRange();
     }
 
     public override void UpdateState()
@@ -44,38 +47,40 @@ public class EnemyChaseState : EnemyState
 
             //turn towards target
             Vector3 direction = (m_TargetLastPosition - m_EnemyMovement.transform.position).normalized;
+        if (direction != Vector3.zero)
+        {
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
             m_EnemyMovement.transform.rotation = Quaternion.Slerp(m_EnemyMovement.transform.rotation, lookRotation, Time.deltaTime * m_RotationSpeed);
-            m_NavMeshAgent.SetDestination(m_TargetLastPosition);
-            m_NavMeshAgent.isStopped = false;
+        }
+                m_NavMeshAgent.SetDestination(m_TargetLastPosition);
+                m_NavMeshAgent.isStopped = false;
+
+        if (!m_IsRunning && m_Animator != null)
+        {
+            m_Animator.SetBool("IsRunning", true);
+            m_IsRunning = true; 
+            }
 
             if (m_EnemyCombat != null)
-            {
+        {
 
-                if (distanceToTarget <= m_AttackRange && Vector3.Angle(direction, m_EnemyMovement.transform.forward) < m_AttackingAngle)
+            if (distanceToTarget <= m_AttackRange && Vector3.Angle(direction, m_EnemyMovement.transform.forward) < m_AttackingAngle)
+            {
                 {
-                    {
-                        m_EnemyCombat.StartAttacking(true);
-                    }
-                }
-                else
-                {
-                    m_EnemyCombat.StartAttacking(false);
+                    m_EnemyCombat.StartAttacking(true);
+                    m_NavMeshAgent.isStopped = true;
+                    m_IsRunning = false;
+                    m_Animator.SetBool("IsRunning", m_IsRunning);
                 }
             }
-    }
-
-    public override void ExitState()
-    {
-            if (m_EnemyCombat != null)
+            else
             {
                 m_EnemyCombat.StartAttacking(false);
+                m_NavMeshAgent.isStopped = false;
+                m_IsRunning = true;
+                m_Animator.SetBool("IsRunning", m_IsRunning);
             }
-            m_NavMeshAgent.isStopped = true;
-            m_LoseTargetTimer = 0f; // Reset timer
-            m_TargetObject = null;
-            m_TargetLastPosition = Vector3.zero;
-        Debug.Log("Exiting Chase State");
+        }
     }
 
     private void CheckStateValidity()

@@ -42,7 +42,6 @@ public class EnemyPerception : MonoBehaviour
         m_HalfFovCosine = Mathf.Cos(m_FieldOfView / 2f * Mathf.Deg2Rad); // We only calculate once the half FOV cosine to optimize performance
         m_DetectionRangeSqr = m_DetectionRange * m_DetectionRange; // Same for the squared detection range
         m_TargetHuggingDistanceSqr = m_TargetHuggingDistance * m_TargetHuggingDistance; // Same for the squared target hugging distance
-        m_ObstacleMask = LayerMask.GetMask("Environment", "Terrain","Ground");
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
