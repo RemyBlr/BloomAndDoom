@@ -8,15 +8,11 @@ public class CrosshairController : MonoBehaviour
     [SerializeField] private float crossHairOffsetMultiplier = 0.01f;
     [SerializeField] private LayerMask raycastMask = ~0;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         aimCamera = Camera.main;
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
         Vector3 screenCenter = new Vector3(Screen.width / 2f - 30f, Screen.height / 2f - 30f, 0);

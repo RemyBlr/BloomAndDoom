@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1440527626003882484}
   - component: {fileID: 4147894735282856895}
   - component: {fileID: 8898804443961388900}
-  - component: {fileID: 8189323033587817690}
   - component: {fileID: 913488112225435820}
+  - component: {fileID: -5114624896199470382}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Weapon
@@ -31,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.527, z: 0}
-  m_LocalScale: {x: 0.03, y: 0.03, z: 0.39}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.39000005}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2667050328578885807}
   m_Father: {fileID: 0}
@@ -114,7 +114,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &8189323033587817690
+--- !u!114 &913488112225435820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3437109981842104820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a7e8a2a919b73847a5604d1422275a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DestroyProjectile
+--- !u!54 &-5114624896199470382
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,18 +153,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &913488112225435820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3437109981842104820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a7e8a2a919b73847a5604d1422275a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DestroyProjectile
 --- !u!1 &6094972087398175588
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 7477980201784896108}
   m_Layer: 0
   m_Name: end
-  m_TagString: Weapon
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,8 +183,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.482}
-  m_LocalScale: {x: 1.26, y: 1.26, z: 0.09692307}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.05, y: 1.05, z: 0.080769226}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7841056748339428472}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
