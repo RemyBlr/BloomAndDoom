@@ -10,17 +10,17 @@ public class AnimationStateController : MonoBehaviour
     private int isFallingId;
     private int velocityXId;
     private int velocityYId;
-    private int isGroundedId;
+    private int shootingId;
 
+    public Action OnShootCallback;
+    
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        characterController = GetComponent<CharacterController>();
-
-        isFallingId  = Animator.StringToHash("IsFalling");
-        velocityXId  = Animator.StringToHash("VelocityX");
-        velocityYId  = Animator.StringToHash("VelocityY");
-        isGroundedId = Animator.StringToHash("IsGrounded");
+        isFallingId = Animator.StringToHash("IsFalling");
+        velocityXId = Animator.StringToHash("VelocityX");
+        velocityYId = Animator.StringToHash("VelocityY");
+        shootingId = Animator.StringToHash("Shoot");
     }
 
     void Start()
@@ -44,7 +44,18 @@ public class AnimationStateController : MonoBehaviour
         animator.SetBool(isGroundedId, grounded);
     }
 
-    public void SetFalling(bool state)
+
+    public void OnShoot()
+    {
+        animator.SetTrigger(shootingId);
+    }
+
+    public void OnShootEvent()
+    {
+        OnShootCallback?.Invoke();
+    }
+        
+    public void EnableCamera()
     {
         if (animator == null) return;
         animator.SetBool(isFallingId, state);
