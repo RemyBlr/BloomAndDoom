@@ -36,8 +36,9 @@ public class PlayerController : MonoBehaviour
     private float lastGroundedAt = -999f;
     private float lastJumpPressedAt = -999f;
 
-    void Start()
+    private void Start()
     {
+        camera = Camera.main;
         controller = GetComponent<CharacterController>();
         animationState = GetComponent<AnimationStateController>();
 
@@ -45,19 +46,19 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
     }
 
-    void OnMove(InputValue value)
+    private void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
         animationState?.OnRun(moveInput);
     }
 
-    void OnJump(InputValue value)
+    private void OnJump(InputValue value)
     {
         if (value.isPressed)
             lastJumpPressedAt = Time.time; // use buffer; actual jump happens in Update
     }
 
-    void Update()
+    private void Update()
     {
         bool grounded = GroundCheck();
         UpdateGroundedState(grounded);
@@ -67,13 +68,13 @@ public class PlayerController : MonoBehaviour
         UpdateAnimationStates(grounded);
     }
 
-    void UpdateGroundedState(bool grounded)
+    private void UpdateGroundedState(bool grounded)
     {
         if (grounded)
             lastGroundedAt = Time.time;
     }
 
-    void HandleJump(bool grounded)
+    private void HandleJump(bool grounded)
     {
         bool canCoyote = (Time.time - lastGroundedAt) <= coyoteTime;
         bool jumpBuffered = (Time.time - lastJumpPressedAt) <= jumpBufferTime;
@@ -86,7 +87,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void MovePlayer(bool grounded)
+    private void MovePlayer(bool grounded)
     {
         Vector3 camF = camera.transform.forward; camF.y = 0f; camF.Normalize();
         Vector3 camR = camera.transform.right;   camR.y = 0f; camR.Normalize();
@@ -103,14 +104,13 @@ public class PlayerController : MonoBehaviour
         controller.Move(finalMove * Time.deltaTime);
     }
 
-    void UpdateAnimationStates(bool grounded)
+    private void UpdateAnimationStates(bool grounded)
     {
-        animationState?.SetGrounded(grounded);
         bool isFalling = !grounded && velocity.y < 0f;
-        animationState?.SetFalling(isFalling);
+        animationState.UpdateFallState(isFalling);
     }
 
-    void HandleRotation()
+    private void HandleRotation()
     {
         if (!shouldFaceMoveDirection || yawTarget == null) return;
 
@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    bool GroundCheck()
+    private bool GroundCheck()
     {
         Vector3 center = controller.bounds.center;
         float feetY = controller.bounds.min.y;
