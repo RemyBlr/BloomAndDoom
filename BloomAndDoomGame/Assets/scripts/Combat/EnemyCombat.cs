@@ -7,6 +7,9 @@ public class EnemyCombat : MonoBehaviour
     [SerializeField]
     protected float m_AttackSpeed = 1.0f;
 
+    [SerializeField]
+    private float m_AttackRange = 1.5f;
+
     float attackSpeedTimer = 0f;
 
     bool m_IsAttacking = false;
@@ -23,22 +26,28 @@ public class EnemyCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-          if(m_IsAttacking)
-          {
-              attackSpeedTimer += Time.deltaTime;
-              if(attackSpeedTimer > m_AttackSpeed)
-              {
-                  attackSpeedTimer = 0;
-                  BasicAttack();
-              }
-          }
+        if (m_IsAttacking)
+        {
+            attackSpeedTimer += Time.deltaTime;
+            if (attackSpeedTimer > m_AttackSpeed)
+            {
+                attackSpeedTimer = 0;
+                BasicAttack();
+            }
+        }
     }
-    public void StartAttacking(bool attack){
+    public void StartAttacking(bool attack)
+    {
         m_IsAttacking = attack;
     }
 
     protected virtual void BasicAttack()
     {
+    }
+    
+    public float GetAttackRange()
+    {
+        return m_AttackRange;
     }
 
 

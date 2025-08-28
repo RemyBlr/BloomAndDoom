@@ -489,8 +489,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   m_PlayerTag: Player
-  m_AttackRange: 4
-  m_RotationSpeed: 5
 --- !u!195 &3268992695613141400
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -526,6 +524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyProjectileCombat
   m_AttackSpeed: 1
+  m_AttackRange: 1.5
   m_ProjectilePrefab: {fileID: 392478577220086501, guid: 17c644bbfb7fb574e936cbafea20e991, type: 3}
   m_FirePoint: {fileID: 2936444243033657696}
   m_ProjectileSpeed: 10
