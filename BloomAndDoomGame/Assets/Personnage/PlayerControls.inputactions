@@ -30,31 +30,13 @@
                     "id": "0a66d8a0-c0b7-49fb-92c7-754d9301e300",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 },
                 {
                     "name": "Punch",
                     "type": "Button",
                     "id": "f69972a9-5552-4292-8c8e-05fe1ca64f7c",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Aim",
-                    "type": "Button",
-                    "id": "ad1ed6db-9b81-4a78-8289-08d459a3e20c",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SwitchShoulder",
-                    "type": "Button",
-                    "id": "889ef5fb-0d0a-4ee3-8616-1bc64a0d3048",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -158,28 +140,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Punch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "951b5160-f4af-42dd-a5a8-54f078a3b738",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "765721d1-2d57-4433-96f2-6775a2a6cf57",
-                    "path": "<Keyboard>/v",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SwitchShoulder",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
