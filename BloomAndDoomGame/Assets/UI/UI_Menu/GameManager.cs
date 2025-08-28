@@ -44,6 +44,15 @@ public class GameManager : MonoBehaviour
             GameObject statsManager = new GameObject("GameStats");
             statsManager.AddComponent<GameStats>();
         }
+
+        CharacterStats playerStats = playerInstance.AddComponent<CharacterStats>();
+        playerStats.SetCharacterClass(SelectedCharacter.pickedClass);
+        
+        if (playerStats != null) {
+            Debug.Log($"Classe {SelectedCharacter.pickedClass.className} assignée au joueur");
+        }
+        else
+            Debug.LogError("CharacterStats manquant sur le prefab joueur!");
     }
 
     public void InstantiateMonsters(Vector3[] positions)

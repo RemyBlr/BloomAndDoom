@@ -14,8 +14,7 @@ public class StatModifier {
     }
 
     public float GetValue() {
-        // TODO adapt, when testing is possible
-        return (baseValue + flatBonus) * percentageBonus; // maybe (1f + percentageBonus) idk
+        return (baseValue + flatBonus) * (1f + percentageBonus);
     }
 }
 
@@ -25,7 +24,8 @@ public enum StatType {
     Speed,
     Defense,
     CritChance,
-    CritDamage
+    CritDamage,
+    AttackSpeed
 }
 
 //-------------------------------------------------------------------------------------
@@ -46,6 +46,7 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] private StatModifier defense = new StatModifier();
     [SerializeField] private StatModifier critChance = new StatModifier();
     [SerializeField] private StatModifier critDamage = new StatModifier();
+    [SerializeField] private StatModifier attackSpeed = new StatModifier();
     
     [Header("Current")]
     [SerializeField] private float currentHealth;
@@ -62,8 +63,14 @@ public class CharacterStats : MonoBehaviour
     public static event Action<int> OnCurrencyChanged;
     
     private void InitializeFromClass() {
-        if (characterClass == null) return;
+        if (characterClass == null) 
+        {
+            Debug.LogError("CharacterClass est null! Impossible d'initialiser les stats.");
+            return;
+        }
 
+        Debug.Log($"Initialisation des stats pour la classe: {characterClass.className}");
+        
         CharacterBaseStats baseStats = characterClass.GetStatsAtLevel(currentLevel);
         
         // Base stats from class
@@ -73,12 +80,16 @@ public class CharacterStats : MonoBehaviour
         defense = new StatModifier(baseStats.def);
         critChance = new StatModifier(baseStats.critChance);
         critDamage = new StatModifier(baseStats.critDamage);
+        attackSpeed = new StatModifier(baseStats.atkSpd);
 
         currentLevel = characterClass.startingLevel;
         currency = characterClass.startingCurrency;
         
-        // Current health
-        currentHealth = health.GetValue();
+        // Current health - IMPORTANT: initialiser après avoir défini health
+        float maxHP = health.GetValue();
+        currentHealth = maxHP;
+        
+        Debug.Log($"Stats initialisées: HP={maxHP}, ATK={baseStats.atk}, Level={currentLevel}");
         
         OnStatChanged?.Invoke(this);
     }
@@ -99,6 +110,7 @@ public class CharacterStats : MonoBehaviour
     public float GetDefense() => defense.GetValue();
     public float GetCritChance() => Mathf.Clamp01(critChance.GetValue());
     public float GetCritDamage() => critDamage.GetValue();
+    public float GetAttackSpeed() => attackSpeed.GetValue();
     
     public float GetCurrentHealth() => currentHealth;
     public int GetLevel() => currentLevel;
@@ -114,6 +126,7 @@ public class CharacterStats : MonoBehaviour
             StatType.Defense => defense,
             StatType.CritChance => critChance,
             StatType.CritDamage => critDamage,
+            StatType.AttackSpeed => attackSpeed,
             _ => throw new ArgumentException("Stat pas trouvée")
         };
     }

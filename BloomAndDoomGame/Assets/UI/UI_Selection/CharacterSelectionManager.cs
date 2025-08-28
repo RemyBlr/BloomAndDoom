@@ -15,6 +15,7 @@ public class CharacterSelectionManager : MonoBehaviour
     public TextMeshProUGUI def;
     public TextMeshProUGUI critChance;
     public TextMeshProUGUI critDamage;
+    public TextMeshProUGUI atkSpd;
     public Transform buttonParent;
     public GameObject buttonPrefab;
 
@@ -36,20 +37,22 @@ public class CharacterSelectionManager : MonoBehaviour
     private string mapSceneName = "GameScene";
 
     // claled when script is laoded
-    void Awake() {
+    void Awake()
+    {
         // loads all classes
         classes = Resources.LoadAll<CharacterClass>("Classes");
 
         // create button for each class
         classButtons = new ClassButtonUI[classes.Length];
 
-        for(int i = 0; i < classes.Length; ++i) {
+        for (int i = 0; i < classes.Length; ++i)
+        {
             int index = i;
             GameObject newButton = Instantiate(buttonPrefab, buttonParent);
 
             // prefab script
             var btnUI = newButton.GetComponent<ClassButtonUI>();
-            if(btnUI != null && classes[i].portrait != null)
+            if (btnUI != null && classes[i].portrait != null)
                 btnUI.portrait.sprite = classes[i].portrait;
 
             newButton.GetComponent<Button>().onClick.AddListener(() => SelectClass(index));
@@ -60,7 +63,8 @@ public class CharacterSelectionManager : MonoBehaviour
         }
 
         // First class selected by default
-        if (classes.Length > 0) {
+        if (classes.Length > 0)
+        {
             SelectClass(0);
             //GameManager.Instance.playerInstance = classes[0].prefab;
         }
@@ -68,20 +72,27 @@ public class CharacterSelectionManager : MonoBehaviour
 
     private void Start()
     {
+
         SceneManager.sceneLoaded += (arg0, mode) =>
         {
-            GameManager.Instance.InstantiatePlayer();
+            if (arg0.name == mapSceneName)
+            {
+                GameManager.Instance.InstantiatePlayer();
+            }
         };
     }
 
-    public void SelectClass(int index) {
+    public void SelectClass(int index)
+    {
 
         // Add border to selected class
-        for (int i = 0; i < classButtons.Length; i++) {
-            if (classButtons[i] != null) {
+        for (int i = 0; i < classButtons.Length; i++)
+        {
+            if (classButtons[i] != null)
+            {
                 bool selected = (i == index);
                 classButtons[i].SetSelected(selected);
-                
+
                 Debug.Log($"Button {i} selected = {selected}");
             }
         }
@@ -93,38 +104,43 @@ public class CharacterSelectionManager : MonoBehaviour
         //GameManager.Instance.character = picked.prefab;
 
         // Preview
-        if(currentPreview != null) Destroy(currentPreview);
+        if (currentPreview != null) Destroy(currentPreview);
         CreatePreview(picked);
-       
+
         // set picked class
         SelectedCharacter.pickedClass = picked;
     }
 
-    private void DisplayClassStats(CharacterClass characterClass) {
+    private void DisplayClassStats(CharacterClass characterClass)
+    {
         name.text = characterClass.className;
-        
+
         // Get base stats at start of game
         CharacterBaseStats baseStats = characterClass.GetStatsAtLevel(1);
-        
+
         // Display stats
-        hp.text = $"HP: {baseStats.hp:F0}";
-        atk.text = $"ATK: {baseStats.atk:F0}";
-        spd.text = $"SPD: {baseStats.spd:F0}";
-        def.text = $"DEF: {baseStats.def:F0}";
-        critChance.text = $"CRIT: {baseStats.critChance:P0}";
-        critDamage.text = $"CRIT DMG: +{baseStats.critDamage:P0}";
-        
+        hp.text = $"Hp: {baseStats.hp:F0}";
+        atk.text = $"Atk: {baseStats.atk:F0}";
+        spd.text = $"Spd: {baseStats.spd:F0}";
+        def.text = $"Def: {baseStats.def:F0}";
+        critChance.text = $"Crit chance: {baseStats.critChance:P0}";
+        critDamage.text = $"Crit dmg: +{baseStats.critDamage:P0}";
+        atkSpd.text = $"Atk spd: +{baseStats.atkSpd:F0}";
+
         // Display spells
         int numberOfSpells = 3;
-        for(int i = 0; i < numberOfSpells; ++i) {
-            if(i < characterClass.spells.Length) {
+        for (int i = 0; i < numberOfSpells; ++i)
+        {
+            if (i < characterClass.spells.Length)
+            {
                 spellIcons[i].sprite = characterClass.spells[i].icon;
                 spellDescription[i].text = characterClass.spells[i].description;
             }
         }
     }
 
-    private void CreatePreview(CharacterClass characterClass) {
+    private void CreatePreview(CharacterClass characterClass)
+    {
         currentPreview = Instantiate(characterClass.prefabPreview, previewStartPoint);
 
         // offset at start
@@ -159,7 +175,7 @@ public class CharacterSelectionManager : MonoBehaviour
         // Select default weapon
         if (SelectedCharacter.selectedWeapon == null && defaultWeapon != null)
             SelectedCharacter.selectedWeapon = defaultWeapon;
-        
+
         // Update UI
         foreach (Transform child in weaponsParent)
             child.GetComponent<WeaponUI>().UpdateUI();
@@ -168,9 +184,11 @@ public class CharacterSelectionManager : MonoBehaviour
 
     // Update is called once per frame
     // In this case, turns the prefab
-    void Update() {
+    void Update()
+    {
         // mouse 0 is left click
-        if(currentPreview != null && Mouse.current.leftButton.isPressed) {
+        if (currentPreview != null && Mouse.current.leftButton.isPressed)
+        {
             // mouse x is horizontal mouvement
             float mouseX = Mouse.current.delta.ReadValue().x;
             if (mouseX != 0)
@@ -178,14 +196,17 @@ public class CharacterSelectionManager : MonoBehaviour
         }
     }
 
-    public void BackToMenu() {
+    public void BackToMenu()
+    {
         Debug.Log("Back to menu from class selection");
         SceneManager.LoadScene(mainMenuSceneName);
     }
 
-    public void PlayGame() {
+    public void PlayGame()
+    {
         Debug.Log("Start game");
-        if(SelectedCharacter.pickedClass == null) {
+        if (SelectedCharacter.pickedClass == null)
+        {
             Debug.LogWarning("Aucune classe sélectionée");
             return;
         }
