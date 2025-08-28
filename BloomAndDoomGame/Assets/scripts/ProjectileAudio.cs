@@ -25,11 +25,11 @@ public class ProjectileAudio : MonoBehaviour
         Debug.Log("Projectile hit: " + other.name);
         if (other.CompareTag(m_TargetTag))
         {
-           HealthSystem victimHealth = other.GetComponent<HealthSystem>();
-           if (victimHealth != null)
-           {
-               victimHealth.TakeDamage(m_Damage);
-           }
+        //    HealthSystem victimHealth = other.GetComponent<HealthSystem>();
+        //    if (victimHealth != null)
+        //    {
+        //        victimHealth.TakeDamage(m_Damage);
+        //    }
 
         }
         Destroy(gameObject); 

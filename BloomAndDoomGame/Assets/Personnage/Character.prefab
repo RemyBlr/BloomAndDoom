@@ -2165,7 +2165,6 @@ GameObject:
   - component: {fileID: 445338923214020950}
   - component: {fileID: 2458531652357612696}
   - component: {fileID: 8111781848147628747}
-  - component: {fileID: 7499001296208440856}
   - component: {fileID: 5251376893148250087}
   m_Layer: 3
   m_Name: Player
@@ -2315,20 +2314,6 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &7499001296208440856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7046377414480159205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 967bbf453b3ab47e499e4b4593a776bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealthSystem
-  showDamagePopup: 1
-  dmgTextPrefab: {fileID: 5403528675670166939, guid: 3988ab43343e24e76987bf79c16005c9, type: 3}
 --- !u!114 &5251376893148250087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2341,7 +2326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1872649a452a94ee2801fe09b9ec9d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  characterClass: {fileID: 0}
+  characterClass: {fileID: 11400000, guid: 5a42690be7f3f458bb8ef3bc20890f3b, type: 2}
   health:
     baseValue: 0
     flatBonus: 0
