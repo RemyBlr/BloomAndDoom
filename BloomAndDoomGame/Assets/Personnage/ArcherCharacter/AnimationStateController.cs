@@ -10,6 +10,9 @@ public class AnimationStateController : MonoBehaviour
     private int isFallingId;
     private int velocityXId;
     private int velocityYId;
+    private int shootingId;
+
+    public Action OnShootCallback;
     
     private void Awake()
     {
@@ -18,6 +21,7 @@ public class AnimationStateController : MonoBehaviour
         isFallingId = Animator.StringToHash("IsFalling");
         velocityXId = Animator.StringToHash("VelocityX");
         velocityYId = Animator.StringToHash("VelocityY");
+        shootingId = Animator.StringToHash("Shoot");
     }
 
     void Start()
@@ -43,6 +47,16 @@ public class AnimationStateController : MonoBehaviour
         animator.SetBool(isFallingId, state);
     }
 
+    public void OnShoot()
+    {
+        animator.SetTrigger(shootingId);
+    }
+
+    public void OnShootEvent()
+    {
+        OnShootCallback?.Invoke();
+    }
+        
     public void EnableCamera()
     {
         cameraHolder.SetActive(true);
