@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class EnemyMeleeCombat : EnemyCombat 
 {
-
-
     [SerializeField]
     private Collider m_WeaponCollider;
 
