@@ -277,6 +277,7 @@ GameObject:
   - component: {fileID: 2458531652357612696}
   - component: {fileID: 8111781848147628747}
   - component: {fileID: 2449868756608229855}
+  - component: {fileID: 7182903829760801839}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -426,6 +427,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   m_MaxHealth: 100
+  dmgTextPrefab: {fileID: 5403528675670166939, guid: 3988ab43343e24e76987bf79c16005c9, type: 3}
+--- !u!114 &7182903829760801839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7046377414480159205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967bbf453b3ab47e499e4b4593a776bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealthSystem
+  showDamagePopup: 0
   dmgTextPrefab: {fileID: 5403528675670166939, guid: 3988ab43343e24e76987bf79c16005c9, type: 3}
 --- !u!1 &8275847566554965446
 GameObject:

@@ -1270,6 +1270,7 @@ GameObject:
   - component: {fileID: 3035301473803632071}
   - component: {fileID: 1952440735174802439}
   - component: {fileID: 8199945935904394082}
+  - component: {fileID: 4131210242230167691}
   m_Layer: 0
   m_Name: DogPolyart
   m_TagString: Enemy
@@ -1374,13 +1375,28 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066896392038628118}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a555abb0442e42e7ace5fe981259b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   m_MaxHealth: 100
   dmgTextPrefab: {fileID: 5403528675670166939, guid: 3988ab43343e24e76987bf79c16005c9, type: 3}
+--- !u!114 &4131210242230167691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066896392038628118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1a654478fff46a4a27b8fa7df5dc10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthSystem
+  showDamagePopup: 1
+  dmgTextPrefab: {fileID: 5403528675670166939, guid: 3988ab43343e24e76987bf79c16005c9, type: 3}
+  enemyStats: {fileID: 0}
 --- !u!1 &2066896392038628120
 GameObject:
   m_ObjectHideFlags: 0

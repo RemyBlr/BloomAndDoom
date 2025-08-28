@@ -401,6 +401,7 @@ GameObject:
   - component: {fileID: 3268992695613141400}
   - component: {fileID: 1608312649638821852}
   - component: {fileID: 7483242843964276397}
+  - component: {fileID: 5829269860178071681}
   m_Layer: 0
   m_Name: BeholderPolyartDefault
   m_TagString: Untagged
@@ -538,14 +539,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695502807786733843}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a555abb0442e42e7ace5fe981259b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   m_MaxHealth: 100
   dmgTextPrefab: {fileID: 0}
+--- !u!114 &5829269860178071681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695502807786733843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1a654478fff46a4a27b8fa7df5dc10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthSystem
   showDamagePopup: 1
+  dmgTextPrefab: {fileID: 5403528675670166939, guid: 3988ab43343e24e76987bf79c16005c9, type: 3}
 --- !u!1 &1695502807786733845
 GameObject:
   m_ObjectHideFlags: 0

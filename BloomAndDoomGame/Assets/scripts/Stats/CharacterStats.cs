@@ -14,8 +14,7 @@ public class StatModifier {
     }
 
     public float GetValue() {
-        // TODO adapt, when testing is possible
-        return (baseValue + flatBonus) * percentageBonus; // maybe (1f + percentageBonus) idk
+        return (baseValue + flatBonus) * (1f + percentageBonus);
     }
 }
 
@@ -64,8 +63,14 @@ public class CharacterStats : MonoBehaviour
     public static event Action<int> OnCurrencyChanged;
     
     private void InitializeFromClass() {
-        if (characterClass == null) return;
+        if (characterClass == null) 
+        {
+            Debug.LogError("CharacterClass est null! Impossible d'initialiser les stats.");
+            return;
+        }
 
+        Debug.Log($"Initialisation des stats pour la classe: {characterClass.className}");
+        
         CharacterBaseStats baseStats = characterClass.GetStatsAtLevel(currentLevel);
         
         // Base stats from class
@@ -80,8 +85,11 @@ public class CharacterStats : MonoBehaviour
         currentLevel = characterClass.startingLevel;
         currency = characterClass.startingCurrency;
         
-        // Current health
-        currentHealth = health.GetValue();
+        // Current health - IMPORTANT: initialiser après avoir défini health
+        float maxHP = health.GetValue();
+        currentHealth = maxHP;
+        
+        Debug.Log($"Stats initialisées: HP={maxHP}, ATK={baseStats.atk}, Level={currentLevel}");
         
         OnStatChanged?.Invoke(this);
     }

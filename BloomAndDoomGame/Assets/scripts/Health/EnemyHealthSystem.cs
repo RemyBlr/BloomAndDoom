@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class EnemyHealthSystem : BaseHealthSystem
 {
-    [Header("Enemy Configuration")]
-    [SerializeField] private EnemyStats enemyStats;
+    private EnemyStats enemyStats;
     
     private EnemyRuntimeStats runtimeStats;
     private float currentHealth;

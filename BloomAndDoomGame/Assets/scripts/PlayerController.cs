@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
-        Debug.Log($"Move Input: {moveInput}");
+        //Debug.Log($"Move Input: {moveInput}");
 
         // Update animation based on movement
         if (animationState != null)
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 pos = arrow_spawn.transform.position + arrow_spawn.transform.forward * 2f;
 
-        print($"position: {pos}");
+        //print($"position: {pos}");
 
         GameObject arr = Instantiate(arrow, pos, arrow_spawn.transform.rotation);
         arr.GetComponent<Rigidbody>().AddForce(arrow_spawn.transform.forward * arrow_velocity, ForceMode.Impulse);
@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
         // Debug pour voir si on bouge
         if (moveDirection.magnitude > 0.1f)
         {
-            Debug.Log($"Moving: {moveDirection} | Speed: {speed} | Input: {moveInput}");
+            //Debug.Log($"Moving: {moveDirection} | Speed: {speed} | Input: {moveInput}");
         }
 
         controller.Move(moveDirection * speed * Time.deltaTime);
