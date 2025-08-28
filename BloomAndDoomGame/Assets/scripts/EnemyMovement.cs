@@ -3,29 +3,34 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField]
-    private string m_PlayerTag = "Player";
+    public NavMeshAgent m_NavMeshAgent { get; private set; }
+    public Animator m_Animator { get; private set; }
+    public EnemyCombat m_EnemyCombat { get; private set; }
+    public EnemyPerception m_EnemyPerception { get; private set; }
+    public GameObject m_PlayerObject { get; private set; }
 
-    private GameObject m_PlayerObject;
-    private Vector3 m_PlayerPosition;
     [SerializeField]
-    private float m_AttackRange = 0.5f;
+    private float m_WanderingSpeed = 2.0f;
+
     [SerializeField]
-    private float m_RotationSpeed = 5f;
-    bool m_IsMoving = false;
-    Animator m_Animator;
+    private float m_ChasingSpeed = 4.0f;
+    private EnemyState m_CurrentState;
+    [SerializeField] private string m_PlayerTag = "Player";
 
-    NavMeshAgent m_NavMeshAgent;
-    EnemyCombat m_EnemyCombat;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         m_Animator = GetComponent<Animator>();
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
         m_EnemyCombat = GetComponent<EnemyCombat>();
-        m_PlayerObject = FindFirstObjectByType<PlayerController>().gameObject;
-        if(m_PlayerObject == null)
+        m_CurrentState = new EnemyWanderState(this, GetComponent<EnemyPerception>());
+        m_PlayerObject = GameObject.FindGameObjectWithTag(m_PlayerTag);
+    }
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        if (m_PlayerObject == null)
         {
             Debug.LogError("Player object with tag " + m_PlayerTag + " not found.");
         }
@@ -38,44 +43,22 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_PlayerPosition = m_PlayerObject.transform.position;
-        if (m_PlayerPosition != null)
-        {
+        m_CurrentState.UpdateState();
+    }
 
-            // Check distance to player
-            float distanceToPlayer = Vector3.Distance(transform.position, m_PlayerPosition);
+    public void ChangeState(EnemyState newState)
+    {
+        Debug.Log("State changed from " + m_CurrentState.GetType().Name + " to " + newState.GetType().Name);
+        m_CurrentState = newState;
+    }
 
-            if (distanceToPlayer > m_AttackRange)
-            {
-                m_NavMeshAgent.isStopped = false;
-                m_NavMeshAgent.SetDestination(m_PlayerPosition);
-                m_IsMoving = true;
-                if(m_EnemyCombat != null)
-                {
-                    // Rotate towards the player before attacking
-                    Vector3 direction = (m_PlayerPosition - transform.position).normalized;
-                    Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * m_RotationSpeed);
+    public float GetWanderingSpeed()
+    {
+        return m_WanderingSpeed;
+    }
 
-                    m_EnemyCombat.StartAttacking(false);
-                }
-            }
-            else
-            {
-                m_NavMeshAgent.isStopped = true;
-                m_IsMoving = false;
-
-                
-
-                if(m_EnemyCombat != null)
-                {
-                    m_EnemyCombat.StartAttacking(true);
-                }
-            }
-            if (m_Animator != null)
-            {
-                m_Animator.SetBool("isRunning", m_IsMoving);
-            }
-        }
+    public float GetChasingSpeed()
+    {
+        return m_ChasingSpeed;
     }
 }
