@@ -15,6 +15,7 @@ public class CharacterSelectionManager : MonoBehaviour
     public TextMeshProUGUI def;
     public TextMeshProUGUI critChance;
     public TextMeshProUGUI critDamage;
+    public TextMeshProUGUI atkSpd;
     public Transform buttonParent;
     public GameObject buttonPrefab;
 
@@ -107,12 +108,13 @@ public class CharacterSelectionManager : MonoBehaviour
         CharacterBaseStats baseStats = characterClass.GetStatsAtLevel(1);
         
         // Display stats
-        hp.text = $"HP: {baseStats.hp:F0}";
-        atk.text = $"ATK: {baseStats.atk:F0}";
-        spd.text = $"SPD: {baseStats.spd:F0}";
-        def.text = $"DEF: {baseStats.def:F0}";
-        critChance.text = $"CRIT: {baseStats.critChance:P0}";
-        critDamage.text = $"CRIT DMG: +{baseStats.critDamage:P0}";
+        hp.text = $"Hp: {baseStats.hp:F0}";
+        atk.text = $"Atk: {baseStats.atk:F0}";
+        spd.text = $"Spd: {baseStats.spd:F0}";
+        def.text = $"Def: {baseStats.def:F0}";
+        critChance.text = $"Crit chance: {baseStats.critChance:P0}";
+        critDamage.text = $"Crit dmg: +{baseStats.critDamage:P0}";
+        atkSpd.text = $"Atk spd: +{baseStats.atkSpd:F0}";
         
         // Display spells
         int numberOfSpells = 3;

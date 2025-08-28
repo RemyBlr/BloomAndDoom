@@ -40,7 +40,7 @@ public class Combat : MonoBehaviour
         return new DamageInfo {damage = finalDamage, isCritical = isCritical, attacker = this.gameObject};
     }
 
-    public float DealDamageTo(HealthSystem target, float damageMultiplier = 1f)
+    public float DealDamageTo(I_Damageable target, float damageMultiplier = 1f)
     {
         if (target == null) return 0f;
         
@@ -48,6 +48,10 @@ public class Combat : MonoBehaviour
         
         // Inflict damage
         target.TakeDamage(damageInfo.damage);
+
+        // Add damage for end screen
+        if (gameObject.CompareTag("Player") && GameStats.Instance != null)
+            GameStats.Instance.AddDamageDealt(damageInfo.damage);
         
         return damageInfo.damage;
     }

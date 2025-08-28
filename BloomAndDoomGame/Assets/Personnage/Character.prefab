@@ -2188,10 +2188,11 @@ GameObject:
   - component: {fileID: 445338923214020950}
   - component: {fileID: 2458531652357612696}
   - component: {fileID: 8111781848147628747}
-  - component: {fileID: 9086601245988728589}
+  - component: {fileID: 2449868756608229855}
+  - component: {fileID: 7182903829760801839}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2337,7 +2338,7 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &9086601245988728589
+--- !u!114 &2449868756608229855
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2346,7 +2347,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7046377414480159205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e99552ad59d5a54e8ce03bd80da6357, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a555abb0442e42e7ace5fe981259b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   m_MaxHealth: 100

@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Archer
   m_EditorClassIdentifier: Assembly-CSharp::CharacterClassManager
   className: Archer
-  hp: 20
+  hp: 200
   atk: 100
   spd: 60
   def: 10
   critChance: 0.05
   critDamage: 0.5
+  atkSpd: 5
   startingLevel: 1
   startingCurrency: 0
   hpPerLevel: 10
