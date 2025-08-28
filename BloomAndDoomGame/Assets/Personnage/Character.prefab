@@ -2189,7 +2189,7 @@ GameObject:
   - component: {fileID: 2458531652357612696}
   - component: {fileID: 8111781848147628747}
   - component: {fileID: 2449868756608229855}
-  - component: {fileID: 7182903829760801839}
+  - component: {fileID: 7499001296208440856}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -2299,7 +2299,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 996f3898845512f4aa75fa43bd66f4e4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -2345,12 +2345,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7046377414480159205}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a555abb0442e42e7ace5fe981259b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
   m_MaxHealth: 100
+  dmgTextPrefab: {fileID: 5403528675670166939, guid: 3988ab43343e24e76987bf79c16005c9, type: 3}
+--- !u!114 &7499001296208440856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7046377414480159205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967bbf453b3ab47e499e4b4593a776bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealthSystem
+  showDamagePopup: 1
   dmgTextPrefab: {fileID: 5403528675670166939, guid: 3988ab43343e24e76987bf79c16005c9, type: 3}
 --- !u!1 &7059445383478149465
 GameObject:
@@ -3406,8 +3420,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9090502915793032677}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8999996, y: 1.91, z: -2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.9, y: 1.91, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3497,7 +3511,7 @@ MonoBehaviour:
   yawTarget: {fileID: 1604136106681388990}
   pitchTarget: {fileID: 4417296404166195460}
   lookInput: {fileID: -6513636764555324299, guid: 72be007b9acea6944b1bdc0bcc59cd1d, type: 3}
-  switchShouldInput: {fileID: 2288516522364375761, guid: 72be007b9acea6944b1bdc0bcc59cd1d, type: 3}
+  switchShouldInput: {fileID: 0}
   mouseSensitivity: 0.05
   sensitivity: 1.5
   pitchMin: -40

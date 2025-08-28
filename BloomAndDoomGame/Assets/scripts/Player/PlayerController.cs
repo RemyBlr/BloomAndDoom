@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -39,6 +40,12 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         camera = Camera.main;
+
+        if (!camera.TryGetComponent(out CinemachineBrain _))
+        {
+            camera.gameObject.AddComponent<CinemachineBrain>();
+        }
+
         controller = GetComponent<CharacterController>();
         animationState = GetComponent<AnimationStateController>();
 
@@ -90,7 +97,7 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer(bool grounded)
     {
         Vector3 camF = camera.transform.forward; camF.y = 0f; camF.Normalize();
-        Vector3 camR = camera.transform.right;   camR.y = 0f; camR.Normalize();
+        Vector3 camR = camera.transform.right; camR.y = 0f; camR.Normalize();
 
         Vector3 moveDir = (camF * moveInput.y + camR * moveInput.x);
         Vector3 horizontal = moveDir * speed;
