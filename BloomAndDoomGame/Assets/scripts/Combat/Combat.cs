@@ -39,20 +39,4 @@ public class Combat : MonoBehaviour
         
         return new DamageInfo {damage = finalDamage, isCritical = isCritical, attacker = this.gameObject};
     }
-
-    public float DealDamageTo(I_Damageable target, float damageMultiplier = 1f)
-    {
-        if (target == null) return 0f;
-        
-        DamageInfo damageInfo = CalculateDamage(damageMultiplier);
-        
-        // Inflict damage
-        target.TakeDamage(damageInfo.damage);
-
-        // Add damage for end screen
-        if (gameObject.CompareTag("Player") && GameStats.Instance != null)
-            GameStats.Instance.AddDamageDealt(damageInfo.damage);
-        
-        return damageInfo.damage;
-    }
 }

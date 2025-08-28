@@ -55,6 +55,8 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] private int xpForNextLevel = 100;
     [SerializeField] private int currency = 0;
 
+    private HUDManager hud;
+
     //---------------- Notifiers ----------------
     // Allows multiple scripts to listen to same event
     // UI is notified each time stat has changed
@@ -93,8 +95,10 @@ public class CharacterStats : MonoBehaviour
         
         OnStatChanged?.Invoke(this);
     }
-
-    void Start() {
+    
+    void Start()
+    {
+        hud = FindFirstObjectByType<HUDManager>();
         InitializeFromClass();
     }
 
@@ -197,7 +201,7 @@ public class CharacterStats : MonoBehaviour
         currentHealth = Mathf.Max(0f, currentHealth - finalDamage);
         
         GameStats.Instance?.AddDamageTaken(finalDamage);
-        
+        hud.SetHealth(currentHealth, GetMaxHealth());
         if (currentHealth <= 0)
             Die();
     }
