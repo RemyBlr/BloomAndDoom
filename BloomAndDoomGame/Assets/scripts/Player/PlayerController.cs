@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
     private float jumpBufferTime = 0.10f;  // before landing
 
     [Header("Interactor")] // For collectibles
-    public Transform InteractorSource;
     public float InteractRange;
 
     private CharacterController controller;
@@ -68,18 +67,18 @@ public class PlayerController : MonoBehaviour
         lastJumpPressedAt = Time.time;
     }
 
-    private void OnInteract(InputValue value)
-    {
-        Debug.Log("Is trying to interact with IInterable object");
-        Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
-        if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
-        {
-            if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
-            {
-                interactObj.Interact();
-            }
-        }
-    }
+    // private void OnInteract(InputValue value)
+    // {
+    //     Debug.Log("Is trying to interact with IInterable object");
+    //     Ray r = new Ray(camera.transform.position, camera.transform.forward);
+    //     if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
+    //     {
+    //         if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
+    //         {
+    //             interactObj.Interact();
+    //         }
+    //     }
+    // }
 
     private void Update()
     {
