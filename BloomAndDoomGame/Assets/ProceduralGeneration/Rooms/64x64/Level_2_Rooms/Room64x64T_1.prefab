@@ -1372,7 +1372,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 0
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 2
+    m_SubmeshIndex: 3
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -1457,7 +1457,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 0
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 2
+    m_SubmeshIndex: 3
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -1491,7 +1491,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 0
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 2
+    m_SubmeshIndex: 3
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -1593,7 +1593,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 0
     m_Material: {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
-    m_SubmeshIndex: 2
+    m_SubmeshIndex: 3
     m_ManualUV: 0
     elementGroup: 0
     m_TextureGroup: 6
@@ -1797,7 +1797,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 0
     m_Material: {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
-    m_SubmeshIndex: 2
+    m_SubmeshIndex: 3
     m_ManualUV: 0
     elementGroup: 0
     m_TextureGroup: 12
@@ -1814,7 +1814,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 9
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 3
+    m_SubmeshIndex: 2
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -1831,7 +1831,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 9
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 3
+    m_SubmeshIndex: 2
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -1848,7 +1848,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 9
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 3
+    m_SubmeshIndex: 2
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -1865,7 +1865,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 9
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 3
+    m_SubmeshIndex: 2
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -1933,7 +1933,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 0
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 2
+    m_SubmeshIndex: 3
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -1984,7 +1984,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 0
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 2
+    m_SubmeshIndex: 3
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -2018,7 +2018,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 0
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 2
+    m_SubmeshIndex: 3
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -2103,7 +2103,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 0
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 2
+    m_SubmeshIndex: 3
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -2171,7 +2171,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 0
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 2
+    m_SubmeshIndex: 3
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -2222,7 +2222,7 @@ MonoBehaviour:
       m_Rotation: 0
       m_Anchor: 0
     m_Material: {fileID: 0}
-    m_SubmeshIndex: 2
+    m_SubmeshIndex: 3
     m_ManualUV: 0
     elementGroup: -1
     m_TextureGroup: -1
@@ -3090,7 +3090,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3922
+  m_VersionIndex: 3930
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3146,8 +3146,8 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
   - {fileID: 2100000, guid: 1cef938def0b527469f8ef0720c534dc, type: 2}
-  - {fileID: 2100000, guid: 41fc8ea79d6bc7e4aaa461990905a56c, type: 2}
   - {fileID: 2100000, guid: f9293063ac64c474fb7b41e948349da4, type: 2}
+  - {fileID: 2100000, guid: 390d6db216815e549abf435422d2bb79, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
