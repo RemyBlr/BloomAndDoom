@@ -567,9 +567,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5125466859648742462, guid: 01a4955865e9c3744b4e1c362436fbc4, type: 3}
+      propertyPath: Level
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125466859648742462, guid: 01a4955865e9c3744b4e1c362436fbc4, type: 3}
       propertyPath: RoomCollection
       value: 
       objectReference: {fileID: 11400000, guid: d7ee9f1d264f745418716622ca98d37c, type: 2}
+    - target: {fileID: 5125466859648742462, guid: 01a4955865e9c3744b4e1c362436fbc4, type: 3}
+      propertyPath: MinMaxMonsters.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125466859648742462, guid: 01a4955865e9c3744b4e1c362436fbc4, type: 3}
+      propertyPath: MinMaxMonsters.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125466859648742462, guid: 01a4955865e9c3744b4e1c362436fbc4, type: 3}
+      propertyPath: Monsters.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125466859648742462, guid: 01a4955865e9c3744b4e1c362436fbc4, type: 3}
+      propertyPath: 'Monsters.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 1e2c7d285c47232489b21d413dbfc79d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

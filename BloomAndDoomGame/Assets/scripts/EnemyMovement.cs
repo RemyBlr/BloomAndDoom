@@ -24,6 +24,7 @@ public class EnemyMovement : MonoBehaviour
         m_Animator = GetComponent<Animator>();
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
         m_EnemyCombat = GetComponent<EnemyCombat>();
+        if (FindFirstObjectByType<PlayerController>() == null) return;
         m_PlayerObject = FindFirstObjectByType<PlayerController>().gameObject;
         if(m_PlayerObject == null)
         {
@@ -38,6 +39,7 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (m_PlayerObject == null) return;
         m_PlayerPosition = m_PlayerObject.transform.position;
         if (m_PlayerPosition != null)
         {

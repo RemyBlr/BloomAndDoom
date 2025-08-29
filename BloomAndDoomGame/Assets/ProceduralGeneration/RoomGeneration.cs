@@ -14,6 +14,10 @@ public class RoomGeneration : MonoBehaviour
 
     public List<RoomSpawner> Rooms = new List<RoomSpawner>(5);
     public List<RoomSpawner> BossRooms = new List<RoomSpawner>();
+    
+    //Monsters
+    public Vector2Int MinMaxMonsters;
+    public RoomMonsters[] Monsters;
 
     private void Awake()
     {
@@ -22,47 +26,38 @@ public class RoomGeneration : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(GenererDonjon());
-    }
-    
-    private IEnumerator GenererDonjon()
-    {
-        for (int i = 1; i <= Level; i++)
-        {
-            if (i == 1)
-            {
-                Instantiate(RoomCollection.EntryRoom, Vector3.zero, Quaternion.identity);
-            }
-            else
-            {
-                GenerateBossRoom();
-            }
-            yield return new WaitForSeconds(2f);
-        }
-        BossRooms.Add(Rooms[^1]);
-        navMesh.BuildNavMesh();
-        Vector3[] positions = new[]
-        {
-            Vector3.back * 10,
-            Vector3.forward * 10,
-            Vector3.left * 10,
-            Vector3.right * 10, 
-        };
-        GameManager.Instance.InstantiateMonsters(positions);
+        StartCoroutine(GenerateDungeon());
     }
 
-    private void GenerateBossRoom()
+    private IEnumerator GenerateDungeon()
     {
+        Instantiate(RoomCollection.EntryRoom, Vector3.zero, Quaternion.identity);
+        yield return new WaitForSeconds(2f);
         GameObject lastRoom = Rooms[^1].gameObject;
-        Vector3 position = lastRoom.transform.position;
-        Destroy(lastRoom);
-        lastRoom = Instantiate(RoomCollection.EntryRoom, position, Quaternion.identity);
         Rooms[^1] = lastRoom.GetComponent<RoomSpawner>();
         BossRooms.Add(Rooms[^1]);
+        
+        navMesh.BuildNavMesh();
+        for (int i = 1; i < Rooms.Count - 1; i++)
+        {
+            Rooms[i].InitialMonsterSpawn(Level);
+        }
     }
-
     public void AddRoom(RoomSpawner room)
     {
         Rooms.Add(room);
     }
+    /*
+    private void OnDrawGizmos()
+    {
+        if (!Application.isPlaying || Rooms == null) return;
+        for (int i = 1; i < Rooms.Count; i++)
+        {
+            for (int j = 0; j < Rooms[i].cellsCenter.Count; j++)
+            {
+                Gizmos.DrawSphere(Rooms[i].cellsCenter[j], 1f);
+            }
+        }
+    }
+    */
 }
