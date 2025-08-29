@@ -16,6 +16,11 @@ public class StatModifier {
     public float GetValue() {
         return (baseValue + flatBonus) * (1f + percentageBonus);
     }
+
+    public void SetValue(float newValue)
+    {
+        baseValue = newValue;
+    }
 }
 
 public enum StatType {
@@ -120,10 +125,15 @@ public class CharacterStats : MonoBehaviour
     public int GetLevel() => currentLevel;
     public int GetCurrency() => currency;
     public CharacterClass GetCharacterClass() => characterClass;
+    
+    public void SetHealth(float amount) { health.SetValue(health.GetValue() + amount); }
+    public void SetDefense(float amount) { defense.SetValue(defense.GetValue() + amount); }
 
     //---------------- Stat modifiers ----------------
-    private StatModifier GetStatModifier(StatType statType) {
-        return statType switch {
+    private StatModifier GetStatModifier(StatType statType)
+    {
+        return statType switch
+        {
             StatType.Health => health,
             StatType.Attack => attack,
             StatType.Speed => speed,
@@ -135,7 +145,18 @@ public class CharacterStats : MonoBehaviour
         };
     }
 
-    public void AddFlatBonus(StatType statType, float value) {
+    public void SetAttackSpeed(float amount)
+    {
+        attackSpeed.SetValue(amount);
+    }
+    
+    public void SetSpeed(float amount)
+    {
+        speed.SetValue(amount);
+    }
+
+    public void AddFlatBonus(StatType statType, float value)
+    {
         GetStatModifier(statType).flatBonus += value;
         OnStatChanged?.Invoke(this);
     }

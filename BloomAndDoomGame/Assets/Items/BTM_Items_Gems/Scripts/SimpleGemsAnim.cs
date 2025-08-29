@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace Benjathemaker
 {
-    public class SimpleGemsAnim : MonoBehaviour, IInteractable
+    public class SimpleGemsAnim : MonoBehaviour
     {
         public bool isRotating = false;
         public bool rotateX = false;
