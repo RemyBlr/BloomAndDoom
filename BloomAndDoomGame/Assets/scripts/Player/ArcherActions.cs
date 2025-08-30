@@ -21,9 +21,14 @@ public class ArcherActions : MonoBehaviour
 
     [Header("Cooldown")]
 
-    [SerializeField] private float spell1CD = 10f; // Cooldown duration in seconds
-    [SerializeField] private float spell2CD = 15f; // Cooldown duration in seconds
+    [SerializeField] private float spell1CD = 10f;
+    [SerializeField] private float spell2CD = 15f;
     [SerializeField] private float spell3CD = 5f; // Cooldown duration in seconds
+
+    [SerializeField] private float spell1Duration = 5f;
+    [SerializeField] private float spell2Duration = 5f;
+    [SerializeField] private float spell3Duration = 5f;
+
     private bool spell1Ready = true, spell2Ready = true, spell3Ready = true;
 
     private AnimationStateController animationState;
@@ -68,56 +73,57 @@ public class ArcherActions : MonoBehaviour
 
     private void OnSpell_1(InputValue value)
     {
-        Debug.Log("Attack speed + 1");
-
         if (!spell1Ready) return;
-        StartCoroutine(Spell1Trigger(spell1CD));
+        StartCoroutine(TriggerSpell1(spell1Duration));
     }
 
     private void OnSpell_2(InputValue value)
     {
-        Debug.Log("Movement speed +3");
         if (!spell2Ready) return;
-        StartCoroutine(Spell2Trigger(spell2CD));
+        StartCoroutine(TriggerSpell2(spell2Duration));
     }
 
     private void OnSpell_3(InputValue value)
     {
-        Debug.Log("Fire zone activated");
         if (!spell3Ready) return;
-        StartCoroutine(Spell3Trigger(spell3CD));
-        
+        StartCoroutine(TriggerSpell3(spell3Duration));
     }
 
     //
     // Spell activation
     //
-    private IEnumerator Spell1Trigger(float cooldown)
+    private IEnumerator TriggerSpell1(float cooldown)
     {
         spell1Ready = false;
         playerStats.SetAttackSpeed(2f);
         yield return new WaitForSeconds(cooldown);
         playerStats.SetAttackSpeed(1f); // normal
+
+        yield return new WaitForSeconds(spell1CD); // cooldown after use
         spell1Ready = true;
     }
 
-    private IEnumerator Spell2Trigger(float cooldown)
+    private IEnumerator TriggerSpell2(float cooldown)
     {
-        spell1Ready = false;
+        spell2Ready = false;
         playerStats.SetSpeed(8f);
         yield return new WaitForSeconds(cooldown);
         playerStats.SetSpeed(5f);
-        spell1Ready = true;
+
+        yield return new WaitForSeconds(spell2CD); // cooldown after use
+        spell2Ready = true;
     }
 
-    private IEnumerator Spell3Trigger(float cooldown)
+    private IEnumerator TriggerSpell3(float cooldown)
     {
-        spell1Ready = false;
+        spell3Ready = false;
 
         // Activate fire zone of player
         fireZone.SetActive(true);
         yield return new WaitForSeconds(cooldown);
         fireZone.SetActive(false);
-        spell1Ready = true;
+
+        yield return new WaitForSeconds(spell3CD); // cooldown after use
+        spell3Ready = true;
     }
 }

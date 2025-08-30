@@ -56,13 +56,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111636810015466042}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0023843627, y: 0.0046197698, z: 0.0014509036, w: 0.99998546}
-  m_LocalPosition: {x: -0.238, y: 1.424, z: 0.525}
+  m_LocalRotation: {x: -0.0023267604, y: 0.04309951, z: 0.001541588, w: 0.9990669}
+  m_LocalPosition: {x: -0.001, y: 1.424, z: 0.544}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4417296404166195460}
-  m_LocalEulerAnglesHint: {x: -0.274, y: 0.529, z: 0.165}
+  m_LocalEulerAnglesHint: {x: -0.274, y: 4.94, z: 0.165}
 --- !u!1 &114933181091879426
 GameObject:
   m_ObjectHideFlags: 0
@@ -2233,6 +2233,7 @@ MonoBehaviour:
   jumpHeight: 2
   gravity: -9.81
   shouldFaceMoveDirection: 1
+  InteractRange: 0
 --- !u!114 &2619322709240203242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2248,7 +2249,13 @@ MonoBehaviour:
   arrow_spawn: {fileID: 111636810015466042}
   arrow: {fileID: 5581752908022187645, guid: f9c3f8182639d48409fbe1b18bca54ee, type: 3}
   arrowVelocity: 75
-  shootCD: 0.3
+  fireZone: {fileID: 0}
+  spell1CD: 10
+  spell2CD: 15
+  spell3CD: 5
+  spell1Duration: 5
+  spell2Duration: 5
+  spell3Duration: 5
 --- !u!114 &445338923214020950
 MonoBehaviour:
   m_ObjectHideFlags: 0
