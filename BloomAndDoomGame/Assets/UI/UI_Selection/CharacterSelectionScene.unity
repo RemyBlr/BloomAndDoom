@@ -6199,7 +6199,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 863015168768849046, guid: 9ff7b6a19232644f197da9730bca4d39, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1763
+      value: 1813
       objectReference: {fileID: 0}
     - target: {fileID: 863015168768849046, guid: 9ff7b6a19232644f197da9730bca4d39, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6207,7 +6207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 863015168768849046, guid: 9ff7b6a19232644f197da9730bca4d39, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2173
+      value: 2073
       objectReference: {fileID: 0}
     - target: {fileID: 863015168768849046, guid: 9ff7b6a19232644f197da9730bca4d39, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7151,7 +7151,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
