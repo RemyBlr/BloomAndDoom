@@ -45,10 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778dde3882ac85449b841c8e58af23f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomGeneration
-  Level: 2
+  Level: 1
   RoomCollection: {fileID: 11400000, guid: d7ee9f1d264f745418716622ca98d37c, type: 2}
   Rooms: []
   BossRooms: []
+  MinMaxMonsters: {x: 4, y: 8}
+  Monsters:
+  - {fileID: 11400000, guid: 1e2c7d285c47232489b21d413dbfc79d, type: 2}
 --- !u!114 &1610114785263561365
 MonoBehaviour:
   m_ObjectHideFlags: 0
