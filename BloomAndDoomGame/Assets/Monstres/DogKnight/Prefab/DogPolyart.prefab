@@ -1272,7 +1272,7 @@ GameObject:
   - component: {fileID: 1952440735174802439}
   - component: {fileID: 1370618137749977753}
   - component: {fileID: -4015090746121784986}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DogPolyart
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1328,7 +1328,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0

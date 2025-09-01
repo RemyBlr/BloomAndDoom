@@ -23,6 +23,7 @@ public class EnemyDamageSystem : MonoBehaviour
         currentHeal =  currentHeal - CalculateDamage(value);
         if (!IsDead) return;
         animator.SetTrigger("IsDead");
+        GetComponent<Collider>().enabled = false;
     }
 
     private float CalculateDamage(float rawDamage)

@@ -11,6 +11,7 @@ public class ArcherProjectile : MonoBehaviour
         {
             enemy.TakeDamage(Damage);
         }
+        Destroy(gameObject);
     }
     
 }
