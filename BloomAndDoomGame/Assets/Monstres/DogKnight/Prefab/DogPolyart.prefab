@@ -1266,6 +1266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2066896392038131574}
   - component: {fileID: 2066896392029128874}
+  - component: {fileID: 6414106231570882710}
   - component: {fileID: 3035301473803632071}
   - component: {fileID: 6741238140649147336}
   - component: {fileID: 1952440735174802439}
@@ -1317,6 +1318,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &6414106231570882710
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066896392038628118}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.4
+  m_Height: 1.4
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!195 &3035301473803632071
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1352,6 +1376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamageSystem
   Stats: {fileID: 11400000, guid: 876308ce663034c759840178a792ab21, type: 2}
+  currentHeal: 100
 --- !u!114 &1952440735174802439
 MonoBehaviour:
   m_ObjectHideFlags: 0

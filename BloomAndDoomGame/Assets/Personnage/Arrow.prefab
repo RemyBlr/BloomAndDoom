@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1931791970486280683}
   - component: {fileID: 1512922378064696708}
   - component: {fileID: 4780410017246255194}
+  - component: {fileID: 8038595753481049160}
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Weapon
@@ -107,7 +108,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -152,3 +153,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a7e8a2a919b73847a5604d1422275a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DestroyProjectile
+--- !u!114 &8038595753481049160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5581752908022187645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2452d7a6e56c8c4292f84f93184c62b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ArcherProjectile
+  Damage: 0

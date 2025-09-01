@@ -17,6 +17,8 @@ public class EnemyMovement : MonoBehaviour
     private EnemyState m_CurrentState;
     [SerializeField] private string m_PlayerTag = "Player";
 
+    private EnemyDamageSystem damageSystem;
+
 
     void Awake()
     {
@@ -25,6 +27,7 @@ public class EnemyMovement : MonoBehaviour
         m_EnemyCombat = GetComponent<EnemyCombat>();
         m_CurrentState = new EnemyWanderState(this, GetComponent<EnemyPerception>());
         m_PlayerObject = GameObject.FindGameObjectWithTag(m_PlayerTag);
+        damageSystem = GetComponent<EnemyDamageSystem>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -43,11 +46,13 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (damageSystem.IsDead) return;
         m_CurrentState.UpdateState();
     }
 
     public void ChangeState(EnemyState newState)
     {
+        if (damageSystem.IsDead) return;
         Debug.Log("State changed from " + m_CurrentState.GetType().Name + " to " + newState.GetType().Name);
         m_CurrentState = newState;
     }
