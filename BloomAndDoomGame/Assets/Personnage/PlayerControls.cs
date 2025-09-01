@@ -127,6 +127,42 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""4e97ec3b-d381-477c-bc6a-ac83296eb08e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spell_1"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd6741e4-3528-408c-a698-b181c6144559"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spell_2"",
+                    ""type"": ""Button"",
+                    ""id"": ""52374369-d6cb-4985-876a-48e81c9d1626"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spell_3"",
+                    ""type"": ""Button"",
+                    ""id"": ""55b6c950-5bf4-4d50-81d9-479a21e23dc2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -228,6 +264,50 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Punch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""88a1b047-e8a7-4186-b9cc-b499aad3c505"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3b7b70e-5735-4e6b-9522-8f53610e4c1a"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell_1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""21230169-dae9-4615-a501-e240a8e8c347"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell_2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""653380ec-99ae-43b8-a346-dbcdce77a6dc"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell_3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -268,6 +348,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
         m_Gameplay_Punch = m_Gameplay.FindAction("Punch", throwIfNotFound: true);
+        m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+        m_Gameplay_Spell_1 = m_Gameplay.FindAction("Spell_1", throwIfNotFound: true);
+        m_Gameplay_Spell_2 = m_Gameplay.FindAction("Spell_2", throwIfNotFound: true);
+        m_Gameplay_Spell_3 = m_Gameplay.FindAction("Spell_3", throwIfNotFound: true);
         // CameraControls
         m_CameraControls = asset.FindActionMap("CameraControls", throwIfNotFound: true);
         m_CameraControls_Look = m_CameraControls.FindAction("Look", throwIfNotFound: true);
@@ -356,6 +440,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Shoot;
     private readonly InputAction m_Gameplay_Punch;
+    private readonly InputAction m_Gameplay_Interact;
+    private readonly InputAction m_Gameplay_Spell_1;
+    private readonly InputAction m_Gameplay_Spell_2;
+    private readonly InputAction m_Gameplay_Spell_3;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
@@ -383,6 +471,22 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/Punch".
         /// </summary>
         public InputAction @Punch => m_Wrapper.m_Gameplay_Punch;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/Interact".
+        /// </summary>
+        public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/Spell_1".
+        /// </summary>
+        public InputAction @Spell_1 => m_Wrapper.m_Gameplay_Spell_1;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/Spell_2".
+        /// </summary>
+        public InputAction @Spell_2 => m_Wrapper.m_Gameplay_Spell_2;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/Spell_3".
+        /// </summary>
+        public InputAction @Spell_3 => m_Wrapper.m_Gameplay_Spell_3;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -421,6 +525,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Punch.started += instance.OnPunch;
             @Punch.performed += instance.OnPunch;
             @Punch.canceled += instance.OnPunch;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @Spell_1.started += instance.OnSpell_1;
+            @Spell_1.performed += instance.OnSpell_1;
+            @Spell_1.canceled += instance.OnSpell_1;
+            @Spell_2.started += instance.OnSpell_2;
+            @Spell_2.performed += instance.OnSpell_2;
+            @Spell_2.canceled += instance.OnSpell_2;
+            @Spell_3.started += instance.OnSpell_3;
+            @Spell_3.performed += instance.OnSpell_3;
+            @Spell_3.canceled += instance.OnSpell_3;
         }
 
         /// <summary>
@@ -444,6 +560,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Punch.started -= instance.OnPunch;
             @Punch.performed -= instance.OnPunch;
             @Punch.canceled -= instance.OnPunch;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @Spell_1.started -= instance.OnSpell_1;
+            @Spell_1.performed -= instance.OnSpell_1;
+            @Spell_1.canceled -= instance.OnSpell_1;
+            @Spell_2.started -= instance.OnSpell_2;
+            @Spell_2.performed -= instance.OnSpell_2;
+            @Spell_2.canceled -= instance.OnSpell_2;
+            @Spell_3.started -= instance.OnSpell_3;
+            @Spell_3.performed -= instance.OnSpell_3;
+            @Spell_3.canceled -= instance.OnSpell_3;
         }
 
         /// <summary>
@@ -608,6 +736,34 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPunch(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Spell_1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpell_1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Spell_2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpell_2(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Spell_3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpell_3(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "CameraControls" which allows adding and removing callbacks.

@@ -56,13 +56,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111636810015466042}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0023843627, y: 0.0046197698, z: 0.0014509036, w: 0.99998546}
-  m_LocalPosition: {x: -0.238, y: 1.424, z: 0.525}
+  m_LocalRotation: {x: -0.0023267604, y: 0.04309951, z: 0.001541588, w: 0.9990669}
+  m_LocalPosition: {x: -0.001, y: 1.424, z: 0.544}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4417296404166195460}
-  m_LocalEulerAnglesHint: {x: -0.274, y: 0.529, z: 0.165}
+  m_LocalEulerAnglesHint: {x: -0.274, y: 4.94, z: 0.165}
 --- !u!1 &114933181091879426
 GameObject:
   m_ObjectHideFlags: 0
@@ -2165,7 +2165,6 @@ GameObject:
   - component: {fileID: 445338923214020950}
   - component: {fileID: 2458531652357612696}
   - component: {fileID: 8111781848147628747}
-  - component: {fileID: 7499001296208440856}
   - component: {fileID: 5251376893148250087}
   m_Layer: 3
   m_Name: Player
@@ -2234,6 +2233,7 @@ MonoBehaviour:
   jumpHeight: 2
   gravity: -9.81
   shouldFaceMoveDirection: 1
+  InteractRange: 0
 --- !u!114 &2619322709240203242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2249,7 +2249,13 @@ MonoBehaviour:
   arrow_spawn: {fileID: 111636810015466042}
   arrow: {fileID: 5581752908022187645, guid: f9c3f8182639d48409fbe1b18bca54ee, type: 3}
   arrowVelocity: 75
-  shootCD: 0.3
+  fireZone: {fileID: 0}
+  spell1CD: 10
+  spell2CD: 15
+  spell3CD: 5
+  spell1Duration: 5
+  spell2Duration: 5
+  spell3Duration: 5
 --- !u!114 &445338923214020950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2315,20 +2321,6 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &7499001296208440856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7046377414480159205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 967bbf453b3ab47e499e4b4593a776bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealthSystem
-  showDamagePopup: 1
-  dmgTextPrefab: {fileID: 5403528675670166939, guid: 3988ab43343e24e76987bf79c16005c9, type: 3}
 --- !u!114 &5251376893148250087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2341,7 +2333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1872649a452a94ee2801fe09b9ec9d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
-  characterClass: {fileID: 0}
+  characterClass: {fileID: 11400000, guid: 5a42690be7f3f458bb8ef3bc20890f3b, type: 2}
   health:
     baseValue: 0
     flatBonus: 0

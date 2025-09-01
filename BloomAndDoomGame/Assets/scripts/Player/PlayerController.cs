@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     private float coyoteTime = 0.10f;      // after leaving ground
     private float jumpBufferTime = 0.10f;  // before landing
 
+    [Header("Interactor")] // For collectibles
+    public float InteractRange;
+
     private CharacterController controller;
     private AnimationStateController animationState;
 
@@ -61,9 +64,21 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputValue value)
     {
-        if (value.isPressed)
-            lastJumpPressedAt = Time.time; // use buffer; actual jump happens in Update
+        lastJumpPressedAt = Time.time;
     }
+
+    // private void OnInteract(InputValue value)
+    // {
+    //     Debug.Log("Is trying to interact with IInterable object");
+    //     Ray r = new Ray(camera.transform.position, camera.transform.forward);
+    //     if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
+    //     {
+    //         if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
+    //         {
+    //             interactObj.Interact();
+    //         }
+    //     }
+    // }
 
     private void Update()
     {
