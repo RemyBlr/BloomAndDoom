@@ -45,7 +45,11 @@ public class GameManager : MonoBehaviour
             statsManager.AddComponent<GameStats>();
         }
 
-        CharacterStats playerStats = playerInstance.AddComponent<CharacterStats>();
+        CharacterStats playerStats = playerInstance.GetComponentInChildren<CharacterStats>();
+        if (playerStats == null)
+        {
+            playerStats = playerInstance.transform.GetChild(0).gameObject.AddComponent<CharacterStats>();
+        }
         playerStats.SetCharacterClass(SelectedCharacter.pickedClass);
         
         if (playerStats != null) {
