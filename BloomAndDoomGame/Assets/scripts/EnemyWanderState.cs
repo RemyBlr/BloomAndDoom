@@ -49,7 +49,6 @@ public class EnemyWanderState : EnemyState
             m_WanderTarget = GetRandomWanderPoint();
             m_NavMeshAgent.SetDestination(m_WanderTarget);
             m_ArrivedAtTarget = false;
-            Debug.Log("New wander target: " + m_WanderTarget);
             m_NavMeshAgent.isStopped = false;
             if (!m_IsWalking && m_Animator != null)
             {

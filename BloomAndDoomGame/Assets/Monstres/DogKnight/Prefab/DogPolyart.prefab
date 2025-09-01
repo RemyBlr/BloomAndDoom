@@ -1266,9 +1266,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2066896392038131574}
   - component: {fileID: 2066896392029128874}
-  - component: {fileID: 1370618137749977753}
   - component: {fileID: 3035301473803632071}
+  - component: {fileID: 6741238140649147336}
   - component: {fileID: 1952440735174802439}
+  - component: {fileID: 1370618137749977753}
+  - component: {fileID: -4015090746121784986}
   m_Layer: 0
   m_Name: DogPolyart
   m_TagString: Enemy
@@ -1315,21 +1317,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1370618137749977753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066896392038628118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d566d8cec8a09df41a70172e75789e97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::enemyMovement
-  m_WanderingSpeed: 2
-  m_ChasingSpeed: 3
-  m_PlayerTag: Player
 --- !u!195 &3035301473803632071
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1352,6 +1339,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6741238140649147336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066896392038628118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e317d5638ef76045bf0e09d02a5c500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDamageSystem
+  Stats: {fileID: 11400000, guid: 876308ce663034c759840178a792ab21, type: 2}
 --- !u!114 &1952440735174802439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1367,6 +1367,42 @@ MonoBehaviour:
   m_AttackSpeed: 1
   m_AttackRange: 3
   m_WeaponCollider: {fileID: 5162677586019547167}
+--- !u!114 &1370618137749977753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066896392038628118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d566d8cec8a09df41a70172e75789e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::enemyMovement
+  m_WanderingSpeed: 2
+  m_ChasingSpeed: 3
+  m_PlayerTag: Player
+--- !u!114 &-4015090746121784986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066896392038628118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae58ba3a5e2dd8b44a9a2d7032bbfe1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPerception
+  m_TargetTag: Player
+  m_DetectionRange: 10
+  m_TargetHuggingDistance: 0.5
+  m_FieldOfView: 120
+  m_Eyes: {fileID: 2066896392038131574}
+  m_ObstacleMask:
+    serializedVersion: 2
+    m_Bits: 256
+  m_ObstacleCheckRadius: 0.1
 --- !u!1 &2066896392038628120
 GameObject:
   m_ObjectHideFlags: 0
