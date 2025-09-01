@@ -60,6 +60,28 @@ Chaque nouvelle version du jeu est publiée sur notre page [itch.io](https://REM
 
 ## Méthodologie Agile
 
-Nous nous inspirons de la méthodologie AGILE en organisant un débriefing quotidien en fin de journée. Ce point rapide permet à chacun de :
--   Partager les difficultés rencontrées et solliciter de l'aide.
--   Valider collectivement les objectifs et la planification pour le lendemain.
+Nous nous inspirons de la méthodologie AGILE en organisant un débriefing quotidien en début de journée. Ce point rapide permet à chacun de :
+-   Partager les difficultés rencontrées la veille et solliciter de l'aide.
+-   Valider collectivement les objectifs et la planification pour la journée même.
+Tous les sprints ont été définis sur le Discord, voici ce qui à été décidé pour ces 3 semaines.
+
+### Sprint planning 1
+![Sprint planning 1](./img/sprint_planning_1.png)
+
+### Sprint review 1
+![Sprint review 1](./img/sprint_review_1.png)
+
+### Sprint retrsopective 1
+![Sprint retrsopective 1](./img/sprint_retro_1.png)
+
+### Sprint planning 2
+![Sprint planning 2](./img/sprint_planning_2.png)
+
+### Sprint review 2
+![Sprint review 2](./img/sprint_review_2.png)
+
+### Sprint retrsopective 2
+![Sprint retrsopective 2](./img/sprint_retro_2.png)
+
+### Sprint planning 3
+![Sprint planning 3](./img/sprint_planning_3.png)
