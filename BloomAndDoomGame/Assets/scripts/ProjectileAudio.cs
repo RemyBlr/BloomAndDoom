@@ -20,7 +20,7 @@ public class ProjectileAudio : MonoBehaviour
         GetComponent<Collider>().isTrigger = true;
     }
 
-    void OnTriggerEnter(Collider other)
+    /*void OnTriggerEnter(Collider other)
     {
         Debug.Log("Projectile hit: " + other.name);
         if (other.CompareTag(m_TargetTag))
@@ -33,7 +33,7 @@ public class ProjectileAudio : MonoBehaviour
 
         }
         Destroy(gameObject); 
-    }
+    }*/
 
     public void Initialize(float damage, float speed, float lifetime, string targetTag) //We can't use constructors so the initialization has to be done this way in unity
     {
