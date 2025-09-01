@@ -49,12 +49,6 @@ public class EnemyPerception : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
 
     //Note: this weird way of checking avoid lots of recalculations
     public GameObject DetectTarget()

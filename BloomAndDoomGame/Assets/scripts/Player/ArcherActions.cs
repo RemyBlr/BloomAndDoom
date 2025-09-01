@@ -64,6 +64,7 @@ public class ArcherActions : MonoBehaviour
         Ray direction = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
         GameObject arr = Instantiate(arrow, pos, Quaternion.LookRotation(direction.direction));
         arr.GetComponent<Rigidbody>().AddForce(arrow_spawn.transform.forward * arrowVelocity, ForceMode.Impulse);
+        arr.GetComponent<ArcherProjectile>().Damage = playerStats.GetAttack();
     }
 
     private void OnPunch(InputValue value)

@@ -396,10 +396,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1695502807786446131}
   - component: {fileID: 1695502807779455699}
-  - component: {fileID: 8506371003571878400}
-  - component: {fileID: 306009168833683826}
+  - component: {fileID: 7238276188976924466}
   - component: {fileID: 3268992695613141400}
+  - component: {fileID: 2192591385913685452}
   - component: {fileID: 1608312649638821852}
+  - component: {fileID: 306009168833683826}
+  - component: {fileID: 8210685562606485127}
   m_Layer: 0
   m_Name: BeholderPolyartDefault
   m_TagString: Untagged
@@ -447,22 +449,13 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!50 &8506371003571878400
-Rigidbody2D:
-  serializedVersion: 5
+--- !u!135 &7238276188976924466
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695502807786733843}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -470,25 +463,13 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &306009168833683826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1695502807786733843}
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d566d8cec8a09df41a70172e75789e97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  m_WanderingSpeed: 2
-  m_ChasingSpeed: 4
-  m_PlayerTag: Player
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 1.45, z: 0}
 --- !u!195 &3268992695613141400
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -511,6 +492,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2192591385913685452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695502807786733843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e317d5638ef76045bf0e09d02a5c500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDamageSystem
+  Stats: {fileID: 11400000, guid: f695122737feeb941a9b8add5c0cc694, type: 2}
+  currentHeal: 100
 --- !u!114 &1608312649638821852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,6 +526,42 @@ MonoBehaviour:
   m_ProjectileLifetime: 5
   m_ProjectileTargetTag: Player
   m_ProjectileDamage: 10
+--- !u!114 &306009168833683826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695502807786733843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d566d8cec8a09df41a70172e75789e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  m_WanderingSpeed: 2
+  m_ChasingSpeed: 4
+  m_PlayerTag: Player
+--- !u!114 &8210685562606485127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695502807786733843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae58ba3a5e2dd8b44a9a2d7032bbfe1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPerception
+  m_TargetTag: Player
+  m_DetectionRange: 10
+  m_TargetHuggingDistance: 0.5
+  m_FieldOfView: 120
+  m_Eyes: {fileID: 1695502807786446131}
+  m_ObstacleMask:
+    serializedVersion: 2
+    m_Bits: 256
+  m_ObstacleCheckRadius: 0.1
 --- !u!1 &1695502807786733845
 GameObject:
   m_ObjectHideFlags: 0
