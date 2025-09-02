@@ -1377,6 +1377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamageSystem
   Stats: {fileID: 11400000, guid: 876308ce663034c759840178a792ab21, type: 2}
   currentHeal: 100
+  damagePopupPrefab: {fileID: 5403528675670166939, guid: 3988ab43343e24e76987bf79c16005c9, type: 3}
 --- !u!114 &1952440735174802439
 MonoBehaviour:
   m_ObjectHideFlags: 0
