@@ -12,10 +12,11 @@ public class ArcherActions : MonoBehaviour
     [SerializeField] private GameObject arrow;
     [SerializeField] private float arrowVelocity = 75f;
 
-    [Header("Archer controls")]
+    [Header("Controls")]
 
-    CharacterStats playerStats;
     private PlayerControls controls;
+    CharacterStats playerStats;
+    private AnimationStateController animationState;
 
     [SerializeField] private GameObject fireZone;
 
@@ -31,31 +32,18 @@ public class ArcherActions : MonoBehaviour
 
     private bool spell1Ready = true, spell2Ready = true, spell3Ready = true;
 
-    private AnimationStateController animationState;
-    private Animator animator;
-
     private void Start()
     {
         controls = new PlayerControls();
         controls.Enable();
-        controls.Gameplay.Shoot.started += OnStartShoot;
-        controls.Gameplay.Shoot.canceled += OnStopShoot;
+
+        controls.Gameplay.Attack.started += (ctx) => animationState.OnStartShoot();
+        controls.Gameplay.Attack.canceled += (ctx) => animationState.OnStopShoot();
 
         animationState = GetComponent<AnimationStateController>();
-        animator = GetComponent<Animator>();
         playerStats = GetComponent<CharacterStats>();
 
         animationState.OnShootCallback += FireArrow;
-    }
-
-    private void OnStartShoot(InputAction.CallbackContext obj)
-    {
-        animationState.OnStartShoot();
-    }
-
-    private void OnStopShoot(InputAction.CallbackContext obj)
-    {
-        animationState.OnStopShoot();
     }
 
     private void FireArrow()
@@ -65,11 +53,6 @@ public class ArcherActions : MonoBehaviour
         GameObject arr = Instantiate(arrow, pos, Quaternion.LookRotation(direction.direction));
         arr.GetComponent<Rigidbody>().AddForce(arrow_spawn.transform.forward * arrowVelocity, ForceMode.Impulse);
         arr.GetComponent<ArcherProjectile>().Damage = playerStats.GetAttack();
-    }
-
-    private void OnPunch(InputValue value)
-    {
-        animator.SetTrigger("Punch");
     }
 
     private void OnSpell_1(InputValue value)
@@ -89,6 +72,12 @@ public class ArcherActions : MonoBehaviour
         if (!spell3Ready) return;
         StartCoroutine(TriggerSpell3(spell3Duration));
     }
+
+    // private void OnPunch(InputValue value)
+    // {
+    //     if (animationState != null)
+    //         animationState.OnPunch();
+    // }
 
     //
     // Spell activation
