@@ -21,8 +21,8 @@ public class EnemyDamageSystem : MonoBehaviour
         print($"touch");
         if (IsDead) return;
         currentHeal =  currentHeal - CalculateDamage(value);
+        
         if (!IsDead) return;
-        animator.SetTrigger("IsDead");
         GetComponent<Collider>().enabled = false;
     }
 
