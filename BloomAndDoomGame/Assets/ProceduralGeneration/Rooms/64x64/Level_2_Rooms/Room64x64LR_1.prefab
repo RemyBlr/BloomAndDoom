@@ -6944,6 +6944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a4e1dd1ad322f4698e2dbecdcd0ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomSpawner
+  cellsCenter: []
   OpeningDirections: 0300000004000000
 --- !u!1 &6554962744108969388
 GameObject:

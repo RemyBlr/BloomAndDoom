@@ -2166,7 +2166,7 @@ GameObject:
   - component: {fileID: 2458531652357612696}
   - component: {fileID: 8111781848147628747}
   - component: {fileID: 5251376893148250087}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2200,7 +2200,7 @@ CharacterController:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0

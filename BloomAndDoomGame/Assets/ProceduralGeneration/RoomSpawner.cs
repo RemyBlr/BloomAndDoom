@@ -118,6 +118,12 @@ public class RoomSpawner : MonoBehaviour
             if (availableSpots.Count == 0) return;
         }
     }
+
+    public void SpawnBoss(GameObject boss)
+    {
+        if (boss == null) return;
+        Instantiate(boss, cellsCenter[cellsCenter.Count/2], Quaternion.identity);
+    }
     /*
     private void OnDrawGizmos()
     {
