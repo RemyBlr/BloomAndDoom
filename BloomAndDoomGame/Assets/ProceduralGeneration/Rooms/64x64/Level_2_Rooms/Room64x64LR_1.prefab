@@ -6582,7 +6582,7 @@ GameObject:
   - component: {fileID: 616010905669466716}
   m_Layer: 8
   m_Name: Room64x64LR_1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
