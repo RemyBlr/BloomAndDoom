@@ -7,6 +7,7 @@ public class EnemyMovement : MonoBehaviour
     public Animator m_Animator { get; private set; }
     public EnemyCombat m_EnemyCombat { get; private set; }
     public EnemyPerception m_EnemyPerception { get; private set; }
+    public EnemyDeadState EnemyDeadState { get; private set; }
     public GameObject m_PlayerObject { get; private set; }
 
     [SerializeField]
@@ -26,6 +27,7 @@ public class EnemyMovement : MonoBehaviour
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
         m_EnemyCombat = GetComponent<EnemyCombat>();
         m_CurrentState = new EnemyWanderState(this, GetComponent<EnemyPerception>());
+        EnemyDeadState = new EnemyDeadState(this, GetComponent<EnemyPerception>());
         m_PlayerObject = GameObject.FindGameObjectWithTag(m_PlayerTag);
         damageSystem = GetComponent<EnemyDamageSystem>();
     }
@@ -46,15 +48,23 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (damageSystem.IsDead) return;
+        if (damageSystem.IsDead && m_CurrentState != EnemyDeadState)
+        {
+            if (m_CurrentState != EnemyDeadState)
+            {
+                ChangeState(EnemyDeadState);
+            }
+            return;
+        }
         m_CurrentState.UpdateState();
     }
 
     public void ChangeState(EnemyState newState)
     {
-        if (damageSystem.IsDead) return;
+        m_CurrentState.OnExitState();
         Debug.Log("State changed from " + m_CurrentState.GetType().Name + " to " + newState.GetType().Name);
         m_CurrentState = newState;
+        newState.OnEnterState();
     }
 
     public float GetWanderingSpeed()

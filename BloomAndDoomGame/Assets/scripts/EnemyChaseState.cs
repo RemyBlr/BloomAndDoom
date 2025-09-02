@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -41,27 +42,27 @@ public class EnemyChaseState : EnemyState
 
     public override void UpdateState()
     {
-            CheckStateValidity();
+        CheckStateValidity();
 
-            float distanceToTarget = Vector3.Distance(m_EnemyMovement.transform.position, m_TargetLastPosition);
+        float distanceToTarget = Vector3.Distance(m_EnemyMovement.transform.position, m_TargetLastPosition);
 
-            //turn towards target
-            Vector3 direction = (m_TargetLastPosition - m_EnemyMovement.transform.position).normalized;
-        if (direction != Vector3.zero)
+        //turn towards target
+        Vector3 direction = (m_TargetLastPosition - m_EnemyMovement.transform.position).normalized;
+        if (new Vector2(direction.x, direction.z) != Vector2.zero)
         {
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
             m_EnemyMovement.transform.rotation = Quaternion.Slerp(m_EnemyMovement.transform.rotation, lookRotation, Time.deltaTime * m_RotationSpeed);
         }
-                m_NavMeshAgent.SetDestination(m_TargetLastPosition);
-                m_NavMeshAgent.isStopped = false;
+        m_NavMeshAgent.SetDestination(m_TargetLastPosition);
+        m_NavMeshAgent.isStopped = false;
 
         if (!m_IsRunning && m_Animator != null)
         {
             m_Animator.SetBool("IsRunning", true);
             m_IsRunning = true; 
-            }
+        }
 
-            if (m_EnemyCombat != null)
+        if (m_EnemyCombat != null)
         {
 
             if (distanceToTarget <= m_AttackRange && Vector3.Angle(direction, m_EnemyMovement.transform.forward) < m_AttackingAngle)
@@ -81,6 +82,13 @@ public class EnemyChaseState : EnemyState
                 m_Animator.SetBool("IsRunning", m_IsRunning);
             }
         }
+    }
+
+    public override void OnExitState()
+    {
+        m_NavMeshAgent.isStopped = true;
+        m_EnemyCombat.StartAttacking(false);
+        m_Animator.SetBool("IsRunning", false);
     }
 
     private void CheckStateValidity()
