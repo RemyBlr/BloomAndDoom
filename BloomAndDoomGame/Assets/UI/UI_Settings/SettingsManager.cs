@@ -27,12 +27,7 @@ public class SettingsManager : MonoBehaviour
 
     void Start() {
         // Check if we come from game
-        string returnScene = PlayerPrefs.GetString("ReturnToScene", "");
-        int cameFromGameFlag = PlayerPrefs.GetInt("CameFromGame", 0);
-        
-        cameFromGame = !string.IsNullOrEmpty(returnScene) && cameFromGameFlag == 1;
-        
-        SetupBackButton();
+        SetCameFromGame(false);
 
         // Resolutions
         resolutions = Screen.resolutions;
@@ -64,6 +59,11 @@ public class SettingsManager : MonoBehaviour
         SetVolume(savedVolume);
         slider.onValueChanged.AddListener(SetVolume);
     }
+
+    public void SetCameFromGame(bool isFromGame) {
+        cameFromGame = isFromGame;
+        SetupBackButton();
+    }
     
     void SetupBackButton() {
         if (cameFromGame) {
@@ -74,8 +74,10 @@ public class SettingsManager : MonoBehaviour
             if (backToMainMenuObject != null)
                 backToMainMenuObject.SetActive(false);
 
-            if (backToGameButton != null)
+            if (backToGameButton != null) {
+                backToGameButton.onClick.RemoveAllListeners();
                 backToGameButton.onClick.AddListener(ReturnToGame);
+            }
         }
         else {
             // We come from menu, show "Back to menu
@@ -85,8 +87,10 @@ public class SettingsManager : MonoBehaviour
             if (backToMainMenuObject != null)
                 backToMainMenuObject.SetActive(true);
                 
-            if (backToMainMenuButton != null)
+            if (backToMainMenuButton != null) {
+                backToMainMenuButton.onClick.RemoveAllListeners();
                 backToMainMenuButton.onClick.AddListener(BackToMainMenu);
+            }
         }
     }
 
@@ -102,8 +106,6 @@ public class SettingsManager : MonoBehaviour
     }
 
     public void BackToMainMenu() {
-        PlayerPrefs.DeleteKey("ReturnToScene");
-        PlayerPrefs.DeleteKey("CameFromGame");
         PlayerPrefs.Save();
         SceneManager.LoadScene(mainMenuSceneName);
     }
@@ -111,17 +113,19 @@ public class SettingsManager : MonoBehaviour
     public void ReturnToGame() {
         string returnScene = PlayerPrefs.GetString("ReturnToScene", "");
                 
-        if (!string.IsNullOrEmpty(returnScene)) {
-            PlayerPrefs.Save();
-            PlayerPrefs.DeleteKey("ReturnToScene");
-            PlayerPrefs.DeleteKey("CameFromGame");
-            PlayerPrefs.Save();
-            
-            SceneManager.LoadScene(returnScene);
-        }
+        GamePauseManager pauseManager = FindObjectOfType<GamePauseManager>();
+        if (pauseManager != null)
+            pauseManager.CloseSettings();
         else{
             Debug.LogWarning("Why do i come here ??!!?!?!?");
-            BackToMainMenu();
+            SceneManager.UnloadSceneAsync(gameObject.scene);
         }
+    }
+
+    void OnDestroy() {
+        if (drowpdown != null)
+            drowpdown.onValueChanged.RemoveAllListeners();
+        if (slider != null)
+            slider.onValueChanged.RemoveAllListeners();
     }
 }

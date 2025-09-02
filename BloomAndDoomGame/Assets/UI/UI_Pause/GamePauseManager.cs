@@ -14,9 +14,11 @@ public class GamePauseManager : MonoBehaviour
     
     private bool isPaused = false;
     private bool isConfirmingQuit = false;
+    private bool settingsSceneLoaded = false;
 
     public bool IsPaused => isPaused;
     public bool IsConfirmingQuit => isConfirmingQuit;
+    public bool AreSettingsOpen => settingsSceneLoaded;
 
     public static GamePauseManager Instance { get; private set; }
 
@@ -39,7 +41,9 @@ public class GamePauseManager : MonoBehaviour
 
     void Update() {
         if (Keyboard.current.escapeKey.wasPressedThisFrame) {
-            if (isConfirmingQuit)
+            if (settingsSceneLoaded)
+                CloseSettings();
+            else if (isConfirmingQuit)
                 CancelQuit();
             else if (isPaused)
                 ResumeGame();
@@ -56,6 +60,17 @@ public class GamePauseManager : MonoBehaviour
             
         if (pauseMenuUI != null)
             pauseMenuUI.SetActive(true);
+    }
+
+    public void ConfirmQuit() {        
+        // Set time to normal speed
+        Time.timeScale = 1f;
+
+        if (GameStats.Instance != null)
+            GameStats.Instance.EndSession();
+        
+        DisableGameUI();
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 
     public void ResumeGame() {
@@ -95,21 +110,35 @@ public class GamePauseManager : MonoBehaviour
 
     private void DisablePlayerControls() {
         if (GameManager.Instance?.playerInstance != null) {
-            // TODO adapt for common actions
-            ArcherActions archerActions = GameManager.Instance.playerInstance.GetComponent<ArcherActions>();
-            if (archerActions != null)
-                // Comes from ArcherActions
-                archerActions.SetControlsEnabled(false);
+            MonoBehaviour[] components = GameManager.Instance.playerInstance.GetComponents<MonoBehaviour>();
+            
+            foreach (MonoBehaviour component in components) {
+                var controlsField = component.GetType().GetField("controls", 
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                
+                if (controlsField != null && controlsField.FieldType == typeof(PlayerControls)) {
+                    PlayerControls controls = (PlayerControls)controlsField.GetValue(component);
+                    if (controls != null)
+                        controls.Disable();
+                }
+            }
         }
     }
 
     private void EnablePlayerControls() {
         if (GameManager.Instance?.playerInstance != null) {
-            // TODO adapt for common actions
-            ArcherActions archerActions = GameManager.Instance.playerInstance.GetComponent<ArcherActions>();
-            if (archerActions != null)
-                // Comes from ArcherActions
-                archerActions.SetControlsEnabled(true);
+            MonoBehaviour[] components = GameManager.Instance.playerInstance.GetComponents<MonoBehaviour>();
+            foreach (MonoBehaviour component in components) {
+                var controlsField = component.GetType().GetField("controls", 
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                
+                if (controlsField != null && controlsField.FieldType == typeof(PlayerControls)) {
+                    PlayerControls controls = (PlayerControls)controlsField.GetValue(component);
+                    if (controls != null)
+                        controls.Enable();
+
+                }
+            }
         }
     }
 
@@ -123,35 +152,57 @@ public class GamePauseManager : MonoBehaviour
             confirmQuitUI.SetActive(true);
     }
 
-    public void ConfirmQuit() {        
-        // Set time to normal speed
-        Time.timeScale = 1f;
-        if (GameStats.Instance != null)
-            GameStats.Instance.EndSession();
-        
-        SceneManager.LoadScene(mainMenuSceneName);
+    public void OpenSettings() {       
+
+        if (settingsSceneLoaded) return;
+
+        if (pauseMenuUI != null)
+            pauseMenuUI.SetActive(false);
+
+        settingsSceneLoaded = true;
+        SceneManager.LoadScene(settingsSceneName, LoadSceneMode.Additive);
+
+        SceneManager.sceneLoaded += OnSettingsSceneLoaded;
     }
 
-    public void OpenSettings() {        
-        // Set time to normal speed
-        Time.timeScale = 1f;
-        
-        // Save scene
-        string currentScene = SceneManager.GetActiveScene().name;
-        PlayerPrefs.SetString("ReturnToScene", currentScene);
-        // Flag, we coming from game
-        PlayerPrefs.SetInt("CameFromGame", 1); 
-        PlayerPrefs.Save();
-        
-        SceneManager.LoadScene(settingsSceneName);
+    private void OnSettingsSceneLoaded(Scene scene, LoadSceneMode mode) {
+        if (scene.name == settingsSceneName) {
+            Debug.Log("Scène des paramètres chargée");
+            
+            SceneManager.sceneLoaded -= OnSettingsSceneLoaded;
+            
+            GameObject[] rootObjects = scene.GetRootGameObjects();
+            foreach (GameObject obj in rootObjects) {
+                SettingsManager settingsManager = obj.GetComponentInChildren<SettingsManager>();
+                if (settingsManager != null) {
+                    settingsManager.SetCameFromGame(true);
+                    Debug.Log("SettingsManager configuré pour retour au jeu");
+                    break;
+                }
+            }
+        }
     }
-    
-    public void TogglePause() {
-        if (isPaused)
-            ResumeGame();
-        else
-            PauseGame();
+
+    public void CloseSettings() {
+        if (!settingsSceneLoaded) return;
+        
+        Debug.Log("Fermeture des paramètres");
+        
+        settingsSceneLoaded = false;
+        
+        SceneManager.UnloadSceneAsync(settingsSceneName);
+        
+        if (pauseMenuUI != null)
+            pauseMenuUI.SetActive(true);
     }
 
     void OnDestroy() { Time.timeScale = 1f; }
+
+    private void DisableGameUI() {
+        Canvas[] allCanvas = FindObjectsOfType<Canvas>();
+        foreach (Canvas canvas in allCanvas) {
+            if (canvas.gameObject != pauseMenuUI?.transform.parent?.gameObject && canvas.gameObject != confirmQuitUI?.transform.parent?.gameObject)
+                canvas.gameObject.SetActive(false);
+        }
+    }
 }
