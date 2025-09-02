@@ -43,11 +43,6 @@ public class EnemyPerception : MonoBehaviour
         m_DetectionRangeSqr = m_DetectionRange * m_DetectionRange; // Same for the squared detection range
         m_TargetHuggingDistanceSqr = m_TargetHuggingDistance * m_TargetHuggingDistance; // Same for the squared target hugging distance
     }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
 
 
     //Note: this weird way of checking avoid lots of recalculations

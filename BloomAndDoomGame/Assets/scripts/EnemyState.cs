@@ -15,4 +15,11 @@ public  abstract class EnemyState
         m_NavMeshAgent = m_EnemyMovement.GetComponent<NavMeshAgent>();
     }
     public abstract void UpdateState();
+
+    public abstract void OnExitState();
+
+    public virtual void OnEnterState()
+    {
+        return;
+    }
 }

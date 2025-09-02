@@ -43,6 +43,11 @@ public class EnemyInvestigateState : EnemyState
 
     }
 
+    public override void OnExitState()
+    {
+        m_Animator.SetBool("IsRunning", false);
+    }
+
     private void EnterWanderState()
     {
         m_Animator.SetBool("IsRunning", false);

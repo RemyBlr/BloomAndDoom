@@ -2160,13 +2160,14 @@ GameObject:
   m_Component:
   - component: {fileID: 3149896435543335334}
   - component: {fileID: 4605943430279498479}
+  - component: {fileID: 627522784105992764}
   - component: {fileID: 2892732707034804794}
   - component: {fileID: 2619322709240203242}
   - component: {fileID: 445338923214020950}
   - component: {fileID: 2458531652357612696}
   - component: {fileID: 8111781848147628747}
   - component: {fileID: 5251376893148250087}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2215,6 +2216,29 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!136 &627522784105992764
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7046377414480159205}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 2176
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.42
+  m_Height: 1.84
+  m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!114 &2892732707034804794
 MonoBehaviour:

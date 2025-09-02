@@ -73,6 +73,12 @@ public class EnemyWanderState : EnemyState
 
     }
 
+    public override void OnExitState()
+    {
+        m_NavMeshAgent.isStopped = true;
+        m_Animator.SetBool("IsWalking", false);
+    }
+
     private Vector3 GetRandomWanderPoint()
     {
         NavMeshHit navHit;

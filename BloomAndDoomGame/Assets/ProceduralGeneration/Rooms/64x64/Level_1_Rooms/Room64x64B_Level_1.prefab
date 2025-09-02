@@ -1082,7 +1082,7 @@ GameObject:
   - component: {fileID: -7454559502438205167}
   m_Layer: 8
   m_Name: Room64x64B_Level_1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1439,6 +1439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a4e1dd1ad322f4698e2dbecdcd0ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomSpawner
+  cellsCenter: []
   OpeningDirections: 01000000
 --- !u!1 &6150062691118014406
 GameObject:

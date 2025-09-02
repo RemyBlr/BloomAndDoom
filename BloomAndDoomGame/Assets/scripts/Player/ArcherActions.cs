@@ -48,10 +48,20 @@ public class ArcherActions : MonoBehaviour
 
     private void FireArrow()
     {
-        Vector3 pos = arrow_spawn.transform.position + arrow_spawn.transform.forward * 2f;
-        Ray direction = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
-        GameObject arr = Instantiate(arrow, pos, Quaternion.LookRotation(direction.direction));
-        arr.GetComponent<Rigidbody>().AddForce(arrow_spawn.transform.forward * arrowVelocity, ForceMode.Impulse);
+        Vector3 aimDirection;
+        Ray direction = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
+        LayerMask layer = LayerMask.NameToLayer("Terrain");
+        if (Physics.Raycast(direction, out RaycastHit hit, Mathf.Infinity, 1 << layer))
+        {
+            aimDirection = (hit.point - arrow_spawn.transform.position).normalized;
+        }
+        else
+        {
+            aimDirection = direction.direction;
+        }
+        Vector3 startPosition = arrow_spawn.transform.position + arrow_spawn.transform.forward * 2f;
+        GameObject arr = Instantiate(arrow, startPosition, Quaternion.LookRotation(aimDirection));
+        arr.GetComponent<Rigidbody>().AddForce(aimDirection * arrowVelocity, ForceMode.Impulse);
         arr.GetComponent<ArcherProjectile>().Damage = playerStats.GetAttack();
     }
 

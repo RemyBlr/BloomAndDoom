@@ -12,7 +12,7 @@ public class EnemyCombat : MonoBehaviour
 
     float attackSpeedTimer = 0f;
 
-    bool m_IsAttacking = false;
+    protected bool m_IsAttacking = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,7 +24,7 @@ public class EnemyCombat : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (m_IsAttacking)
         {
@@ -36,7 +36,7 @@ public class EnemyCombat : MonoBehaviour
             }
         }
     }
-    public void StartAttacking(bool attack)
+    public virtual void StartAttacking(bool attack)
     {
         m_IsAttacking = attack;
     }

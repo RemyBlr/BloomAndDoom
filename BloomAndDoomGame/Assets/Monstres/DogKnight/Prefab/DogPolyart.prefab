@@ -1267,13 +1267,12 @@ GameObject:
   - component: {fileID: 2066896392038131574}
   - component: {fileID: 2066896392029128874}
   - component: {fileID: 6414106231570882710}
-  - component: {fileID: 3243428074305090992}
   - component: {fileID: 3035301473803632071}
   - component: {fileID: 6741238140649147336}
   - component: {fileID: 1952440735174802439}
   - component: {fileID: 1370618137749977753}
   - component: {fileID: -4015090746121784986}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DogPolyart
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1329,7 +1328,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1342,33 +1341,6 @@ CapsuleCollider:
   m_Height: 1.4
   m_Direction: 1
   m_Center: {x: 0, y: 0.6, z: 0}
---- !u!54 &3243428074305090992
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066896392038628118}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 1
 --- !u!195 &3035301473803632071
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1405,6 +1377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamageSystem
   Stats: {fileID: 11400000, guid: 876308ce663034c759840178a792ab21, type: 2}
   currentHeal: 100
+  damagePopupPrefab: {fileID: 5403528675670166939, guid: 3988ab43343e24e76987bf79c16005c9, type: 3}
 --- !u!114 &1952440735174802439
 MonoBehaviour:
   m_ObjectHideFlags: 0
