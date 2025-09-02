@@ -42,7 +42,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent(out CharacterStats player))
+        if (other.TryGetComponent(out CharacterStats player))
         {
             player.TakeDamage(m_Damage);
             // Détruire le projectile après avoir infligé des dégâts

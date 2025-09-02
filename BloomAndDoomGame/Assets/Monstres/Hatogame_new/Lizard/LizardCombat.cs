@@ -38,7 +38,10 @@ public class LizardCombat : EnemyCombat
         }
     }
 
-    protected override void Update() { return; }
+    protected override void Update()
+    {
+        
+    }
 
     public override void StartAttacking(bool attack)
     {

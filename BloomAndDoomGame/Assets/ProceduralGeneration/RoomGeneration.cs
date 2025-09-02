@@ -44,7 +44,7 @@ public class RoomGeneration : MonoBehaviour
         }
 
         if (Monsters[Level - 1].Boss == null) yield return null;
-        Rooms[0].SpawnBoss(Monsters[Level - 1].Boss);
+        Rooms[^1].SpawnBoss(Monsters[Level - 1].Boss);
     }
     public void AddRoom(RoomSpawner room)
     {

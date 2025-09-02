@@ -15,10 +15,10 @@ public class DealMeleeDamage : MonoBehaviour
     
     private Dictionary<GameObject, float> lastHitTimes = new Dictionary<GameObject, float>();
     private bool hasHitThisSwing = false; // Pour éviter multiples hits par swing
-
-    private void OnCollisionEnter(Collision other)
+    
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent(out CharacterStats player))
+        if (other.TryGetComponent(out CharacterStats player))
         {
             player.TakeDamage(m_Damage);
         }

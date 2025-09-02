@@ -84,6 +84,13 @@ public class EnemyChaseState : EnemyState
         }
     }
 
+    public override void OnExitState()
+    {
+        m_NavMeshAgent.isStopped = true;
+        m_EnemyCombat.StartAttacking(false);
+        m_Animator.SetBool("IsRunning", false);
+    }
+
     private void CheckStateValidity()
     {
         if (m_EnemyPerception.DetectTarget() != null)

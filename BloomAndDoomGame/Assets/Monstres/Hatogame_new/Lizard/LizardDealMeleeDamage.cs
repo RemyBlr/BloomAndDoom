@@ -14,11 +14,10 @@ public class LizardDealMeleeDamage : MonoBehaviour
         Damage = stats.Stats.attack;
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent(out CharacterStats player))
         {
-            print($"hit for {Damage}");
             player.TakeDamage(Damage);
         }
     }
