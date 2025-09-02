@@ -4,10 +4,9 @@ public class HealthCollectable : Collectable
 {
           private void OnTriggerEnter(Collider other)
           {
-                    Debug.Log("Healing 50 HP !");
                     if (other.gameObject.CompareTag(collector))
                     {
-                              playerStats.SetHealth(50);
+                              playerStats.SetHealth(playerStats.GetCurrentHealth() + 50);
                               Destroy(gameObject);
                     }
           }

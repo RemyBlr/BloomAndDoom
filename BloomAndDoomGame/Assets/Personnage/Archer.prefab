@@ -143,7 +143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2315401605713976332
 Transform:
   m_ObjectHideFlags: 0
@@ -2269,7 +2269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a967e7f110669974aafbda0e1d7a8640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimationStateController
-  cameraHolder: {fileID: 9090502915793032677}
 --- !u!95 &2458531652357612696
 Animator:
   serializedVersion: 7
@@ -2319,7 +2318,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Gameplay
+  m_DefaultActionMap: 5ad1ffa6-9f73-4b38-9f24-7f943b159120
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &5251376893148250087

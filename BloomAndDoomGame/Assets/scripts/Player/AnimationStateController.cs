@@ -54,10 +54,10 @@ public class AnimationStateController : MonoBehaviour
         animator.SetBool(isFallingId, grounded);
     }
 
-    // public void SetAttackSpeed(int amount)
-    // {
-    //     animator.SetInteger(attackSpeedId, amount);
-    // }
+    public void SetAttackSpeed(int amount)
+    {
+        animator.SetInteger(attackSpeedId, amount);
+    }
 
     public void OnStartShoot()
     {
@@ -99,8 +99,8 @@ public class AnimationStateController : MonoBehaviour
         animator.SetTrigger(spell2Id);
     }
 
-    // public void OnSpell3()
-    // {
-    //     animator.SetTrigger(spell3Id);
-    // }
+    public void OnSpell3()
+    {
+        animator.SetTrigger(spell3Id);
+    }
 }

@@ -126,8 +126,9 @@ public class CharacterStats : MonoBehaviour
     public int GetCurrency() => currency;
     public CharacterClass GetCharacterClass() => characterClass;
     
-    public void SetHealth(float amount) { health.SetValue(health.GetValue() + amount); }
-    public void SetDefense(float amount) { defense.SetValue(defense.GetValue() + amount); }
+    public void SetHealth(float amount) { health.SetValue(amount); }
+    public void SetDefense(float amount) { defense.SetValue(amount); }
+    public void SetAttack(float amount) { attack.SetValue(amount); }
 
     //---------------- Stat modifiers ----------------
     private StatModifier GetStatModifier(StatType statType)

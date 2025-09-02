@@ -86,9 +86,10 @@ public class ArcherActions : MonoBehaviour
     {
         spell1Ready = false;
         playerStats.SetAttackSpeed(2f);
+        animationState.SetAttackSpeed(2);
         yield return new WaitForSeconds(cooldown);
-        playerStats.SetAttackSpeed(1f); // normal
-
+        playerStats.SetAttackSpeed(1f); // back to normal
+        animationState.SetAttackSpeed(1);
         yield return new WaitForSeconds(spell1CD); // cooldown after use
         spell1Ready = true;
     }

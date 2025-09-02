@@ -7,7 +7,7 @@ public class DefenseCollectable : Collectable
                     Debug.Log("Defense +30 upgrade");
                     if (other.gameObject.CompareTag(collector))
                     {
-                              playerStats.SetDefense(30);
+                              playerStats.SetDefense(playerStats.GetDefense() + 30);
                               Destroy(gameObject);
                     }
           }
