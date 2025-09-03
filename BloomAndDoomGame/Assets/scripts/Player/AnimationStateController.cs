@@ -54,9 +54,9 @@ public class AnimationStateController : MonoBehaviour
         animator.SetBool(isFallingId, grounded);
     }
 
-    public void SetAttackSpeed(int amount)
+    public void SetAttackSpeed(float amount)
     {
-        animator.SetInteger(attackSpeedId, amount);
+        animator.SetFloat(attackSpeedId, amount);
     }
 
     public void OnStartShoot()
@@ -75,12 +75,6 @@ public class AnimationStateController : MonoBehaviour
     public void OnShootEvent()
     {
         OnShootCallback?.Invoke();
-    }
-
-    public void OnPunch()
-    {
-        if (animator == null) return;
-        animator.SetTrigger(punchId);
     }
 
     public void OnMeleeAttack()

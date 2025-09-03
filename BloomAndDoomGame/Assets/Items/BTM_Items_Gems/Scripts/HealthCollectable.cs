@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class HealthCollectable : Item
 {
+          private float newValue = 50f;
+          
           void Start()
           {
-                    _price = 10f;
+                    _price = 5f;
           }
 
           public override void Interact(Interactor interactor)
@@ -12,7 +14,7 @@ public class HealthCollectable : Item
                     if (interactor != null)
                     {
                               CharacterStats playerStats = interactor.GetComponent<CharacterStats>();
-                              playerStats.SetHealth(playerStats.GetCurrentHealth() + 50);
+                              playerStats.SetHealth(playerStats.GetCurrentHealth() + newValue);
                               Destroy(gameObject);
                     }
           }

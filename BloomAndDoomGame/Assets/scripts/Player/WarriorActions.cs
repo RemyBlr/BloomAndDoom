@@ -10,7 +10,6 @@ using UnityEngine.UI;
 public class WarriorActions : MonoBehaviour
 {
     [Header("Controls")]
-    // private PlayerControls controls;
     CharacterStats playerStats;
     private AnimationStateController animationState;
     [SerializeField] private GameObject damageZone; // Jump attack spell object
@@ -36,9 +35,6 @@ public class WarriorActions : MonoBehaviour
 
     private void Start()
     {
-        // controls = new PlayerControls();
-        // controls.Enable();
-
         animationState = GetComponent<AnimationStateController>();
         playerStats = GetComponent<CharacterStats>();
     }
@@ -48,12 +44,6 @@ public class WarriorActions : MonoBehaviour
         if (animationState != null)
             animationState.OnMeleeAttack();
     }
-
-    // private void OnPunch(InputValue value)
-    // {
-    //     if (animationState != null)
-    //         animationState.OnPunch();
-    // }
 
     private void OnSpell_1(InputValue value)
     {
@@ -77,7 +67,7 @@ public class WarriorActions : MonoBehaviour
     //
     // Spell activation
     //
-    private IEnumerator TriggerSpell1(float cooldown)
+    private IEnumerator TriggerSpell1(float cooldown) // Battlecry
     {
         spell1Ready = false;
         animationState.OnSpell1();
@@ -91,7 +81,7 @@ public class WarriorActions : MonoBehaviour
         spell1Ready = true;
     }
 
-    private IEnumerator TriggerSpell2(float cooldown)
+    private IEnumerator TriggerSpell2(float cooldown) // Jump attack
     {
         spell2Ready = false;
 
@@ -104,7 +94,7 @@ public class WarriorActions : MonoBehaviour
         spell2Ready = true;
     }
 
-    private IEnumerator TriggerSpell3(float cooldown)
+    private IEnumerator TriggerSpell3(float cooldown) // Quick attack + defense
     {
         spell3Ready = false;
 
@@ -115,7 +105,7 @@ public class WarriorActions : MonoBehaviour
         yield return new WaitForSeconds(spell3CD);
         UISpell3.color = new Color(UISpell3.color.r, UISpell3.color.g, UISpell3.color.b, 1f); // Restore opacity
 
-    playerStats.SetDefense(playerStats.GetDefense() / 2);
+        playerStats.SetDefense(playerStats.GetDefense() / 2);
 
         spell3Ready = true;
     }

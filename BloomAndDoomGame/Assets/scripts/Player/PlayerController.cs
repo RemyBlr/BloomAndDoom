@@ -67,9 +67,11 @@ public class PlayerController : MonoBehaviour
         lastJumpPressedAt = Time.time;
     }
 
-    private void OnInteract(InputValue value)
+    public float GetSpeed() { return speed; }
+
+    public void SetSpeed(float amount)
     {
-        
+        speed = amount;
     }
 
     private void Update()

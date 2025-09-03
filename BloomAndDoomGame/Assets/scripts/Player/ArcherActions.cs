@@ -83,12 +83,6 @@ public class ArcherActions : MonoBehaviour
         StartCoroutine(TriggerSpell3(spell3Duration));
     }
 
-    // private void OnPunch(InputValue value)
-    // {
-    //     if (animationState != null)
-    //         animationState.OnPunch();
-    // }
-
     //
     // Spell activation
     //
@@ -96,10 +90,10 @@ public class ArcherActions : MonoBehaviour
     {
         spell1Ready = false;
         playerStats.SetAttackSpeed(2f);
-        animationState.SetAttackSpeed(2);
+        animationState.SetAttackSpeed(2f);
         yield return new WaitForSeconds(cooldown);
         playerStats.SetAttackSpeed(1f); // back to normal
-        animationState.SetAttackSpeed(1);
+        animationState.SetAttackSpeed(1f);
         yield return new WaitForSeconds(spell1CD); // cooldown after use
         spell1Ready = true;
     }
