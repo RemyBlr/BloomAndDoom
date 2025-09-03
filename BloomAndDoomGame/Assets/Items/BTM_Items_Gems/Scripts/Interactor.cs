@@ -23,14 +23,20 @@ public class Interactor : MonoBehaviour
 
         if (_numFound > 0)
         {
-            var interactable = _colliders[0].GetComponent<IInteractable>();
-            bool hasEnoughMoney = playerStats.GetCurrency() > interactable.GetPrice();
+            IInteractable interactable = null;
 
-             
-
-            if (interactable != null && Keyboard.current.eKey.wasPressedThisFrame && hasEnoughMoney)
+            for (int i = 0; i < _numFound; ++i)
             {
-                Debug.Log("On passe ici, great !");
+                interactable = _colliders[i].GetComponent<IInteractable>();
+                bool hasEnoughMoney = playerStats.GetCurrency() >= interactable.GetPrice();
+
+                if (hasEnoughMoney) break;
+
+                interactable = null;
+            }
+
+            if (interactable != null && Keyboard.current.eKey.wasPressedThisFrame)
+            {
                 interactable.Interact(this);
             }
         }
