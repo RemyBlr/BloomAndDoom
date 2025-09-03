@@ -105,6 +105,8 @@ public class CharacterStats : MonoBehaviour
     
     void Start()
     {
+        var spell1 = characterClass.spells[0].icon;
+
         player = GetComponent<PlayerController>();
         hud = FindFirstObjectByType<HUDManager>();
         InitializeFromClass();

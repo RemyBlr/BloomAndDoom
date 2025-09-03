@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 /*
  * Gère les actions spécifiques (Input actions) de la classe "Archer"
@@ -13,15 +14,16 @@ public class ArcherActions : MonoBehaviour
     [SerializeField] private float arrowVelocity = 75f;
 
     [Header("Controls")]
-
-    private PlayerControls controls;
     CharacterStats playerStats;
+    private PlayerControls controls;
     private AnimationStateController animationState;
 
     [SerializeField] private GameObject fireZone;
 
     [Header("Cooldown")]
-
+    [SerializeField] private Image UISpell1;
+    [SerializeField] private Image UISpell2;
+    [SerializeField] private Image UISpell3;
     [SerializeField] private float spell1CD = 15f;
     [SerializeField] private float spell2CD = 10f;
     [SerializeField] private float spell3CD = 18f; // Cooldown duration in seconds
@@ -31,11 +33,21 @@ public class ArcherActions : MonoBehaviour
     [SerializeField] private float spell3Duration = 10f;
 
     private bool spell1Ready = true, spell2Ready = true, spell3Ready = true;
+    private RawImage SP1, SP2, SP3;
 
     private void Start()
     {
         controls = new PlayerControls();
         controls.Enable();
+
+        // Activate UI for the Archer class
+        UISpell1.gameObject.SetActive(true);
+        UISpell2.gameObject.SetActive(true);
+        UISpell3.gameObject.SetActive(true);
+
+        SP1 = UISpell1.GetComponentInChildren<RawImage>();
+        SP2 = UISpell2.GetComponentInChildren<RawImage>();
+        SP3 = UISpell3.GetComponentInChildren<RawImage>();
 
         controls.Gameplay.Attack.started += (ctx) => animationState.OnStartShoot();
         controls.Gameplay.Attack.canceled += (ctx) => animationState.OnStopShoot();
@@ -91,10 +103,12 @@ public class ArcherActions : MonoBehaviour
         spell1Ready = false;
         playerStats.SetAttackSpeed(2f);
         animationState.SetAttackSpeed(2f);
+        SP1.color = new Color(SP1.color.r, SP1.color.g, SP1.color.b, 0.5f); // Set opacity to 50%
         yield return new WaitForSeconds(cooldown);
         playerStats.SetAttackSpeed(1f); // back to normal
         animationState.SetAttackSpeed(1f);
         yield return new WaitForSeconds(spell1CD); // cooldown after use
+        SP1.color = new Color(SP1.color.r, SP1.color.g, SP1.color.b, 1f); // Restore opacity
         spell1Ready = true;
     }
 
@@ -102,23 +116,31 @@ public class ArcherActions : MonoBehaviour
     {
         spell2Ready = false;
         playerStats.SetSpeed(8f);
+        SP2.color = new Color(SP2.color.r, SP2.color.g, SP2.color.b, 0.5f); // Set opacity to 50%
+        
         yield return new WaitForSeconds(cooldown);
+
         playerStats.SetSpeed(5f);
 
         yield return new WaitForSeconds(spell2CD); // cooldown after use
+
+        SP2.color = new Color(SP2.color.r, SP2.color.g, SP2.color.b, 1f); // Restore opacity
         spell2Ready = true;
     }
 
     private IEnumerator TriggerSpell3(float cooldown)
     {
         spell3Ready = false;
+        fireZone.SetActive(true); // Activate fire zone of player
+        SP3.color = new Color(SP3.color.r, SP3.color.g, SP3.color.b, 0.5f); // Set opacity to 50%
 
-        // Activate fire zone of player
-        fireZone.SetActive(true);
         yield return new WaitForSeconds(cooldown);
+
         fireZone.SetActive(false);
 
         yield return new WaitForSeconds(spell3CD); // cooldown after use
+        
+        SP3.color = new Color(SP3.color.r, SP3.color.g, SP3.color.b, 1f); // Restore opacity
         spell3Ready = true;
     }
 }

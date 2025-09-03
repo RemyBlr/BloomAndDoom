@@ -37,6 +37,11 @@ public class WarriorActions : MonoBehaviour
     {
         animationState = GetComponent<AnimationStateController>();
         playerStats = GetComponent<CharacterStats>();
+
+        // Activate UI for the Warrior class
+        UISpell1.gameObject.SetActive(true);
+        UISpell2.gameObject.SetActive(true);
+        UISpell3.gameObject.SetActive(true);
     }
 
     private void OnAttack(InputValue value)
