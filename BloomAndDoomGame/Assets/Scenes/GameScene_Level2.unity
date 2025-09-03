@@ -513,6 +513,10 @@ PrefabInstance:
       value: GameScene
       objectReference: {fileID: 0}
     - target: {fileID: 5125466859648742462, guid: 01a4955865e9c3744b4e1c362436fbc4, type: 3}
+      propertyPath: ItemSpawns
+      value: 
+      objectReference: {fileID: 11400000, guid: f655a481c1e797846ae2aa96347d8411, type: 2}
+    - target: {fileID: 5125466859648742462, guid: 01a4955865e9c3744b4e1c362436fbc4, type: 3}
       propertyPath: RoomCollection
       value: 
       objectReference: {fileID: 11400000, guid: 448270d2126414c72b47bf58b9fce5c0, type: 2}
