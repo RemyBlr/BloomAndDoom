@@ -520,7 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyProjectileCombat
   m_AttackSpeed: 1
-  m_AttackRange: 1.5
+  m_AttackRange: 4
   m_ProjectilePrefab: {fileID: 392478577220086501, guid: 17c644bbfb7fb574e936cbafea20e991, type: 3}
   m_FirePoint: {fileID: 2936444243033657696}
   m_ProjectileSpeed: 10
@@ -556,13 +556,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPerception
   m_TargetTag: Player
   m_DetectionRange: 10
-  m_TargetHuggingDistance: 0.5
+  m_TargetHuggingDistance: 2
   m_FieldOfView: 120
   m_Eyes: {fileID: 1695502807786446131}
   m_ObstacleMask:
     serializedVersion: 2
     m_Bits: 256
   m_ObstacleCheckRadius: 0.1
+  m_TargetObject: {fileID: 0}
 --- !u!1 &1695502807786733845
 GameObject:
   m_ObjectHideFlags: 0

@@ -1302,7 +1302,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 139696}
   m_Enabled: 1
-  m_AgentTypeID: -334000983
+  m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
@@ -1337,6 +1337,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   m_ObstacleCheckRadius: 0.1
+  m_TargetObject: {fileID: 0}
 --- !u!114 &-8223945618395321673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1351,6 +1352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamageSystem
   Stats: {fileID: 11400000, guid: a8bb06dcd21af7a4ebb8197de4f63ddc, type: 2}
   currentHeal: 500
+  damagePopupPrefab: {fileID: 0}
 --- !u!114 &4602891775629588929
 MonoBehaviour:
   m_ObjectHideFlags: 0
