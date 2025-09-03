@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b487371145d4bd4780b58a45d4e9fae, type: 3}
   m_Name: Level1_RoomMonsters
   m_EditorClassIdentifier: Assembly-CSharp::RoomMonsters
-  Boss: {fileID: 8056591710087798629, guid: b632ab4430e28bc40ac1e5afc73109c6, type: 3}
+  Boss: {fileID: 139696, guid: eb58e8f2831a51f45a44a261e6710cdd, type: 3}
   monsters:
   - {fileID: 1695502807786733843, guid: c73a559184154c75991d095521bdea87, type: 3}
   - {fileID: 2066896392038628118, guid: 45288819fde2143449a96207b14db0bb, type: 3}
