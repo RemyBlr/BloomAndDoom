@@ -1,15 +1,21 @@
 using UnityEngine;
 
-public class HealthCollectable : Collectable
+public class HealthCollectable : Item
 {
-          [SerializeField] private CharacterStats playerStats;
-
-          private void OnTriggerEnter(Collider other)
+          private int newValue = 50;
+          
+          void Start()
           {
-                    Debug.Log("Healing 50 HP !");
-                    if (other.gameObject.CompareTag(collector))
+                    _price = 5;
+          }
+
+          public override void Interact(Interactor interactor)
+          {
+                    if (interactor != null)
                     {
-                              playerStats.SetHealth(50);
+                              CharacterStats playerStats = interactor.GetComponent<CharacterStats>();
+                              playerStats.SetCurrency(playerStats.GetCurrency() - _price);
+                              playerStats.SetHealth(playerStats.GetCurrentHealth() + newValue);
                               Destroy(gameObject);
                     }
           }

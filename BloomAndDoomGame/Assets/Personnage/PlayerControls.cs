@@ -111,27 +111,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Shoot"",
+                    ""name"": ""Attack"",
                     ""type"": ""Button"",
-                    ""id"": ""0a66d8a0-c0b7-49fb-92c7-754d9301e300"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Punch"",
-                    ""type"": ""Button"",
-                    ""id"": ""f69972a9-5552-4292-8c8e-05fe1ca64f7c"",
+                    ""id"": ""6bf6ac8f-6d07-47f4-9c0f-34a063f3865b"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Interact"",
+                    ""name"": ""Punch"",
                     ""type"": ""Button"",
-                    ""id"": ""4e97ec3b-d381-477c-bc6a-ac83296eb08e"",
+                    ""id"": ""f69972a9-5552-4292-8c8e-05fe1ca64f7c"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -159,6 +150,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": ""Spell_3"",
                     ""type"": ""Button"",
                     ""id"": ""55b6c950-5bf4-4d50-81d9-479a21e23dc2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""4e97ec3b-d381-477c-bc6a-ac83296eb08e"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -245,17 +245,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""710ece61-7d44-4084-9b45-bf299e92b3f5"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""a8c00e0b-ef3b-4722-b33a-8ef14551422d"",
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
@@ -308,6 +297,463 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Spell_3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a7d58a18-0e79-4ba3-b4a9-00fe009dc7be"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Archer"",
+            ""id"": ""ac5b4cad-6059-44bc-9b8d-04524d1dd151"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""3808a0aa-7d62-4632-9153-dacb18dc8856"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""297c8152-3ce0-4191-9653-2ed731c4839b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""b5acacdc-3069-4db4-80ea-acdabc93b2b4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Punch"",
+                    ""type"": ""Button"",
+                    ""id"": ""ee81eb67-1de7-4a3b-896d-17720e151774"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""61f81647-f6e2-4fb1-9006-0b71d1ffaa98"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spell_1"",
+                    ""type"": ""Button"",
+                    ""id"": ""871f7755-e2a9-47e1-b616-c3318bd21cb4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spell_2"",
+                    ""type"": ""Button"",
+                    ""id"": ""c6643419-4c6b-4f9b-a171-dc2dfacb7c04"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spell_3"",
+                    ""type"": ""Button"",
+                    ""id"": ""f451e09d-0f4a-49b8-8d71-9f686bad263c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""930bc2d9-9f22-4260-9d24-6dec0e4272bf"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""968b44b7-a2ee-45cd-bdc3-7c8124a10875"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""2acfe873-d25d-4820-9506-196c52827106"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b35670fc-7fea-4f0e-aef4-d7e2f2ce2788"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""b1b5ab78-5afe-41f6-9afb-ea42094cc580"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""513a799f-cdbf-4798-bb6c-d9fe027a1774"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c5dbf1da-e9a4-4b0b-a71c-f186b018f9bc"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""269a01fd-d36c-48c5-abfc-c216c6a82ec0"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fca7a092-c271-4434-b725-6b3ffc4153e9"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Punch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ce463c2-9a70-4f0a-b6d9-185cbacd5165"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""71ec2819-9b02-4f22-a1a7-7e99f1f9f9e4"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell_1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5fde070b-ca52-4910-86ca-c5c0702de458"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell_2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f4fb47fd-4609-481a-9e9a-e95119d03eee"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell_3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Warrior"",
+            ""id"": ""8a4878c7-70cf-476f-887f-44dfed2fee6e"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""b1ea16e9-f6bd-4476-9cb3-b0b47b2de483"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""d56de1eb-bcae-4192-a826-9726535a40b3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""331ee1c5-ae0c-4ff4-8e19-3ff771544152"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Punch"",
+                    ""type"": ""Button"",
+                    ""id"": ""0d0fc85b-6fbc-46ca-b2c5-b5ad07bc0e1b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""42054659-b58c-4f95-8a82-4eb5382fbb6d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spell_1"",
+                    ""type"": ""Button"",
+                    ""id"": ""a2dea5bd-a53f-41ff-b6f8-806bccaee3f3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spell_2"",
+                    ""type"": ""Button"",
+                    ""id"": ""40f41d0d-603e-4c7a-bfa3-13807b69fa39"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spell_3"",
+                    ""type"": ""Button"",
+                    ""id"": ""8b62b1d3-0817-417f-9064-d22f58db7e94"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""6710a886-8894-4d44-9b8c-4d4b8784e4e8"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""95ba549c-9d1f-444e-ba0b-a68ae9f7cd0c"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""7d8b588b-66e0-4727-8cb6-287b0376e2e6"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""06772503-c7db-49cd-9f17-45a13f7a51de"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""372b27ac-69f8-4987-afb8-3f484521fafc"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""2d0f5734-6567-4f96-9364-8e342b7c96cc"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d635202-e88a-4c4d-83eb-858edc7ad222"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""352dd784-3679-4694-acf7-d611f818cafe"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Punch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b1ce4ae8-646e-4f11-bb95-9fe7658b1353"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""003bffad-cbc0-46d3-b934-0a6ce7143bd7"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell_1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4278293e-7073-4252-ac64-a05233060c52"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell_2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e8307caf-8b6f-41d9-bb4d-22bc8b9452a7"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spell_3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cf85eaa6-9f11-4278-a049-d8509faf0b80"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -346,12 +792,32 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
-        m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
+        m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
         m_Gameplay_Punch = m_Gameplay.FindAction("Punch", throwIfNotFound: true);
-        m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         m_Gameplay_Spell_1 = m_Gameplay.FindAction("Spell_1", throwIfNotFound: true);
         m_Gameplay_Spell_2 = m_Gameplay.FindAction("Spell_2", throwIfNotFound: true);
         m_Gameplay_Spell_3 = m_Gameplay.FindAction("Spell_3", throwIfNotFound: true);
+        m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+        // Archer
+        m_Archer = asset.FindActionMap("Archer", throwIfNotFound: true);
+        m_Archer_Move = m_Archer.FindAction("Move", throwIfNotFound: true);
+        m_Archer_Jump = m_Archer.FindAction("Jump", throwIfNotFound: true);
+        m_Archer_Shoot = m_Archer.FindAction("Shoot", throwIfNotFound: true);
+        m_Archer_Punch = m_Archer.FindAction("Punch", throwIfNotFound: true);
+        m_Archer_Interact = m_Archer.FindAction("Interact", throwIfNotFound: true);
+        m_Archer_Spell_1 = m_Archer.FindAction("Spell_1", throwIfNotFound: true);
+        m_Archer_Spell_2 = m_Archer.FindAction("Spell_2", throwIfNotFound: true);
+        m_Archer_Spell_3 = m_Archer.FindAction("Spell_3", throwIfNotFound: true);
+        // Warrior
+        m_Warrior = asset.FindActionMap("Warrior", throwIfNotFound: true);
+        m_Warrior_Move = m_Warrior.FindAction("Move", throwIfNotFound: true);
+        m_Warrior_Jump = m_Warrior.FindAction("Jump", throwIfNotFound: true);
+        m_Warrior_Attack = m_Warrior.FindAction("Attack", throwIfNotFound: true);
+        m_Warrior_Punch = m_Warrior.FindAction("Punch", throwIfNotFound: true);
+        m_Warrior_Interact = m_Warrior.FindAction("Interact", throwIfNotFound: true);
+        m_Warrior_Spell_1 = m_Warrior.FindAction("Spell_1", throwIfNotFound: true);
+        m_Warrior_Spell_2 = m_Warrior.FindAction("Spell_2", throwIfNotFound: true);
+        m_Warrior_Spell_3 = m_Warrior.FindAction("Spell_3", throwIfNotFound: true);
         // CameraControls
         m_CameraControls = asset.FindActionMap("CameraControls", throwIfNotFound: true);
         m_CameraControls_Look = m_CameraControls.FindAction("Look", throwIfNotFound: true);
@@ -360,6 +826,8 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     ~@PlayerControls()
     {
         UnityEngine.Debug.Assert(!m_Gameplay.enabled, "This will cause a leak and performance issues, PlayerControls.Gameplay.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Archer.enabled, "This will cause a leak and performance issues, PlayerControls.Archer.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Warrior.enabled, "This will cause a leak and performance issues, PlayerControls.Warrior.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_CameraControls.enabled, "This will cause a leak and performance issues, PlayerControls.CameraControls.Disable() has not been called.");
     }
 
@@ -438,12 +906,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Jump;
-    private readonly InputAction m_Gameplay_Shoot;
+    private readonly InputAction m_Gameplay_Attack;
     private readonly InputAction m_Gameplay_Punch;
-    private readonly InputAction m_Gameplay_Interact;
     private readonly InputAction m_Gameplay_Spell_1;
     private readonly InputAction m_Gameplay_Spell_2;
     private readonly InputAction m_Gameplay_Spell_3;
+    private readonly InputAction m_Gameplay_Interact;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
@@ -464,17 +932,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         /// <summary>
-        /// Provides access to the underlying input action "Gameplay/Shoot".
+        /// Provides access to the underlying input action "Gameplay/Attack".
         /// </summary>
-        public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
+        public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
         /// <summary>
         /// Provides access to the underlying input action "Gameplay/Punch".
         /// </summary>
         public InputAction @Punch => m_Wrapper.m_Gameplay_Punch;
-        /// <summary>
-        /// Provides access to the underlying input action "Gameplay/Interact".
-        /// </summary>
-        public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         /// <summary>
         /// Provides access to the underlying input action "Gameplay/Spell_1".
         /// </summary>
@@ -487,6 +951,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/Spell_3".
         /// </summary>
         public InputAction @Spell_3 => m_Wrapper.m_Gameplay_Spell_3;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/Interact".
+        /// </summary>
+        public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -519,15 +987,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @Shoot.started += instance.OnShoot;
-            @Shoot.performed += instance.OnShoot;
-            @Shoot.canceled += instance.OnShoot;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
             @Punch.started += instance.OnPunch;
             @Punch.performed += instance.OnPunch;
             @Punch.canceled += instance.OnPunch;
-            @Interact.started += instance.OnInteract;
-            @Interact.performed += instance.OnInteract;
-            @Interact.canceled += instance.OnInteract;
             @Spell_1.started += instance.OnSpell_1;
             @Spell_1.performed += instance.OnSpell_1;
             @Spell_1.canceled += instance.OnSpell_1;
@@ -537,6 +1002,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Spell_3.started += instance.OnSpell_3;
             @Spell_3.performed += instance.OnSpell_3;
             @Spell_3.canceled += instance.OnSpell_3;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         /// <summary>
@@ -554,15 +1022,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @Shoot.started -= instance.OnShoot;
-            @Shoot.performed -= instance.OnShoot;
-            @Shoot.canceled -= instance.OnShoot;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
             @Punch.started -= instance.OnPunch;
             @Punch.performed -= instance.OnPunch;
             @Punch.canceled -= instance.OnPunch;
-            @Interact.started -= instance.OnInteract;
-            @Interact.performed -= instance.OnInteract;
-            @Interact.canceled -= instance.OnInteract;
             @Spell_1.started -= instance.OnSpell_1;
             @Spell_1.performed -= instance.OnSpell_1;
             @Spell_1.canceled -= instance.OnSpell_1;
@@ -572,6 +1037,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Spell_3.started -= instance.OnSpell_3;
             @Spell_3.performed -= instance.OnSpell_3;
             @Spell_3.canceled -= instance.OnSpell_3;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         /// <summary>
@@ -605,6 +1073,352 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="GameplayActions" /> instance referencing this action map.
     /// </summary>
     public GameplayActions @Gameplay => new GameplayActions(this);
+
+    // Archer
+    private readonly InputActionMap m_Archer;
+    private List<IArcherActions> m_ArcherActionsCallbackInterfaces = new List<IArcherActions>();
+    private readonly InputAction m_Archer_Move;
+    private readonly InputAction m_Archer_Jump;
+    private readonly InputAction m_Archer_Shoot;
+    private readonly InputAction m_Archer_Punch;
+    private readonly InputAction m_Archer_Interact;
+    private readonly InputAction m_Archer_Spell_1;
+    private readonly InputAction m_Archer_Spell_2;
+    private readonly InputAction m_Archer_Spell_3;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Archer".
+    /// </summary>
+    public struct ArcherActions
+    {
+        private @PlayerControls m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public ArcherActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Archer/Move".
+        /// </summary>
+        public InputAction @Move => m_Wrapper.m_Archer_Move;
+        /// <summary>
+        /// Provides access to the underlying input action "Archer/Jump".
+        /// </summary>
+        public InputAction @Jump => m_Wrapper.m_Archer_Jump;
+        /// <summary>
+        /// Provides access to the underlying input action "Archer/Shoot".
+        /// </summary>
+        public InputAction @Shoot => m_Wrapper.m_Archer_Shoot;
+        /// <summary>
+        /// Provides access to the underlying input action "Archer/Punch".
+        /// </summary>
+        public InputAction @Punch => m_Wrapper.m_Archer_Punch;
+        /// <summary>
+        /// Provides access to the underlying input action "Archer/Interact".
+        /// </summary>
+        public InputAction @Interact => m_Wrapper.m_Archer_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "Archer/Spell_1".
+        /// </summary>
+        public InputAction @Spell_1 => m_Wrapper.m_Archer_Spell_1;
+        /// <summary>
+        /// Provides access to the underlying input action "Archer/Spell_2".
+        /// </summary>
+        public InputAction @Spell_2 => m_Wrapper.m_Archer_Spell_2;
+        /// <summary>
+        /// Provides access to the underlying input action "Archer/Spell_3".
+        /// </summary>
+        public InputAction @Spell_3 => m_Wrapper.m_Archer_Spell_3;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Archer; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="ArcherActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(ArcherActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="ArcherActions" />
+        public void AddCallbacks(IArcherActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ArcherActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ArcherActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
+            @Punch.started += instance.OnPunch;
+            @Punch.performed += instance.OnPunch;
+            @Punch.canceled += instance.OnPunch;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @Spell_1.started += instance.OnSpell_1;
+            @Spell_1.performed += instance.OnSpell_1;
+            @Spell_1.canceled += instance.OnSpell_1;
+            @Spell_2.started += instance.OnSpell_2;
+            @Spell_2.performed += instance.OnSpell_2;
+            @Spell_2.canceled += instance.OnSpell_2;
+            @Spell_3.started += instance.OnSpell_3;
+            @Spell_3.performed += instance.OnSpell_3;
+            @Spell_3.canceled += instance.OnSpell_3;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="ArcherActions" />
+        private void UnregisterCallbacks(IArcherActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
+            @Punch.started -= instance.OnPunch;
+            @Punch.performed -= instance.OnPunch;
+            @Punch.canceled -= instance.OnPunch;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @Spell_1.started -= instance.OnSpell_1;
+            @Spell_1.performed -= instance.OnSpell_1;
+            @Spell_1.canceled -= instance.OnSpell_1;
+            @Spell_2.started -= instance.OnSpell_2;
+            @Spell_2.performed -= instance.OnSpell_2;
+            @Spell_2.canceled -= instance.OnSpell_2;
+            @Spell_3.started -= instance.OnSpell_3;
+            @Spell_3.performed -= instance.OnSpell_3;
+            @Spell_3.canceled -= instance.OnSpell_3;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="ArcherActions.UnregisterCallbacks(IArcherActions)" />.
+        /// </summary>
+        /// <seealso cref="ArcherActions.UnregisterCallbacks(IArcherActions)" />
+        public void RemoveCallbacks(IArcherActions instance)
+        {
+            if (m_Wrapper.m_ArcherActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="ArcherActions.AddCallbacks(IArcherActions)" />
+        /// <seealso cref="ArcherActions.RemoveCallbacks(IArcherActions)" />
+        /// <seealso cref="ArcherActions.UnregisterCallbacks(IArcherActions)" />
+        public void SetCallbacks(IArcherActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ArcherActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ArcherActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="ArcherActions" /> instance referencing this action map.
+    /// </summary>
+    public ArcherActions @Archer => new ArcherActions(this);
+
+    // Warrior
+    private readonly InputActionMap m_Warrior;
+    private List<IWarriorActions> m_WarriorActionsCallbackInterfaces = new List<IWarriorActions>();
+    private readonly InputAction m_Warrior_Move;
+    private readonly InputAction m_Warrior_Jump;
+    private readonly InputAction m_Warrior_Attack;
+    private readonly InputAction m_Warrior_Punch;
+    private readonly InputAction m_Warrior_Interact;
+    private readonly InputAction m_Warrior_Spell_1;
+    private readonly InputAction m_Warrior_Spell_2;
+    private readonly InputAction m_Warrior_Spell_3;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Warrior".
+    /// </summary>
+    public struct WarriorActions
+    {
+        private @PlayerControls m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public WarriorActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Warrior/Move".
+        /// </summary>
+        public InputAction @Move => m_Wrapper.m_Warrior_Move;
+        /// <summary>
+        /// Provides access to the underlying input action "Warrior/Jump".
+        /// </summary>
+        public InputAction @Jump => m_Wrapper.m_Warrior_Jump;
+        /// <summary>
+        /// Provides access to the underlying input action "Warrior/Attack".
+        /// </summary>
+        public InputAction @Attack => m_Wrapper.m_Warrior_Attack;
+        /// <summary>
+        /// Provides access to the underlying input action "Warrior/Punch".
+        /// </summary>
+        public InputAction @Punch => m_Wrapper.m_Warrior_Punch;
+        /// <summary>
+        /// Provides access to the underlying input action "Warrior/Interact".
+        /// </summary>
+        public InputAction @Interact => m_Wrapper.m_Warrior_Interact;
+        /// <summary>
+        /// Provides access to the underlying input action "Warrior/Spell_1".
+        /// </summary>
+        public InputAction @Spell_1 => m_Wrapper.m_Warrior_Spell_1;
+        /// <summary>
+        /// Provides access to the underlying input action "Warrior/Spell_2".
+        /// </summary>
+        public InputAction @Spell_2 => m_Wrapper.m_Warrior_Spell_2;
+        /// <summary>
+        /// Provides access to the underlying input action "Warrior/Spell_3".
+        /// </summary>
+        public InputAction @Spell_3 => m_Wrapper.m_Warrior_Spell_3;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Warrior; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="WarriorActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(WarriorActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="WarriorActions" />
+        public void AddCallbacks(IWarriorActions instance)
+        {
+            if (instance == null || m_Wrapper.m_WarriorActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_WarriorActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
+            @Punch.started += instance.OnPunch;
+            @Punch.performed += instance.OnPunch;
+            @Punch.canceled += instance.OnPunch;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @Spell_1.started += instance.OnSpell_1;
+            @Spell_1.performed += instance.OnSpell_1;
+            @Spell_1.canceled += instance.OnSpell_1;
+            @Spell_2.started += instance.OnSpell_2;
+            @Spell_2.performed += instance.OnSpell_2;
+            @Spell_2.canceled += instance.OnSpell_2;
+            @Spell_3.started += instance.OnSpell_3;
+            @Spell_3.performed += instance.OnSpell_3;
+            @Spell_3.canceled += instance.OnSpell_3;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="WarriorActions" />
+        private void UnregisterCallbacks(IWarriorActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
+            @Punch.started -= instance.OnPunch;
+            @Punch.performed -= instance.OnPunch;
+            @Punch.canceled -= instance.OnPunch;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @Spell_1.started -= instance.OnSpell_1;
+            @Spell_1.performed -= instance.OnSpell_1;
+            @Spell_1.canceled -= instance.OnSpell_1;
+            @Spell_2.started -= instance.OnSpell_2;
+            @Spell_2.performed -= instance.OnSpell_2;
+            @Spell_2.canceled -= instance.OnSpell_2;
+            @Spell_3.started -= instance.OnSpell_3;
+            @Spell_3.performed -= instance.OnSpell_3;
+            @Spell_3.canceled -= instance.OnSpell_3;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="WarriorActions.UnregisterCallbacks(IWarriorActions)" />.
+        /// </summary>
+        /// <seealso cref="WarriorActions.UnregisterCallbacks(IWarriorActions)" />
+        public void RemoveCallbacks(IWarriorActions instance)
+        {
+            if (m_Wrapper.m_WarriorActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="WarriorActions.AddCallbacks(IWarriorActions)" />
+        /// <seealso cref="WarriorActions.RemoveCallbacks(IWarriorActions)" />
+        /// <seealso cref="WarriorActions.UnregisterCallbacks(IWarriorActions)" />
+        public void SetCallbacks(IWarriorActions instance)
+        {
+            foreach (var item in m_Wrapper.m_WarriorActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_WarriorActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="WarriorActions" /> instance referencing this action map.
+    /// </summary>
+    public WarriorActions @Warrior => new WarriorActions(this);
 
     // CameraControls
     private readonly InputActionMap m_CameraControls;
@@ -723,12 +1537,140 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
         /// <summary>
+        /// Method invoked when associated input action "Attack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAttack(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Punch" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPunch(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Spell_1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpell_1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Spell_2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpell_2(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Spell_3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpell_3(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInteract(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Archer" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="ArcherActions.AddCallbacks(IArcherActions)" />
+    /// <seealso cref="ArcherActions.RemoveCallbacks(IArcherActions)" />
+    public interface IArcherActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnJump(InputAction.CallbackContext context);
+        /// <summary>
         /// Method invoked when associated input action "Shoot" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnShoot(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Punch" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPunch(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInteract(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Spell_1" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpell_1(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Spell_2" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpell_2(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Spell_3" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpell_3(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Warrior" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="WarriorActions.AddCallbacks(IWarriorActions)" />
+    /// <seealso cref="WarriorActions.RemoveCallbacks(IWarriorActions)" />
+    public interface IWarriorActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnJump(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Attack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAttack(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Punch" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
