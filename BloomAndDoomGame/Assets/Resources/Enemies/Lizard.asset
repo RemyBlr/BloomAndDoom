@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lizard
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
   enemyName: Lizard
-  maxHealth: 300
+  maxHealth: 50
   attack: 25
   defense: 10
   moveSpeed: 6

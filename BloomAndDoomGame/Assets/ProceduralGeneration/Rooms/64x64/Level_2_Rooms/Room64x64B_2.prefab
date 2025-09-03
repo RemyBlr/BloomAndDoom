@@ -726,7 +726,7 @@ GameObject:
   - component: {fileID: 8750457894947777971}
   - component: {fileID: 1749733303056784118}
   - component: {fileID: 3156512122367733170}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stairs (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1850,7 +1850,7 @@ GameObject:
   - component: {fileID: 3954368007690628201}
   - component: {fileID: 2848738543035336685}
   - component: {fileID: 2351002027655851386}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3310,7 +3310,7 @@ GameObject:
   - component: {fileID: 1943517658736583584}
   - component: {fileID: 1479976244873827905}
   - component: {fileID: 8287951997245352397}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stairs (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5015,7 +5015,7 @@ GameObject:
   - component: {fileID: 688216182631988038}
   - component: {fileID: 6932476570328474018}
   - component: {fileID: 2129846480633416362}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

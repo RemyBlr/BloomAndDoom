@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         }
 
         playerInstance = Instantiate(SelectedCharacter.pickedClass.prefab, Vector3.up, Quaternion.identity);
-
+        DontDestroyOnLoad(playerInstance.gameObject);
         //if (!playerInstance.CompareTag("Player"))
             //playerInstance.tag = "Player";
 

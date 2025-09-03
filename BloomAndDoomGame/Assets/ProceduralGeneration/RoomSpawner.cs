@@ -25,13 +25,18 @@ public class RoomSpawner : MonoBehaviour
 
     private void Awake()
     {
+        print("RoomSpawner Awake");
         roomManager = FindFirstObjectByType<RoomGeneration>();
     }
 
     private void Start()
     {
+        print("RoomSpawner Start");
+        if (roomManager == null)
+        {
+            roomManager = FindFirstObjectByType<RoomGeneration>();
+        }
         if (roomManager == null) return;
-        
         roomManager.AddRoom(this);
         foreach (EOpeningDirection opening in OpeningDirections)
         {
@@ -122,7 +127,8 @@ public class RoomSpawner : MonoBehaviour
     public void SpawnBoss(GameObject boss)
     {
         if (boss == null) return;
-        Instantiate(boss, cellsCenter[cellsCenter.Count/2], Quaternion.identity);
+        GameObject spawnedBoss = Instantiate(boss, cellsCenter[cellsCenter.Count/2], Quaternion.identity);
+        spawnedBoss.AddComponent<EndRoom>();
     }
     /*
     private void OnDrawGizmos()
