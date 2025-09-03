@@ -290,7 +290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &467254923
 RectTransform:
   m_ObjectHideFlags: 0
@@ -300,14 +300,14 @@ RectTransform:
   m_GameObject: {fileID: 467254922}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.89, y: 1.89, z: 1.89}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 473370886}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 4.01}
+  m_AnchoredPosition: {x: 0, y: 4.25}
   m_SizeDelta: {x: 50, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &467254924
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 000$
+  m_text: 10$
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -464,8 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f66b1b9409b04308bb38e9c23433520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChestPrice
-  price: 100
-  chestPricePrefab: {fileID: 1752712604}
+  chestPricePrefab: {fileID: 467254922}
 --- !u!222 &467254927
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1853,7 +1852,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1752712605
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1862,15 +1861,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752712604}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.7999992}
-  m_LocalScale: {x: 1.3608001, y: 1.3608001, z: 1.3608001}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1657619506}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 2.8532524}
+  m_AnchoredPosition: {x: 0, y: 3.5}
   m_SizeDelta: {x: 50, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1752712606
@@ -1893,7 +1892,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 000$
+  m_text: 15$
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2027,7 +2026,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f66b1b9409b04308bb38e9c23433520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChestPrice
-  price: 100
   chestPricePrefab: {fileID: 1752712604}
 --- !u!222 &1752712609
 CanvasRenderer:
