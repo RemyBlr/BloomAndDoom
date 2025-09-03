@@ -111,7 +111,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "Aucun changement détecté"
           else
-            git commit -m "🚀 Nouveaux builds - $(date '+%Y-%m-%d %H:%M:%S')"
+            git commit -m "Nouveaux builds - $(date '+%Y-%m-%d %H:%M:%S')"
             git push
             echo "Nouveaux builds poussés vers la branche LandingPage"
           fi
