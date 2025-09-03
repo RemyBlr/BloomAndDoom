@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour, IInteractable
 {
-          protected float _price = 0f;
+          protected int _price = 0;
           public virtual void Interact(Interactor interactor) { }
           public float GetPrice() { return _price; }
 }

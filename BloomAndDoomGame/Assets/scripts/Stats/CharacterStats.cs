@@ -41,8 +41,7 @@ public enum StatType {
 //-------------------------------------------------------------------------------------
 public class CharacterStats : MonoBehaviour
 {
-    [Header("Player")]
-    [SerializeField] private PlayerController player;
+    private PlayerController player;
 
     [Header("Base")]
     [SerializeField] private CharacterClass characterClass;
@@ -139,6 +138,7 @@ public class CharacterStats : MonoBehaviour
     public void SetDefense(float amount) { defense.SetValue(amount); }
     public void SetAttack(float amount) { attack.SetValue(amount); }
     public void SetCritDamage(float amount) { critDamage.SetValue(amount);  }
+    public void SetCurrency(int amount) { currency = amount; }
 
     //---------------- Stat modifiers ----------------
     private StatModifier GetStatModifier(StatType statType)

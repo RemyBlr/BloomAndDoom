@@ -27,8 +27,8 @@ public class WarriorActions : MonoBehaviour
     // ???
     [SerializeField] private float spell3CD = 10f; // Cooldown duration in seconds
 
-    [SerializeField] private float spell1Duration = 5f;
-    [SerializeField] private float spell2Duration = 5f;
+    [SerializeField] private float spell1Duration = 7f;
+    [SerializeField] private float spell2Duration = 6f;
     [SerializeField] private float spell3Duration = 5f;
 
     private bool spell1Ready = true, spell2Ready = true, spell3Ready = true;

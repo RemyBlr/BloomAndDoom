@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class CritDamageCollectable : Item
 {
-          private float newValue = 3f;
+          private int newValue = 3;
 
           void Start()
           {
-                    _price = 20f;
+                    _price = 30;
           }
 
           public override void Interact(Interactor interactor)
@@ -14,6 +14,7 @@ public class CritDamageCollectable : Item
                     if (interactor != null)
                     {
                               CharacterStats playerStats = interactor.GetComponent<CharacterStats>();
+                              playerStats.SetCurrency(playerStats.GetCurrency() - _price);
                               playerStats.SetCritDamage(playerStats.GetCritDamage() + newValue);
                               Destroy(gameObject);
                     }

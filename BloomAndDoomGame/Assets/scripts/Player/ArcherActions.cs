@@ -22,13 +22,13 @@ public class ArcherActions : MonoBehaviour
 
     [Header("Cooldown")]
 
-    [SerializeField] private float spell1CD = 10f;
-    [SerializeField] private float spell2CD = 15f;
-    [SerializeField] private float spell3CD = 5f; // Cooldown duration in seconds
+    [SerializeField] private float spell1CD = 15f;
+    [SerializeField] private float spell2CD = 10f;
+    [SerializeField] private float spell3CD = 18f; // Cooldown duration in seconds
 
-    [SerializeField] private float spell1Duration = 5f;
-    [SerializeField] private float spell2Duration = 5f;
-    [SerializeField] private float spell3Duration = 5f;
+    [SerializeField] private float spell1Duration = 6f;
+    [SerializeField] private float spell2Duration = 6f;
+    [SerializeField] private float spell3Duration = 10f;
 
     private bool spell1Ready = true, spell2Ready = true, spell3Ready = true;
 
