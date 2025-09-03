@@ -18,6 +18,11 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Git LFS checkout
+        run: git lfs pull
+          
       - uses: actions/cache@v3
         with:
           projectPath: BloomAndDoomGame
