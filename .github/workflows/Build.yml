@@ -1,9 +1,6 @@
 name: Build project
 
-on: 
-  pull_request:
-  push:
-    branches: [ main, master ] # Ajoutez ceci pour déclencher aussi sur push
+on: pull_request
 
 jobs:
   buildForAllSupportedPlatforms:
@@ -37,81 +34,8 @@ jobs:
         with:
           projectPath: BloomAndDoomGame
           targetPlatform: ${{ matrix.targetPlatform }}
-      
-      # Créer l'archive avec un nom propre
-      - name: Create release archive
-        run: |
-          cd build/${{ matrix.targetPlatform }}
-          if [ "${{ matrix.targetPlatform }}" = "StandaloneWindows64" ]; then
-            zip -r "BloomAndDoom-Windows.zip" .
-            echo "ARCHIVE_NAME=BloomAndDoom-Windows.zip" >> $GITHUB_ENV
-            echo "PLATFORM_NAME=Windows" >> $GITHUB_ENV
-          elif [ "${{ matrix.targetPlatform }}" = "StandaloneOSX" ]; then
-            zip -r "BloomAndDoom-MacOS.zip" .
-            echo "ARCHIVE_NAME=BloomAndDoom-MacOS.zip" >> $GITHUB_ENV
-            echo "PLATFORM_NAME=MacOS" >> $GITHUB_ENV
-          fi
-          
       - uses: actions/upload-artifact@v4
         with:
+          projectPath: BloomAndDoomGame
           name: Build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
-
-  # Job de déploiement qui s'exécute après tous les builds
-  deploy-to-landing-page:
-    name: Deploy to Landing Page
-    runs-on: ubuntu-latest
-    needs: buildForAllSupportedPlatforms
-    if: github.event_name == 'push' # Seulement sur push, pas sur PR
-    
-    steps:
-      - name: Checkout LandingPage branch
-        uses: actions/checkout@v4
-        with:
-          ref: LandingPage
-          token: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Download all artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: ./artifacts
-          
-      - name: Create downloads folder and move builds
-        run: |
-          mkdir -p downloads
-          
-          # Traiter Windows
-          if [ -d "artifacts/Build-StandaloneWindows64" ]; then
-            cd artifacts/Build-StandaloneWindows64
-            zip -r "../../downloads/BloomAndDoom-Windows.zip" .
-            cd ../..
-            echo "Windows build created"
-          fi
-          
-          # Traiter MacOS
-          if [ -d "artifacts/Build-StandaloneOSX" ]; then
-            cd artifacts/Build-StandaloneOSX
-            zip -r "../../downloads/BloomAndDoom-MacOS.zip" .
-            cd ../..
-            echo "MacOS build created"
-          fi
-          
-          # Nettoyer les artifacts temporaires
-          rm -rf artifacts
-          
-      - name: Commit and push new builds
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action Bot"
-          
-          # Ajouter les nouveaux fichiers
-          git add downloads/
-          
-          # Vérifier s'il y a des changements
-          if git diff --staged --quiet; then
-            echo "Aucun changement détecté"
-          else
-            git commit -m "Nouveaux builds - $(date '+%Y-%m-%d %H:%M:%S')"
-            git push
-            echo "Nouveaux builds poussés vers la branche LandingPage"
-          fi
