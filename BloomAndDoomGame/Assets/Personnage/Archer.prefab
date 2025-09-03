@@ -143,7 +143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2315401605713976332
 Transform:
   m_ObjectHideFlags: 0
@@ -2167,6 +2167,7 @@ GameObject:
   - component: {fileID: 2458531652357612696}
   - component: {fileID: 8111781848147628747}
   - component: {fileID: 5251376893148250087}
+  - component: {fileID: 9070542539514716840}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -2190,6 +2191,7 @@ Transform:
   - {fileID: 1604136106681388990}
   - {fileID: 5244387812810720052}
   - {fileID: 4358853639191946968}
+  - {fileID: 7332759402326037153}
   m_Father: {fileID: 2315401605713976332}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &4605943430279498479
@@ -2275,6 +2277,9 @@ MonoBehaviour:
   arrow: {fileID: 5581752908022187645, guid: f9c3f8182639d48409fbe1b18bca54ee, type: 3}
   arrowVelocity: 75
   fireZone: {fileID: 9051415469342858178}
+  UISpell1: {fileID: 0}
+  UISpell2: {fileID: 0}
+  UISpell3: {fileID: 0}
   spell1CD: 10
   spell2CD: 15
   spell3CD: 5
@@ -2390,7 +2395,25 @@ MonoBehaviour:
   currentLevel: 1
   currentXp: 0
   xpForNextLevel: 100
-  currency: 0
+  currency: 100
+--- !u!114 &9070542539514716840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7046377414480159205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4db63d59b511b64ca88f748ffcc2c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interactor
+  _interactionPoint: {fileID: 7332759402326037153}
+  _interactionPointRadius: 2
+  _interactableMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  _numFound: 0
 --- !u!1 &7059445383478149465
 GameObject:
   m_ObjectHideFlags: 0
@@ -2805,6 +2828,37 @@ Transform:
   m_Children:
   - {fileID: 2238534664159541223}
   m_Father: {fileID: 5357486900710585520}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7606420272991994800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7332759402326037153}
+  m_Layer: 3
+  m_Name: InteractionPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7332759402326037153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606420272991994800}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3149896435543335334}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7701954513211738590
 GameObject:
