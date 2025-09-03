@@ -1,11 +1,17 @@
 using UnityEngine;
 
-public class HealthCollectable : Collectable
+public class HealthCollectable : Item
 {
-          private void OnTriggerEnter(Collider other)
+          void Start()
           {
-                    if (other.gameObject.CompareTag(collector))
+                    _price = 10f;
+          }
+
+          public override void Interact(Interactor interactor)
+          {
+                    if (interactor != null)
                     {
+                              CharacterStats playerStats = interactor.GetComponent<CharacterStats>();
                               playerStats.SetHealth(playerStats.GetCurrentHealth() + 50);
                               Destroy(gameObject);
                     }

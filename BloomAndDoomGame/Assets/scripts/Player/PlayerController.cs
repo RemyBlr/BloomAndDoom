@@ -67,6 +67,11 @@ public class PlayerController : MonoBehaviour
         lastJumpPressedAt = Time.time;
     }
 
+    private void OnInteract(InputValue value)
+    {
+        
+    }
+
     private void Update()
     {
         bool grounded = GroundCheck();

@@ -1,11 +1,17 @@
 using UnityEngine;
 
-public class DefenseCollectable : Collectable
+public class DefenseCollectable : Item
 {
-          private void OnTriggerEnter(Collider other)
+          void Start()
           {
-                    if (other.gameObject.CompareTag(collector))
+                    _price = 15f;
+          }
+
+          public override void Interact(Interactor interactor)
+          {
+                    if (interactor != null)
                     {
+                              CharacterStats playerStats = interactor.GetComponent<CharacterStats>();
                               playerStats.SetDefense(playerStats.GetDefense() + 30);
                               Destroy(gameObject);
                     }
