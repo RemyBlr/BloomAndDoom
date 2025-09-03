@@ -1,9 +1,10 @@
 name: Build project
 
-on:
+on: 
+  pull_request:
   push:
-    branches: [ main ]
-    
+    branches: [ main, master ] # Ajoutez ceci pour déclencher aussi sur push
+
 jobs:
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
@@ -37,7 +38,7 @@ jobs:
           projectPath: BloomAndDoomGame
           targetPlatform: ${{ matrix.targetPlatform }}
       
-      # Create archive with custom name
+      # Créer l'archive avec un nom propre
       - name: Create release archive
         run: |
           cd build/${{ matrix.targetPlatform }}
@@ -56,12 +57,12 @@ jobs:
           name: Build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
 
-  # DEploy after all builds
+  # Job de déploiement qui s'exécute après tous les builds
   deploy-to-landing-page:
     name: Deploy to Landing Page
     runs-on: ubuntu-latest
     needs: buildForAllSupportedPlatforms
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' # Seulement sur push, pas sur PR
     
     steps:
       - name: Checkout LandingPage branch
