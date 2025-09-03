@@ -31,7 +31,7 @@ public class EnemyPerception : MonoBehaviour
 
     private float m_HalfFovCosine; //This is used for the calculations
 
-    private GameObject m_TargetObject;
+    [SerializeField] private GameObject m_TargetObject;
 
 
     void Awake()

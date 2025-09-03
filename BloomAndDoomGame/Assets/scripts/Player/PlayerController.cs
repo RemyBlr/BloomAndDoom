@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     private float lastGroundedAt = -999f;
     private float lastJumpPressedAt = -999f;
 
-    private void Start()
+    public void Start()
     {
         camera = Camera.main;
 
@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer(bool grounded)
     {
+        if(camera == null) camera = Camera.main;
         Vector3 camF = camera.transform.forward; camF.y = 0f; camF.Normalize();
         Vector3 camR = camera.transform.right; camR.y = 0f; camR.Normalize();
 

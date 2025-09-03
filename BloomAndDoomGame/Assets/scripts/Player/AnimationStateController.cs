@@ -21,7 +21,7 @@ public class AnimationStateController : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         isFallingId = Animator.StringToHash("IsFalling");
         velocityXId = Animator.StringToHash("VelocityX");
         velocityYId = Animator.StringToHash("VelocityY");
@@ -37,20 +37,29 @@ public class AnimationStateController : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
+        
         if (animator == null)
-            animator = GetComponentInChildren<Animator>();
+            animator = GetComponentInChildren<Animator>();        
+    }
+
+    private bool IsAnimatorValid()
+    {
+        return animator != null && animator.gameObject != null && animator.isActiveAndEnabled;
     }
 
     public void OnRun(Vector2 inputs)
     {
-        if (animator == null) return;
+        if (!IsAnimatorValid()) return;
+
         animator.SetFloat(velocityXId, inputs.x);
         animator.SetFloat(velocityYId, inputs.y);
     }
 
     public void UpdateFallState(bool grounded)
     {
-        if (animator == null) return;
+        if (!IsAnimatorValid()) return;
+
         animator.SetBool(isFallingId, grounded);
     }
 
@@ -61,14 +70,16 @@ public class AnimationStateController : MonoBehaviour
 
     public void OnStartShoot()
     {
-        if (animator == null) return;
+        if (!IsAnimatorValid()) return;
+
         animator.SetTrigger(shootingId);
         animator.SetBool(isShootingId, true);
     }
 
     public void OnStopShoot()
     {
-        if (animator == null) return;
+        if (!IsAnimatorValid()) return;
+
         animator.SetBool(isShootingId, false);
     }
 
@@ -96,5 +107,14 @@ public class AnimationStateController : MonoBehaviour
     public void OnSpell3()
     {
         animator.SetTrigger(spell3Id);
+    }
+
+    public bool HasValidAnimator() {
+        return IsAnimatorValid();
+    }
+
+    private void OnDestroy() {
+        OnShootCallback = null;
+        animator = null;
     }
 }

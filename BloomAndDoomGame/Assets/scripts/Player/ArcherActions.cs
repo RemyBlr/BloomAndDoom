@@ -55,7 +55,22 @@ public class ArcherActions : MonoBehaviour
         animationState = GetComponent<AnimationStateController>();
         playerStats = GetComponent<CharacterStats>();
 
-        animationState.OnShootCallback += FireArrow;
+        if (animationState != null)
+            animationState.OnShootCallback += FireArrow;
+    }
+
+    private void OnStartShoot(InputAction.CallbackContext obj)
+    {
+        // Has valid animator comes from AnimatioNSTateController
+        if (animationState != null && animationState.HasValidAnimator() && gameObject != null)
+            animationState.OnStartShoot();
+    }
+
+    private void OnStopShoot(InputAction.CallbackContext obj)
+    {
+        // Has valid animator comes from AnimatioNSTateController
+        if (animationState != null && animationState.HasValidAnimator() && gameObject != null)
+            animationState.OnStopShoot();
     }
 
     private void FireArrow()
@@ -79,19 +94,19 @@ public class ArcherActions : MonoBehaviour
 
     private void OnSpell_1(InputValue value)
     {
-        if (!spell1Ready) return;
+        if (!spell1Ready || gameObject == null) return;
         StartCoroutine(TriggerSpell1(spell1Duration));
     }
 
     private void OnSpell_2(InputValue value)
     {
-        if (!spell2Ready) return;
+        if (!spell2Ready || gameObject == null) return;
         StartCoroutine(TriggerSpell2(spell2Duration));
     }
 
     private void OnSpell_3(InputValue value)
     {
-        if (!spell3Ready) return;
+        if (!spell3Ready || gameObject == null) return;
         StartCoroutine(TriggerSpell3(spell3Duration));
     }
 
@@ -100,6 +115,8 @@ public class ArcherActions : MonoBehaviour
     //
     private IEnumerator TriggerSpell1(float cooldown)
     {
+        if (playerStats == null) yield break;
+
         spell1Ready = false;
         playerStats.SetAttackSpeed(2f);
         animationState.SetAttackSpeed(2f);
@@ -114,6 +131,8 @@ public class ArcherActions : MonoBehaviour
 
     private IEnumerator TriggerSpell2(float cooldown)
     {
+        if (playerStats == null) yield break;
+
         spell2Ready = false;
         playerStats.SetSpeed(8f);
         SP2.color = new Color(SP2.color.r, SP2.color.g, SP2.color.b, 0.5f); // Set opacity to 50%
@@ -130,6 +149,8 @@ public class ArcherActions : MonoBehaviour
 
     private IEnumerator TriggerSpell3(float cooldown)
     {
+        if (fireZone == null) yield break;
+
         spell3Ready = false;
         fireZone.SetActive(true); // Activate fire zone of player
         SP3.color = new Color(SP3.color.r, SP3.color.g, SP3.color.b, 0.5f); // Set opacity to 50%
@@ -142,5 +163,33 @@ public class ArcherActions : MonoBehaviour
         
         SP3.color = new Color(SP3.color.r, SP3.color.g, SP3.color.b, 1f); // Restore opacity
         spell3Ready = true;
+    }
+
+    // Clean when obkect is destroyed
+    private void OnDestroy()
+    {
+        if (controls != null)
+        {
+            controls.Gameplay.Attack.started -= OnStartShoot;
+            controls.Gameplay.Attack.canceled -= OnStopShoot;
+            controls.Disable();
+            controls = null;
+        }
+
+        if (animationState != null)
+            animationState.OnShootCallback -= FireArrow;
+
+        StopAllCoroutines();
+    }
+
+    public void SetControlsEnabled(bool enabled)
+    {
+        if (controls != null)
+        {
+            if (enabled)
+                controls.Enable();
+            else
+                controls.Disable();
+        }
     }
 }

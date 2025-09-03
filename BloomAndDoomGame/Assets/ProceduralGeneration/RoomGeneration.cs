@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.ProBuilder;
 public class RoomGeneration : MonoBehaviour
 {
     private NavMeshSurface navMesh;
     
     [Min(1)] public int Level = 1;
+
+    public string NextRoom;
     
     public RoomCollection RoomCollection;
 
@@ -24,15 +27,16 @@ public class RoomGeneration : MonoBehaviour
         navMesh = GetComponent<NavMeshSurface>();
     }
 
-    private void Start()
+    public void Start()
     {
         StartCoroutine(GenerateDungeon());
     }
-
-    private IEnumerator GenerateDungeon()
+    
+    public IEnumerator GenerateDungeon()
     {
         Instantiate(RoomCollection.EntryRoom, Vector3.zero, Quaternion.identity);
         yield return new WaitForSeconds(2f);
+
         GameObject lastRoom = Rooms[^1].gameObject;
         Rooms[^1] = lastRoom.GetComponent<RoomSpawner>();
         BossRooms.Add(Rooms[^1]);
@@ -44,8 +48,9 @@ public class RoomGeneration : MonoBehaviour
         }
 
         if (Monsters[Level - 1].Boss == null) yield return null;
-        Rooms[^1].SpawnBoss(Monsters[Level - 1].Boss);
+        Rooms[0].SpawnBoss(Monsters[Level - 1].Boss);
     }
+    
     public void AddRoom(RoomSpawner room)
     {
         Rooms.Add(room);

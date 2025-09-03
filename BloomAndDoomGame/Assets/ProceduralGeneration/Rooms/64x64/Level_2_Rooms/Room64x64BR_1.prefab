@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 3059522863557013458}
   - component: {fileID: 4785552642396865916}
   - component: {fileID: 8165803914717289570}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3799,7 +3799,7 @@ GameObject:
   - component: {fileID: 3852353567001242071}
   - component: {fileID: 1016060807613722058}
   - component: {fileID: 6019966269519426330}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stairs (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5721,7 +5721,7 @@ GameObject:
   - component: {fileID: 5738510116441660327}
   - component: {fileID: 6168070517810137722}
   - component: {fileID: 1626043191937129596}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Structure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9598,7 +9598,7 @@ GameObject:
   - component: {fileID: 5524282592880490085}
   - component: {fileID: 7705354564630614986}
   - component: {fileID: 4613064922190319776}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Stairs (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
