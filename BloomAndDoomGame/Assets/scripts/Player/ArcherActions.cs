@@ -65,21 +65,6 @@ public class ArcherActions : MonoBehaviour
 
     private void FireArrow()
     {
-<<<<<<< HEAD
-        if (arrow_spawn == null || arrow == null || playerStats == null) return;
-
-        Vector3 pos = arrow_spawn.transform.position + arrow_spawn.transform.forward * 2f;
-        Ray direction = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
-        GameObject arr = Instantiate(arrow, pos, Quaternion.LookRotation(direction.direction));
-        
-        Rigidbody arrowRb = arr.GetComponent<Rigidbody>();
-        if (arrowRb != null)
-            arrowRb.AddForce(arrow_spawn.transform.forward * arrowVelocity, ForceMode.Impulse);
-            
-        ArcherProjectile projectile = arr.GetComponent<ArcherProjectile>();
-        if (projectile != null && playerStats != null)
-            projectile.Damage = playerStats.GetAttack();
-=======
         Vector3 aimDirection;
         Ray direction = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
         LayerMask layer = LayerMask.NameToLayer("Terrain");
@@ -95,7 +80,6 @@ public class ArcherActions : MonoBehaviour
         GameObject arr = Instantiate(arrow, startPosition, Quaternion.LookRotation(aimDirection));
         arr.GetComponent<Rigidbody>().AddForce(aimDirection * arrowVelocity, ForceMode.Impulse);
         arr.GetComponent<ArcherProjectile>().Damage = playerStats.GetAttack();
->>>>>>> 8681856c77f02296bdbb3d38b630317404c47f14
     }
 
     private void OnPunch(InputValue value)
@@ -128,11 +112,11 @@ public class ArcherActions : MonoBehaviour
     private IEnumerator TriggerSpell1(float duration)
     {
         if (playerStats == null) yield break;
-        
+
         spell1Ready = false;
         playerStats.SetAttackSpeed(2f);
         yield return new WaitForSeconds(duration);
-        
+
         // Check for object still existing
         if (playerStats != null)
             playerStats.SetAttackSpeed(1f);
@@ -144,11 +128,11 @@ public class ArcherActions : MonoBehaviour
     private IEnumerator TriggerSpell2(float duration)
     {
         if (playerStats == null) yield break;
-        
+
         spell2Ready = false;
         playerStats.SetSpeed(8f);
         yield return new WaitForSeconds(duration);
-        
+
         // Check for object still existing
         if (playerStats != null)
             playerStats.SetSpeed(5f);
@@ -160,13 +144,13 @@ public class ArcherActions : MonoBehaviour
     private IEnumerator TriggerSpell3(float duration)
     {
         if (fireZone == null) yield break;
-        
+
         spell3Ready = false;
-        
+
         // Activate fire zone of player
         fireZone.SetActive(true);
         yield return new WaitForSeconds(duration);
-        
+
         // Check for object still existing
         if (fireZone != null)
             fireZone.SetActive(false);
@@ -176,8 +160,10 @@ public class ArcherActions : MonoBehaviour
     }
 
     // Clean when obkect is destroyed
-    private void OnDestroy() {
-        if (controls != null) {
+    private void OnDestroy()
+    {
+        if (controls != null)
+        {
             controls.Gameplay.Shoot.started -= OnStartShoot;
             controls.Gameplay.Shoot.canceled -= OnStopShoot;
             controls.Disable();
@@ -190,8 +176,10 @@ public class ArcherActions : MonoBehaviour
         StopAllCoroutines();
     }
 
-    public void SetControlsEnabled(bool enabled) {
-        if (controls != null) {
+    public void SetControlsEnabled(bool enabled)
+    {
+        if (controls != null)
+        {
             if (enabled)
                 controls.Enable();
             else
