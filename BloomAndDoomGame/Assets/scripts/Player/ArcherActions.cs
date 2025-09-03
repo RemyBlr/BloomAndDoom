@@ -41,6 +41,10 @@ public class ArcherActions : MonoBehaviour
         controls.Enable();
 
         // Activate UI for the Archer class
+        UISpell1 = GameObject.Find("ArcherSpell1").GetComponent<Image>();
+        UISpell2 = GameObject.Find("ArcherSpell2").GetComponent<Image>();
+        UISpell3 = GameObject.Find("ArcherSpell3").GetComponent<Image>();
+
         UISpell1.gameObject.SetActive(true);
         UISpell2.gameObject.SetActive(true);
         UISpell3.gameObject.SetActive(true);
