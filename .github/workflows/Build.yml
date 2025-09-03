@@ -1,10 +1,9 @@
 name: Build project
 
-on: 
-  pull_request:
+on:
   push:
-    branches: [ main, test-yml ]
-
+    branches: [ main ]
+    
 jobs:
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
