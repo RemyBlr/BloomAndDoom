@@ -38,9 +38,23 @@ public class WarriorActions : MonoBehaviour
         playerStats = GetComponent<CharacterStats>();
 
         // Activate UI for the Warrior class
-        UISpell1.gameObject.SetActive(true);
-        UISpell2.gameObject.SetActive(true);
-        UISpell3.gameObject.SetActive(true);
+        var allRawImages = FindObjectsOfType<RawImage>(true);
+        foreach (var raw in allRawImages)
+        {
+            if (raw.name == "WarriorSpell1" && raw.transform.parent.name == "Spell 1")
+                UISpell1 = raw;
+            if (raw.name == "WarriorSpell2" && raw.transform.parent.name == "Spell 2")
+                UISpell2 = raw;
+            if (raw.name == "WarriorSpell3" && raw.transform.parent.name == "Spell 3")
+                UISpell3 = raw;
+        }
+
+        if (UISpell1 != null)
+            UISpell1.gameObject.SetActive(true);
+        if (UISpell2 != null)
+            UISpell2.gameObject.SetActive(true);
+        if (UISpell3 != null)
+            UISpell3.gameObject.SetActive(true);
     }
 
     private void OnAttack(InputValue value)
