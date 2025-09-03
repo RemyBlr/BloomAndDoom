@@ -41,13 +41,23 @@ public class ArcherActions : MonoBehaviour
         controls.Enable();
 
         // Activate UI for the Archer class
-        UISpell1.gameObject.SetActive(true);
-        UISpell2.gameObject.SetActive(true);
-        UISpell3.gameObject.SetActive(true);
+        if (UISpell1 != null)
+        {
+            UISpell1.gameObject.SetActive(true);
+            SP1 = UISpell1.GetComponentInChildren<RawImage>();
+        }
 
-        SP1 = UISpell1.GetComponentInChildren<RawImage>();
-        SP2 = UISpell2.GetComponentInChildren<RawImage>();
-        SP3 = UISpell3.GetComponentInChildren<RawImage>();
+        if (UISpell2 != null)
+        {
+            UISpell2.gameObject.SetActive(true);
+            SP2 = UISpell2.GetComponentInChildren<RawImage>();
+        }
+
+        if (UISpell3 != null)
+        {
+            UISpell3.gameObject.SetActive(true);
+            SP3 = UISpell3.GetComponentInChildren<RawImage>();
+        }
 
         controls.Gameplay.Attack.started += (ctx) => animationState.OnStartShoot();
         controls.Gameplay.Attack.canceled += (ctx) => animationState.OnStopShoot();
