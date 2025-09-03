@@ -21,6 +21,9 @@ public class RoomGeneration : MonoBehaviour
     //Monsters
     public Vector2Int MinMaxMonsters;
     public RoomMonsters[] Monsters;
+    
+    //Items
+    public ItemsSpawnsData ItemSpawns;
 
     private void Awake()
     {
@@ -45,10 +48,11 @@ public class RoomGeneration : MonoBehaviour
         for (int i = 1; i < Rooms.Count - 1; i++)
         {
             Rooms[i].InitialMonsterSpawn(Level);
+            ItemSpawns.SpawnObjects(Rooms[i].cellsCenter);
         }
 
         if (Monsters[Level - 1].Boss == null) yield return null;
-        Rooms[0].SpawnBoss(Monsters[Level - 1].Boss);
+        Rooms[^1].SpawnBoss(Monsters[Level - 1].Boss);
     }
     
     public void AddRoom(RoomSpawner room)

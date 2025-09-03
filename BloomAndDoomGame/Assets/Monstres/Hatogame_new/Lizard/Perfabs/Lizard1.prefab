@@ -1432,6 +1432,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   m_ObstacleCheckRadius: 0.1
+  m_TargetObject: {fileID: 0}
 --- !u!114 &8466597208471928169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1446,6 +1447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamageSystem
   Stats: {fileID: 11400000, guid: c70c96f6865152b4187f0a9d3ef50a51, type: 2}
   currentHeal: 100
+  damagePopupPrefab: {fileID: 5403528675670166939, guid: 3988ab43343e24e76987bf79c16005c9, type: 3}
 --- !u!114 &3505971534802999724
 MonoBehaviour:
   m_ObjectHideFlags: 0

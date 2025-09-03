@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class EndRoom : MonoBehaviour
@@ -23,7 +24,8 @@ public class EndRoom : MonoBehaviour
 
     public void OnBossDeath()
     {
+        player.transform.localPosition = Vector3.zero;
         SceneManager.LoadScene(roomGeneration.NextRoom);
-        player.transform.parent.transform.position = Vector3.up;
+        FindFirstObjectByType<CharacterStats>().transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
     }
 }
