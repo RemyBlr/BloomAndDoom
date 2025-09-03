@@ -24,5 +24,6 @@ public class EndRoom : MonoBehaviour
     public void OnBossDeath()
     {
         SceneManager.LoadScene(roomGeneration.NextRoom);
+        player.transform.parent.transform.position = Vector3.up;
     }
 }
