@@ -1,15 +1,21 @@
 using UnityEngine;
 
-public class DefenseCollectable : Collectable
+public class DefenseCollectable : Item
 {
-          [SerializeField] private CharacterStats playerStats;
+          private int newValue = 30;
 
-          private void OnTriggerEnter(Collider other)
+          void Start()
           {
-                    Debug.Log("Defense +30 upgrade");
-                    if (other.gameObject.CompareTag(collector))
+                    _price = 15;
+          }
+
+          public override void Interact(Interactor interactor)
+          {
+                    if (interactor != null)
                     {
-                              playerStats.SetDefense(30);
+                              CharacterStats playerStats = interactor.GetComponent<CharacterStats>();
+                              playerStats.SetCurrency(playerStats.GetCurrency() - _price);
+                              playerStats.SetDefense(playerStats.GetDefense() + newValue);
                               Destroy(gameObject);
                     }
           }

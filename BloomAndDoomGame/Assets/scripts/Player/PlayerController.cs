@@ -67,18 +67,12 @@ public class PlayerController : MonoBehaviour
         lastJumpPressedAt = Time.time;
     }
 
-    // private void OnInteract(InputValue value)
-    // {
-    //     Debug.Log("Is trying to interact with IInterable object");
-    //     Ray r = new Ray(camera.transform.position, camera.transform.forward);
-    //     if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
-    //     {
-    //         if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
-    //         {
-    //             interactObj.Interact();
-    //         }
-    //     }
-    // }
+    public float GetSpeed() { return speed; }
+
+    public void SetSpeed(float amount)
+    {
+        speed = amount;
+    }
 
     private void Update()
     {

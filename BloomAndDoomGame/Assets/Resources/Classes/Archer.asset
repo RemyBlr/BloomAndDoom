@@ -15,7 +15,7 @@ MonoBehaviour:
   className: Archer
   hp: 200
   atk: 100
-  spd: 60
+  spd: 5
   def: 10
   critChance: 0.05
   critDamage: 0.5

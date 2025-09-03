@@ -41,6 +41,8 @@ public enum StatType {
 //-------------------------------------------------------------------------------------
 public class CharacterStats : MonoBehaviour
 {
+    private PlayerController player;
+
     [Header("Base")]
     [SerializeField] private CharacterClass characterClass;
 
@@ -103,6 +105,9 @@ public class CharacterStats : MonoBehaviour
     
     void Start()
     {
+        var spell1 = characterClass.spells[0].icon;
+
+        player = GetComponent<PlayerController>();
         hud = FindFirstObjectByType<HUDManager>();
         InitializeFromClass();
     }
@@ -125,9 +130,17 @@ public class CharacterStats : MonoBehaviour
     public int GetLevel() => currentLevel;
     public int GetCurrency() => currency;
     public CharacterClass GetCharacterClass() => characterClass;
-    
-    public void SetHealth(float amount) { health.SetValue(health.GetValue() + amount); }
-    public void SetDefense(float amount) { defense.SetValue(defense.GetValue() + amount); }
+
+    public void SetHealth(float amount)
+    {
+        if (amount > GetMaxHealth())
+            amount = GetMaxHealth();
+        health.SetValue(amount);
+    }
+    public void SetDefense(float amount) { defense.SetValue(amount); }
+    public void SetAttack(float amount) { attack.SetValue(amount); }
+    public void SetCritDamage(float amount) { critDamage.SetValue(amount);  }
+    public void SetCurrency(int amount) { currency = amount; }
 
     //---------------- Stat modifiers ----------------
     private StatModifier GetStatModifier(StatType statType)
@@ -149,10 +162,11 @@ public class CharacterStats : MonoBehaviour
     {
         attackSpeed.SetValue(amount);
     }
-    
+
     public void SetSpeed(float amount)
     {
         speed.SetValue(amount);
+        player.SetSpeed(amount);
     }
 
     public void AddFlatBonus(StatType statType, float value)
