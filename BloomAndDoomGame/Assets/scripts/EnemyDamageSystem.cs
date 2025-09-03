@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyDamageSystem : MonoBehaviour
@@ -11,6 +12,8 @@ public class EnemyDamageSystem : MonoBehaviour
 
     private Animator animator;
     public bool IsDead => currentHeal <= 0f;
+
+    public Action OnDeath;
 
     private void Awake()
     {
@@ -30,6 +33,7 @@ public class EnemyDamageSystem : MonoBehaviour
         if (IsDead) {
             animator.SetTrigger("IsDead");
             GetComponent<Collider>().enabled = false;
+            OnDeath?.Invoke();
         }
     }
 
