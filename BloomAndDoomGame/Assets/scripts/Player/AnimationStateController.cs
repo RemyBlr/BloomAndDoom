@@ -27,7 +27,7 @@ public class AnimationStateController : MonoBehaviour
         velocityYId = Animator.StringToHash("VelocityY");
         attackSpeedId = Animator.StringToHash("AttackSpeed");
         shootingId = Animator.StringToHash("Shoot");
-        isShootingId = Animator.StringToHash("IsShooting");
+        isShootingId = Animator.StringToHash("IsAttacking");
         punchId = Animator.StringToHash("Punch");
         meleeAttackId = Animator.StringToHash("MeleeAttack");
         spell1Id = Animator.StringToHash("Spell1");
