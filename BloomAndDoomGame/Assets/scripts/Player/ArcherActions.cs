@@ -41,6 +41,17 @@ public class ArcherActions : MonoBehaviour
         controls.Enable();
 
         // Activate UI for the Archer class
+        var allImages = FindObjectsOfType<Image>(true);
+        foreach (var img in allImages)
+        {
+            if (img.name == "background" && img.transform.parent.name == "Spell 1")
+                UISpell1 = img;
+            if (img.name == "background" && img.transform.parent.name == "Spell 2")
+                UISpell2 = img;
+            if (img.name == "background" && img.transform.parent.name == "Spell 3")
+                UISpell3 = img;
+        }
+
         if (UISpell1 != null)
         {
             UISpell1.gameObject.SetActive(true);
@@ -146,7 +157,7 @@ public class ArcherActions : MonoBehaviour
         spell2Ready = false;
         playerStats.SetSpeed(8f);
         SP2.color = new Color(SP2.color.r, SP2.color.g, SP2.color.b, 0.5f); // Set opacity to 50%
-        
+
         yield return new WaitForSeconds(cooldown);
 
         playerStats.SetSpeed(5f);
@@ -170,7 +181,7 @@ public class ArcherActions : MonoBehaviour
         fireZone.SetActive(false);
 
         yield return new WaitForSeconds(spell3CD); // cooldown after use
-        
+
         SP3.color = new Color(SP3.color.r, SP3.color.g, SP3.color.b, 1f); // Restore opacity
         spell3Ready = true;
     }
