@@ -21,15 +21,15 @@ Dans ce petit guide, vous découvrirez deux manière d'accéder au projet.
 
 ### 1. Via Download
 
-La première consiste à simplement télécharger l'exécutable et il ne vous reste plus qu'à lancer ce dernier. Cliquez sur ce lien [BloomAndDoom.exe for MacOS](https://github.com/RemyBlr/BloomAndDoom/actions/runs/17119696513/artifacts/3816262642) ou [BloomAndDoom.exe for Windows](https://github.com/RemyBlr/BloomAndDoom/actions/runs/17119696513/artifacts/3816290470).
+La première consiste à simplement télécharger l'exécutable et il ne vous reste plus qu'à lancer ce dernier. Ceci peut être fait facilement en accédant à notre [Landing Page](https://remyblr.github.io/BloomAndDoom/).
 
 Ainsi vous aurez l'exécutable de la version la plus récente du jeu.
 
-*Note: il se peut que le lien de téléchargement n'ai pas été mise à jour vers la dernière version du jeu. Veuillez contactez les auteurs du projet pour tous renseignements*
+*Note: il se peut que le lien de téléchargement n'ait pas été mis à jour vers la dernière version du jeu. Veuillez contacter les auteurs du projet pour tous renseignements*
 
 ### 2. En Contribuant
 
-La deuxième manière d'accèder au projet est de contribuer. Voici une marche à suivre étape par étape que vous pouvez suivre.
+La deuxième manière d'accéder au projet est de contribuer. Voici une marche à suivre étape par étape que vous pouvez suivre.
 
 1. Accéder au répository en ligne [BloomAndDoom](https://github.com/RemyBlr/BloomAndDoom) et contacter les auteurs du projet pour recevoir les accès.
 
@@ -39,3 +39,7 @@ La deuxième manière d'accèder au projet est de contribuer. Voici une marche �
 <img width="1083" height="843" alt="image" src="https://github.com/user-attachments/assets/b957cb22-06d8-44a7-83d6-16e33117b896" />
 
 4. Créer une **Pull Request** pour qu'elle soit analysée par les auteurs.
+
+## Documentation
+
+Vous trouverez une documentation plus détaillée, plus technique dans le dossier **/Document** à la racine du repo. Référé vous à celle-ci cela peut vous être utile !
