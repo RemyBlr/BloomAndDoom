@@ -37,11 +37,10 @@ public class EnemyPerception : MonoBehaviour
     void Awake()
     {
         if (m_Eyes == null) m_Eyes = transform;
-
-        m_TargetObject = GameObject.FindGameObjectWithTag(m_TargetTag);
         m_HalfFovCosine = Mathf.Cos(m_FieldOfView / 2f * Mathf.Deg2Rad); // We only calculate once the half FOV cosine to optimize performance
         m_DetectionRangeSqr = m_DetectionRange * m_DetectionRange; // Same for the squared detection range
         m_TargetHuggingDistanceSqr = m_TargetHuggingDistance * m_TargetHuggingDistance; // Same for the squared target hugging distance
+        m_TargetObject = FindFirstObjectByType<CharacterStats>().gameObject;
     }
 
 
