@@ -9,7 +9,8 @@ public class EnemyDamageSystem : MonoBehaviour
 
     [Header("Damage Popup")]
     public GameObject damagePopupPrefab;
-
+    private EnemyMovement enemyMovement;
+    private EnemyPerception perception;
     private Animator animator;
     public bool IsDead => currentHeal <= 0f;
 
@@ -18,6 +19,8 @@ public class EnemyDamageSystem : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        enemyMovement = GetComponent<EnemyMovement>();
+        perception = GetComponent<EnemyPerception>();
         currentHeal = Stats.maxHealth;
     }
 
@@ -29,6 +32,7 @@ public class EnemyDamageSystem : MonoBehaviour
         currentHeal -= damage;
 
         SpawnPopup(damage);
+        enemyMovement.ChangeState(new EnemyChaseState(enemyMovement.m_PlayerObject, enemyMovement, perception));
 
         if (IsDead) {
             animator.SetTrigger("IsDead");

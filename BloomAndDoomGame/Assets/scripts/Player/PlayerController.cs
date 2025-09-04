@@ -1,6 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 /*
  * Handles player movement/jump and drives animator ground/fall states.
@@ -54,6 +55,11 @@ public class PlayerController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        SceneManager.sceneLoaded += (scene, mode) =>
+        {
+            if (!scene.name.Contains("GameScene")) return;
+            transform.SetLocalPositionAndRotation(Vector3.up, Quaternion.identity);
+        };
     }
 
     private void OnMove(InputValue value)

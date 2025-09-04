@@ -93,6 +93,11 @@ public class EnemyChaseState : EnemyState
 
     private void CheckStateValidity()
     {
+        if (m_EnemyPerception == null)
+        {
+            Debug.Log("m_EnemyPerception is null");
+            return;
+        }
         if (m_EnemyPerception.DetectTarget() != null)
         {
             m_TargetLastPosition = m_TargetObject.transform.position;

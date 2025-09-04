@@ -55,7 +55,7 @@ public class EnemyPerception : MonoBehaviour
 
         // Get the closest point on the target's collider
         Vector3 targetPoint = m_TargetObject.transform.position;
-        if (m_TargetObject.TryGetComponent<Collider>(out Collider targetCollider))
+        if (m_TargetObject.TryGetComponent(out Collider targetCollider))
         {
             targetPoint = targetCollider.ClosestPoint(m_Eyes.position);
         }
