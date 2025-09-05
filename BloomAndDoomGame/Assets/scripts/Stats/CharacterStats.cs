@@ -42,6 +42,7 @@ public enum StatType {
 public class CharacterStats : MonoBehaviour
 {
     private PlayerController player;
+    private HUDManager hudManager;
 
     [Header("Base")]
     [SerializeField] private CharacterClass characterClass;
@@ -93,10 +94,12 @@ public class CharacterStats : MonoBehaviour
 
         currentLevel = characterClass.startingLevel;
         currency = characterClass.startingCurrency;
-        
+        //hudManager.SetMoney(currency);
+
         // Current health - IMPORTANT: initialiser après avoir défini health
         float maxHP = health.GetValue();
         currentHealth = maxHP;
+
         
         Debug.Log($"Stats initialisées: HP={maxHP}, ATK={baseStats.atk}, Level={currentLevel}");
         

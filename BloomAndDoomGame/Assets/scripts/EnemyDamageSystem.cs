@@ -14,6 +14,7 @@ public class EnemyDamageSystem : MonoBehaviour
     public bool IsDead => currentHeal <= 0f;
 
     public Action OnDeath;
+    private GameObject player;
 
     private void Awake()
     {
@@ -33,6 +34,7 @@ public class EnemyDamageSystem : MonoBehaviour
         if (IsDead) {
             animator.SetTrigger("IsDead");
             GetComponent<Collider>().enabled = false;
+            GiveRewardsToPlayer();
             OnDeath?.Invoke();
         }
     }
@@ -52,5 +54,24 @@ public class EnemyDamageSystem : MonoBehaviour
 
         if (popup != null)
             popup.Setup(damage);
+    }
+
+    private void GiveRewardsToPlayer()
+    {
+        if (Stats == null) return;
+
+        if (GameManager.Instance?.playerInstance != null)
+            player =  GameManager.Instance.playerInstance;
+    
+        if (player == null) return;
+
+        CharacterStats playerStats = player.GetComponent<CharacterStats>();
+        if (playerStats == null)
+            playerStats = player.GetComponentInChildren<CharacterStats>();
+
+        if (playerStats != null) {
+            playerStats.AddCurrency(Stats.currencyReward);
+            playerStats.AddExperience(Stats.expReward);
+        }
     }
 }

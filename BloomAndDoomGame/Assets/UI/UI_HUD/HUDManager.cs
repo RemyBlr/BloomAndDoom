@@ -23,6 +23,12 @@ public class HUDManager : MonoBehaviour
     public Image xp;
 
     private float elapsedTime;
+    private CharacterStats playerStats;
+
+    void Start()
+    {
+        SetupPlayerStats();
+    }
 
     void Update()
     {
@@ -31,6 +37,8 @@ public class HUDManager : MonoBehaviour
         int minutes = Mathf.FloorToInt(elapsedTime / 60f);
         int seconds = Mathf.FloorToInt(elapsedTime % 60f);
         time.text = $"Temps: {minutes:00}:{seconds:00}";
+
+        //money.text = characterStats.GetCurrency().ToString();
     }
 
     public void SetMoney(int amount) {
@@ -61,5 +69,33 @@ public class HUDManager : MonoBehaviour
     public void AddObjective(string text) {
         var obj = Instantiate(objectivePrefab, objectivesParent);
         obj.GetComponent<TextMeshProUGUI>().text = text;
+    }
+
+    private void SetupPlayerStats() {
+        if (GameManager.Instance?.playerInstance != null) {
+            playerStats = GameManager.Instance.playerInstance.GetComponent<CharacterStats>();
+            if (playerStats == null)
+                playerStats = GameManager.Instance.playerInstance.GetComponentInChildren<CharacterStats>();
+        }
+
+        if (playerStats != null) {
+            CharacterStats.OnCurrencyChanged += UpdateMoneyDisplay;
+            UpdateMoneyDisplay(playerStats.GetCurrency());
+            
+            Debug.Log("HUD connecté aux stats du joueur");
+        }
+        else
+        {
+            Debug.LogWarning("CharacterStats du joueur introuvable pour le HUD");
+        }
+    }
+
+    private void UpdateMoneyDisplay(int newAmount) {
+        if (money != null)
+            money.text = $"Argent: {newAmount}";
+    }
+
+    void OnDestroy() {
+        CharacterStats.OnCurrencyChanged -= UpdateMoneyDisplay;
     }
 }
