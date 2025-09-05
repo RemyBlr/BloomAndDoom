@@ -90,3 +90,6 @@ Tous les sprints ont été définis sur le Discord, voici ce qui à été décid
 
 ### Sprint planning 3
 ![Sprint planning 3](./img/sprint_planning_3.png)
+
+## Points négatifs
+Nous n'avons pas complètement atteint notre objectif durant ces 3 sprints, le but était d'avoir un jeu complètement fonctionnel, avec des règles de base simples et 5 niveaux au total. Nous avions très bien commencé en travaillant chacun de notre côté lors du premier sprint. Mais lors du deuxième sprint, lors de la mise en commun, nous nous sommes aperçus que nous avions manqué de discussion entre nous. Chacun avait mis en place un système pour la vie ou pour les dégats de son côté, et lorsqu'il fallait mettre en commun, nous avons perdu beaucoup de temps à tout faire fonctionner correctement. Avec plus de communication à l'avance et lors du développement de ces fonctionnalités, nous aurions pu avancer beaucoup plus rapidement, avec un code cohérent et propre, pour finir notre projet à temps.
