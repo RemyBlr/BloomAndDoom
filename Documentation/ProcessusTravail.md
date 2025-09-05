@@ -25,7 +25,6 @@ Pour garantir la lisibilité et la cohérence du code, nous suivons les [convent
 
 Notre approche des tests se décompose comme suit :
 
-- **Tests Unitaires et d'Intégration** : Nous utilisons le framework **Unity Test Framework** pour valider la logique du code (fonctions, classes) et les interactions entre les différents composants.
 - **Tests Manuels (Système)** : Chaque fonctionnalité est testée manuellement dans l'éditeur Unity, puis une seconde fois dans une version exportée (`build`) du jeu pour s'assurer de son bon fonctionnement en conditions réelles.
 
 ## Flux de travail GitHub (GitHub Flow)
@@ -38,6 +37,12 @@ Notre processus de développement suit le modèle classique du GitHub Flow :
 4.  **Pull Request** : Une fois le développement terminé, une Pull Request est ouverte pour proposer les changements.
 5.  **Revue de Code** : Le code est relu et validé par au moins un autre membre de l'équipe.
 6.  **Fusion** : Après validation, la branche est fusionnée (`merge`) dans la branche principale.
+
+## CI/CD
+En ce qui concerne la CI/CD, nous avons mis en place à l'aide de [Game-ci](https://game.ci) un workflow basique. Lors de chaque PR (étape 4 du paragraphe précédent), le workflow se lance et essaie de build le projet pour Windows et pour MacOS. Si les builds passent, un artifact est crée. L'artifact étant l'éxectuable de notre jeu.
+Nous avons lié Github et Discord, de se fait, nous étions toujour tenu au courant de l'état des builds. Voici comment cela se présentait :
+
+![github on discord](./img/github_discrod.png)
 
 ## Gestion des Ressources (Assets)
 
@@ -56,7 +61,7 @@ Les fichiers de scène (`.unity`) sont des fichiers binaires qui ne se prêtent 
 
 ## Déploiement
 
-Chaque nouvelle version du jeu est publiée sur notre page [itch.io](https://REMPLACER_PAR_LIEN_ITCH.IO) pour garantir un accès simple et public.
+Chaque nouvelle version du jeu est ajoutée manuellement sur la [Landing page](https://remyblr.github.io/BloomAndDoom). Nous avons testé plusieurs façons pour que les liens sur la landing page soient mis à jour automatiquement, mais malheureusement aucune ne fonctionnait.
 
 ## Méthodologie Agile
 
