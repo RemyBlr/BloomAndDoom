@@ -64,15 +64,14 @@ public class EnemyChaseState : EnemyState
 
         if (m_EnemyCombat != null)
         {
-
-            if (distanceToTarget <= m_AttackRange && Vector3.Angle(direction, m_EnemyMovement.transform.forward) < m_AttackingAngle)
+            bool inRange = distanceToTarget <= m_AttackRange;
+            bool angleCheck = Vector3.Angle(direction, m_EnemyMovement.transform.forward) < m_AttackingAngle;
+            if (inRange && angleCheck)
             {
-                {
-                    m_EnemyCombat.StartAttacking(true);
-                    m_NavMeshAgent.isStopped = true;
-                    m_IsRunning = false;
-                    m_Animator.SetBool("IsRunning", m_IsRunning);
-                }
+                m_NavMeshAgent.isStopped = true;
+                m_IsRunning = false;
+                m_Animator.SetBool("IsRunning", m_IsRunning);
+                m_EnemyCombat.StartAttacking(true);
             }
             else
             {
@@ -93,6 +92,11 @@ public class EnemyChaseState : EnemyState
 
     private void CheckStateValidity()
     {
+        if (m_EnemyPerception == null)
+        {
+            Debug.Log("m_EnemyPerception is null");
+            return;
+        }
         if (m_EnemyPerception.DetectTarget() != null)
         {
             m_TargetLastPosition = m_TargetObject.transform.position;
