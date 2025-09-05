@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
   enemyName: Catfish
   maxHealth: 150
-  attack: 50
-  defense: 5
+  attack: 17
+  defense: 10
   moveSpeed: 3
   expReward: 15
   currencyReward: 10
   detectionRange: 8
-  attackRange: 2
+  attackRange: 4
   attackSpeed: 1
   spawnAtLevel: 1
   prefab: {fileID: 0}

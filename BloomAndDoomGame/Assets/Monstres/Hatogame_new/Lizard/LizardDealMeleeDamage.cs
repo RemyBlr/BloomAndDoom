@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class LizardDealMeleeDamage : MonoBehaviour
 {
+    [SerializeField] private EnemyDamageSystem enemyDamageSystem;
     [SerializeField] private float Damage = 10f;
     [SerializeField] private string m_TargetTag = "Player";
 
     private void Awake()
     {
-        EnemyDamageSystem stats = GetComponentInParent<EnemyDamageSystem>();
-        if (stats == null) return;
-        Damage = stats.Stats.attack;
+        if (enemyDamageSystem == null) return;
+        Damage = enemyDamageSystem.Stats.attack;
     }
 
     private void OnTriggerEnter(Collider other)

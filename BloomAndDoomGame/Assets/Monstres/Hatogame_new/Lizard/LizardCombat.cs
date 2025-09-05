@@ -45,6 +45,7 @@ public class LizardCombat : EnemyCombat
 
     public override void StartAttacking(bool attack)
     {
+        //Debug.Log($"StartAttacking : {attack} before : {m_IsAttacking}");
         if (m_IsAttacking == attack) return;
         base.StartAttacking(attack);
         m_Animator.SetBool("IsAttacking", attack);
