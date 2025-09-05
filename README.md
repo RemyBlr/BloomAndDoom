@@ -13,7 +13,7 @@ Auteurs
 
 Bienvenue sur **BloomAndDoom**. Notre jeu vidéo créé dans le cadre du cours PDG à la HEIG-VD.
 
-Dans ce RogueLike, majoritairement inspiré du jeu **Risk of rain 2**, vous vaincrez des ennemies de plus en plus puissant alors que vous même deviendrez de plus en plus fort. Choisissez votre classe et arme de départ et monter de niveau afin de vous permettre d'aller toujours plus loin, toujours plus profonds.
+Dans ce RogueLike, majoritairement inspiré du jeu **Risk of rain 2**, vous vaincrez des ennemis de plus en plus puissant alors que vous même deviendrez de plus en plus fort. Choisissez votre classe et arme de départ et monter de niveau afin de vous permettre d'aller toujours plus loin, toujours plus profonds.
 
 ## Get Started
 
@@ -25,7 +25,7 @@ La première consiste à simplement télécharger l'exécutable et il ne vous re
 
 Ainsi vous aurez l'exécutable de la version la plus récente du jeu.
 
-*Note: il se peut que le lien de téléchargement n'ait pas été mis à jour vers la dernière version du jeu. Veuillez contacter les auteurs du projet pour tous renseignements*
+*Note: il se peut que le lien de téléchargement n'ait pas été mis à jour vers la dernière version du jeu. Veuillez contacter les auteurs du projet pour tout renseignements*
 
 ### 2. En Contribuant
 
@@ -35,11 +35,14 @@ La deuxième manière d'accéder au projet est de contribuer. Voici une marche �
 
 2. Cloner ou forker le projet.
 
-3. Sur Github, dans **Projects** > **Bloom & Doom Game**, ajoutez une **issue** qui sera considérée par les auteurs ultérieurement. Créez votre branche à partir de cette **issue** puis codez votre implémentation, bug fix ou quelconque modification souhaitée.
-<img width="1083" height="843" alt="image" src="https://github.com/user-attachments/assets/b957cb22-06d8-44a7-83d6-16e33117b896" />
+3. Sur le repo Github, ajoutez une **issue** qui sera considérée par les auteurs ultérieurement. N'oubliez pas d'assigner le projet lors de la création de l'issue, afin qu'elle se retrouve dans le Kanban. Créez votre branche à partir de cette **issue** puis codez votre implémentation, bug fix ou quelconque modification souhaitée.
 
 4. Créer une **Pull Request** pour qu'elle soit analysée par les auteurs.
 
 ## Documentation
 
-Vous trouverez une documentation plus détaillée, plus technique dans le dossier **/Document** à la racine du repo. Référé vous à celle-ci cela peut vous être utile !
+Vous trouverez une documentation plus détaillée, plus technique dans le dossier **/Documentation** à la racine du repo. Voici la liste :
+
+- [Processus de travail](./Documentation/ProcessusTravail.md)
+- [Création d'une nouvelle classe](./Documentation/CreationNouvelleClasse.md)
+- [Création d'un nouveau niveau](./Documentation/CreationNouveauNiveau.md)
