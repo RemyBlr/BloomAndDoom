@@ -15,3 +15,4 @@ MonoBehaviour:
   Boss: {fileID: 2066896392038628118, guid: 45288819fde2143449a96207b14db0bb, type: 3}
   monsters:
   - {fileID: 8056591710087798629, guid: b632ab4430e28bc40ac1e5afc73109c6, type: 3}
+  - {fileID: 854197348646687118, guid: a3425cfa4d3649241965ce2d02ba19b0, type: 3}

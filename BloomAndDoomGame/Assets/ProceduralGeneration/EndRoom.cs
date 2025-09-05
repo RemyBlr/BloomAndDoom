@@ -24,8 +24,6 @@ public class EndRoom : MonoBehaviour
 
     public void OnBossDeath()
     {
-        player.transform.localPosition = Vector3.zero;
         SceneManager.LoadScene(roomGeneration.NextRoom);
-        FindFirstObjectByType<CharacterStats>().transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
     }
 }

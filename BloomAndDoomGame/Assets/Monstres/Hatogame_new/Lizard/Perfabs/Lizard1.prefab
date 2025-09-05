@@ -1190,6 +1190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3efcf3596587815419ef0880bc296baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LizardDealMeleeDamage
+  enemyDamageSystem: {fileID: 8466597208471928169}
   Damage: 10
   m_TargetTag: Player
 --- !u!1 &7013122795135682757
@@ -1662,6 +1663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3efcf3596587815419ef0880bc296baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LizardDealMeleeDamage
+  enemyDamageSystem: {fileID: 8466597208471928169}
   Damage: 10
   m_TargetTag: Player
 --- !u!1 &8443779948727785515
