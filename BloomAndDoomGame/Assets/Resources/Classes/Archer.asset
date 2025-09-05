@@ -21,7 +21,7 @@ MonoBehaviour:
   critDamage: 0.5
   atkSpd: 5
   startingLevel: 1
-  startingCurrency: 0
+  startingCurrency: 100
   hpPerLevel: 10
   atkPerLevel: 2
   defPerLevel: 1

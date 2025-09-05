@@ -42,6 +42,7 @@ public enum StatType {
 public class CharacterStats : MonoBehaviour
 {
     private PlayerController player;
+    private HUDManager hudManager;
 
     [Header("Base")]
     [SerializeField] private CharacterClass characterClass;
@@ -58,8 +59,8 @@ public class CharacterStats : MonoBehaviour
     [Header("Current")]
     [SerializeField] private float currentHealth;
     [SerializeField] private int currentLevel = 1;
-    [SerializeField] private int currentXp = 0;
-    [SerializeField] private int xpForNextLevel = 100;
+    [SerializeField] public int currentXp = 0;
+    [SerializeField] public int xpForNextLevel = 10;
     [SerializeField] private int currency = 0;
 
     private HUDManager hud;
@@ -93,10 +94,11 @@ public class CharacterStats : MonoBehaviour
 
         currentLevel = characterClass.startingLevel;
         currency = characterClass.startingCurrency;
-        
+
         // Current health - IMPORTANT: initialiser après avoir défini health
         float maxHP = health.GetValue();
         currentHealth = maxHP;
+
         
         Debug.Log($"Stats initialisées: HP={maxHP}, ATK={baseStats.atk}, Level={currentLevel}");
         
@@ -208,6 +210,11 @@ public class CharacterStats : MonoBehaviour
         currentXp += xp;
         GameStats.Instance?.AddExperienceGained(xp);
         
+        if(hud != null) {
+            //hud.SetXp(currentXp, xpForNextLevel);
+            Debug.Log($"Gained {xp}, current {currentXp}, max {xpForNextLevel}");
+        }
+
         while (currentXp >= xpForNextLevel)
             LevelUp();
     }
