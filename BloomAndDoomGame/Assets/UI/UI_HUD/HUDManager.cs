@@ -21,8 +21,15 @@ public class HUDManager : MonoBehaviour
     public Image hp;
     public Image mana;
     public Image xp;
+    public TextMeshProUGUI level;
 
     private float elapsedTime;
+    private CharacterStats playerStats;
+
+    void Start()
+    {
+        SetupPlayerStats();
+    }
 
     void Update()
     {
@@ -31,10 +38,6 @@ public class HUDManager : MonoBehaviour
         int minutes = Mathf.FloorToInt(elapsedTime / 60f);
         int seconds = Mathf.FloorToInt(elapsedTime % 60f);
         time.text = $"Temps: {minutes:00}:{seconds:00}";
-    }
-
-    public void SetMoney(int amount) {
-        money.text = $"Argent: {amount}";
     }
 
     // Par la suite : hudManager.SetHealth(75, 100);
@@ -61,5 +64,40 @@ public class HUDManager : MonoBehaviour
     public void AddObjective(string text) {
         var obj = Instantiate(objectivePrefab, objectivesParent);
         obj.GetComponent<TextMeshProUGUI>().text = text;
+    }
+
+    private void SetupPlayerStats() {
+        if (GameManager.Instance?.playerInstance != null) {
+            playerStats = GameManager.Instance.playerInstance.GetComponent<CharacterStats>();
+            if (playerStats == null)
+                playerStats = GameManager.Instance.playerInstance.GetComponentInChildren<CharacterStats>();
+        }
+
+        if (playerStats != null) {
+            CharacterStats.OnCurrencyChanged += UpdateMoneyDisplay;
+            CharacterStats.OnLevelUp += UpdateLevelDisplay;
+            UpdateMoneyDisplay(playerStats.GetCurrency());
+            UpdateLevelDisplay(playerStats.GetLevel());
+            
+            Debug.Log("HUD connecté aux stats du joueur");
+        }
+        else
+        {
+            Debug.LogWarning("CharacterStats du joueur introuvable pour le HUD");
+        }
+    }
+
+    private void UpdateMoneyDisplay(int newAmount) {
+        if (money != null)
+            money.text = $"Argent: {newAmount}";
+    }
+
+    private void UpdateLevelDisplay(int newLevel) {
+        if(level != null)
+            level.text = $"Lv. {newLevel}";
+    }
+
+    void OnDestroy() {
+        CharacterStats.OnCurrencyChanged -= UpdateMoneyDisplay;
     }
 }

@@ -87,7 +87,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 10
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &6406651897733086580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,7 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f66b1b9409b04308bb38e9c23433520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChestPrice
-  price: 100
   chestPricePrefab: {fileID: 0}
 --- !u!23 &4387655745412763716
 MeshRenderer:
@@ -152,7 +151,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1438753046484988068, guid: 19c45c09238a8401b9687fc32aaee2a2, type: 2}
+  - {fileID: -4181325094760459266, guid: bb973b2128c36451ea641192e18eb070, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -197,8 +196,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 000$
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 19c45c09238a8401b9687fc32aaee2a2, type: 2}
-  m_sharedMaterial: {fileID: 1438753046484988068, guid: 19c45c09238a8401b9687fc32aaee2a2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bb973b2128c36451ea641192e18eb070, type: 2}
+  m_sharedMaterial: {fileID: -4181325094760459266, guid: bb973b2128c36451ea641192e18eb070, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

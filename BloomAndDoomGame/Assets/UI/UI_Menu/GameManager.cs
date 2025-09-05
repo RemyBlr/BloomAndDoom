@@ -30,15 +30,13 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        playerInstance = Instantiate(SelectedCharacter.pickedClass.prefab, Vector3.up, Quaternion.identity);
-        DontDestroyOnLoad(playerInstance.gameObject);
-        //if (!playerInstance.CompareTag("Player"))
-            //playerInstance.tag = "Player";
-
         if (hudInstance == null && hudPrefab != null) {
             hudInstance = Instantiate(hudPrefab);
             DontDestroyOnLoad(hudInstance);
         }
+
+        playerInstance = Instantiate(SelectedCharacter.pickedClass.prefab, Vector3.up, Quaternion.identity);
+        DontDestroyOnLoad(playerInstance.gameObject);
 
         if (GameStats.Instance == null) {
             GameObject statsManager = new GameObject("GameStats");
