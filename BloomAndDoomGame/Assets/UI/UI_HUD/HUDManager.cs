@@ -21,6 +21,7 @@ public class HUDManager : MonoBehaviour
     public Image hp;
     public Image mana;
     public Image xp;
+    public TextMeshProUGUI level;
 
     private float elapsedTime;
     private CharacterStats playerStats;
@@ -37,12 +38,6 @@ public class HUDManager : MonoBehaviour
         int minutes = Mathf.FloorToInt(elapsedTime / 60f);
         int seconds = Mathf.FloorToInt(elapsedTime % 60f);
         time.text = $"Temps: {minutes:00}:{seconds:00}";
-
-        //money.text = characterStats.GetCurrency().ToString();
-    }
-
-    public void SetMoney(int amount) {
-        money.text = $"Argent: {amount}";
     }
 
     // Par la suite : hudManager.SetHealth(75, 100);
@@ -80,7 +75,9 @@ public class HUDManager : MonoBehaviour
 
         if (playerStats != null) {
             CharacterStats.OnCurrencyChanged += UpdateMoneyDisplay;
+            CharacterStats.OnLevelUp += UpdateLevelDisplay;
             UpdateMoneyDisplay(playerStats.GetCurrency());
+            UpdateLevelDisplay(playerStats.GetLevel());
             
             Debug.Log("HUD connecté aux stats du joueur");
         }
@@ -93,6 +90,11 @@ public class HUDManager : MonoBehaviour
     private void UpdateMoneyDisplay(int newAmount) {
         if (money != null)
             money.text = $"Argent: {newAmount}";
+    }
+
+    private void UpdateLevelDisplay(int newLevel) {
+        if(level != null)
+            level.text = $"Lv. {newLevel}";
     }
 
     void OnDestroy() {

@@ -3952,7 +3952,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -4099,6 +4099,7 @@ MonoBehaviour:
   hp: {fileID: 3392571699437407518}
   mana: {fileID: 0}
   xp: {fileID: 0}
+  level: {fileID: 0}
 --- !u!1 &9171942159318985049
 GameObject:
   m_ObjectHideFlags: 0
